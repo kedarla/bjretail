@@ -1,0 +1,6 @@
+<div class="col-md-2">
+  <label for="part[<%= radio_option.part.id %>][option]">
+    <%= radio_button_tag "part[#{radio_option.part.id}][option]", radio_option.id, radio_option.part.options.first.id == radio_option.id %>
+    <%= radio_option.name %>
+  </label>
+</div>

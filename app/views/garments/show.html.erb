@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h1><%= @garment.name %></h1>
+  <div class="row">
+  	<div class="col-md-8">
+  	  <%= render partial: "parts/part", collection: @garment.parts %>
+  	</div>
+  	<div class="col-md-4">
+  	</div>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @garment.name %>
-</p>
-
-<%= link_to 'Edit', edit_garment_path(@garment) %> |
-<%= link_to 'Back', garments_path %>
+<%#= link_to 'Edit', edit_garment_path(@garment) %> |
+<%#= link_to 'Back', garments_path %>
