@@ -10,5 +10,15 @@
   <%= @option.part %>
 </p>
 
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @option.photo.url(:small) %>
+</p>
+
+<p>
+  <strong>Print:</strong>
+  <%= image_tag @option.print.url(:small) %>
+</p>
+
 <%= link_to 'Edit', edit_option_path(@option) %> |
 <%= link_to 'Back', options_path %>
