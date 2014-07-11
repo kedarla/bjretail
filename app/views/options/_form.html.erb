@@ -1,4 +1,4 @@
-<%= form_for(@option) do |f| %>
+<%= form_for(@option, :html => { :multipart => true }) do |f| %>
   <% if @option.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@option.errors.count, "error") %> prohibited this option from being saved:</h2>
@@ -18,6 +18,14 @@
   <div class="field">
     <%= f.label :part_id %><br>
     <%= f.text_field :part_id %>
+  </div>
+  <div class="field">
+    <%= f.label :photo, "Photo" %><br>
+    <%= f.file_field :photo %>
+  </div>
+  <div class="field">
+    <%= f.label :printable_photo, "Printable_photo" %><br>
+    <%= f.file_field :printable_photo %>
   </div>
   <div class="actions">
     <%= f.submit %>
