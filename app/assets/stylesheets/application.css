@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.light-header {
+  background-color: #DDD;
+  margin-top: 0;
+}
