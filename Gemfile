@@ -38,6 +38,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'rails_admin', '~> 0.6.2'
+gem 'paperclip', '~> 4.2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
