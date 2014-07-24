@@ -1,5 +1,5 @@
 $(function() {
-  $('.print-btn').click(function(){
+  $(document).on("click", '.print-btn', function(){
     window.print();
   });
 });
