@@ -10,6 +10,22 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    parts_arr = []
+    options_arr = []
+
+    strhash = eval(@order.data).with_indifferent_access
+
+    strhash[:part].each do |key, val|
+      parts_arr << Part.find(key)
+      options_arr << Option.find(val[:option])
+    end
+
+    @parts_options = parts_arr.zip(options_arr)
+
+    if params[:view] == 'print'
+      render action: 'print', :layout => 'application'
+      return
+    end
   end
 
   def proceed

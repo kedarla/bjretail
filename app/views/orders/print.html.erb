@@ -1,7 +1,6 @@
 <style type="text/css" media="print">
   .btn {display: none;}
 </style>
-<p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -20,7 +19,5 @@
       <% end %>
     </div>
   </div>
-  <%= link_to "Print preview", order_path(@order, view: 'print'), class: 'btn btn-primary' %>
+  <%= link_to "Print", order_path(@order, view: 'print'), class: 'btn btn-primary print-btn' %>
 </div>
-<%#= link_to 'Edit', edit_order_path(@order) %>
-<%#= link_to 'Back', orders_path %>
