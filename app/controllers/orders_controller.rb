@@ -12,6 +12,24 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def proceed
+    @order = Order.new
+    @order_data = params[:order]
+
+    parts_arr = []
+    options_arr = []
+
+    @order_data[:part].each do |key, val|
+      parts_arr << Part.find(key)
+      options_arr << Option.find(val[:option])
+    end
+
+    @parts_options = parts_arr.zip(options_arr)
+    respond_to do |format|
+      format.html { render action: 'new' }
+    end
+  end
+
   # GET /orders/new
   def new
     @order = Order.new
