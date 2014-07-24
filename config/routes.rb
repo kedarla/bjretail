@@ -3,7 +3,11 @@ Bjretail::Application.routes.draw do
   devise_for :users
   resources :users
 
-  resources :orders
+  resources :orders do
+    collection do
+      post 'proceed'
+    end
+  end
 
   resources :options
 

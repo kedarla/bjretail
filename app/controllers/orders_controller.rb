@@ -12,6 +12,14 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def proceed
+    @order = Order.new
+    @order_data = params[:order]
+    respond_to do |format|
+      format.html { render action: 'new' }
+    end
+  end
+
   # GET /orders/new
   def new
     @order = Order.new
