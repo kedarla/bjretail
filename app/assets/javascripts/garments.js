@@ -7,4 +7,9 @@ $(function() {
   $("#proceed_to_order").on('click', function() {
   	$("#proceed_to_order_form").submit();
   });
+
+  $('.collapse').collapse();
+  $('#accordion').on('show.bs.collapse', function () {
+    $('#accordion .in').collapse('hide');
+  });
 });
