@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710145105) do
+ActiveRecord::Schema.define(version: 20140808193429) do
 
   create_table "garments", force: true do |t|
     t.string   "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20140710145105) do
     t.string   "printable_photo_content_type"
     t.integer  "printable_photo_file_size"
     t.datetime "printable_photo_updated_at"
+    t.boolean  "is_default"
+    t.integer  "parent_id"
   end
 
   add_index "options", ["part_id"], name: "index_options_on_part_id"
