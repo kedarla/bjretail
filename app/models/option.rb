@@ -8,4 +8,5 @@ class Option < ActiveRecord::Base
   validates_attachment_presence :printable_photo
   validates_attachment_size :printable_photo, :less_than => 5.megabytes
   validates_attachment_content_type :printable_photo, :content_type => ['image/jpeg', 'image/jpg', 'image/png']
+  default_scope order('created_at DESC')
 end
