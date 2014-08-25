@@ -3,15 +3,15 @@
   <h1><%= @garment.name %></h1>
   <div class="row">
     <%= form_tag proceed_orders_path, method: :post, id: "proceed_to_order_form" do %>
-  	<div class="col-md-8">
+  	<div class="col-md-12">
       <div class="panel-group" id="accordion"> 
   	    <%= render partial: "parts/part", collection: @garment.parts %>
       </div>
   	</div>
     <% end %>
-  	<div class="col-md-4">
-  	  <%= render partial: "garments/summary" %>
-  	</div>
+  	<!-- <div class="col-md-4">
+  	  <%#= render partial: "garments/summary" %>
+  	</div> -->
   </div>
 </div>
 
