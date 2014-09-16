@@ -6,7 +6,7 @@
   </div>
   <div id="collapse_part_<%= part.id %>" class="panel-collapse collapse in">
     <div class="panel-body">
-      <%= render partial: "options/radio_option", collection: part.options %>
+      <%= render partial: "options/radio_option", collection: part.options.reverse %>
     </div>
   </div>
 </div>

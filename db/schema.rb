@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20140916102751) do
     t.integer  "garment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
+    t.string   "display_type"
   end
 
   add_index "parts", ["garment_id"], name: "index_parts_on_garment_id"
