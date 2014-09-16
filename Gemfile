@@ -40,6 +40,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 
 gem 'devise'
 gem 'aws-sdk'
+gem 'ancestry'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

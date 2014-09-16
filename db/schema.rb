@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808193429) do
+ActiveRecord::Schema.define(version: 20140916094314) do
 
   create_table "garments", force: true do |t|
     t.string   "name"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20140808193429) do
     t.integer  "garment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
+    t.string   "display_type"
   end
 
   add_index "parts", ["garment_id"], name: "index_parts_on_garment_id"
