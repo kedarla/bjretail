@@ -1,0 +1,29 @@
+<h1>Listing disables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Disable element</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disables.each do |disable| %>
+      <tr>
+        <td><%= disable.option_id %></td>
+        <td><%= disable.disable_element_id %></td>
+        <td><%= link_to 'Show', disable %></td>
+        <td><%= link_to 'Edit', edit_disable_path(disable) %></td>
+        <td><%= link_to 'Destroy', disable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Disable', new_disable_path %>

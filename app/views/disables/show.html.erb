@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Option:</strong>
+  <%= @disable.option_id %>
+</p>
+
+<p>
+  <strong>Disable element:</strong>
+  <%= @disable.disable_element_id %>
+</p>
+
+<%= link_to 'Edit', edit_disable_path(@disable) %> |
+<%= link_to 'Back', disables_path %>

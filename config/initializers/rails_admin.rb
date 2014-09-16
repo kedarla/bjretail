@@ -31,4 +31,17 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Option' do
+    list do
+      field :id
+      field :name
+      field :part
+      field :photo
+      field :printable_photo
+    end
+  end
+
+
+
 end

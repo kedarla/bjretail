@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808193429) do
+ActiveRecord::Schema.define(version: 20140916102751) do
+
+  create_table "disables", force: true do |t|
+    t.integer  "option_id"
+    t.integer  "disable_element_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "garments", force: true do |t|
     t.string   "name"

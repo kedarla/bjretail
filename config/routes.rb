@@ -1,4 +1,5 @@
 Bjretail::Application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :users
@@ -10,6 +11,7 @@ Bjretail::Application.routes.draw do
   end
 
   resources :options
+  resources :disables
 
   resources :parts
 

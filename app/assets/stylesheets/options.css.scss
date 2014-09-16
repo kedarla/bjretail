@@ -15,3 +15,9 @@ label.option_radio_label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES 
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+label.option_radio_label > input.c_disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
