@@ -1,15 +1,19 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-  	<h2 class="panel-title" id="selected_part_<%= part.id %>">
-  	  <%= link_to raw("#{part.name} - <span class='selected_part_option'>#{part.options.first.name}</span>"), "#collapse_part_#{part.id}", class: "collapser", "data-toggle" => "collapse", "data-parent" => "#accordion" %>
-  	</h2>
-  </div>
-  <div id="collapse_part_<%= part.id %>" class="panel-collapse collapse in">
-    <div class="panel-body">
-      <%= render partial: "options/radio_option", collection: part.options.reverse %>
-      <% if part.children.exists? %>
-        <%= render partial: "parts/part_child", collection: part.children %>
-      <% end %>
+<% if part.parent != nil %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    	<h2 class="panel-title" id="selected_part_<%= part.id %>">
+    	  <%= link_to raw("#{part.name} - <span class='selected_part_option'>#{part.options.first.name}</span>"), "#collapse_part_#{part.id}", class: "collapser", "data-toggle" => "collapse", "data-parent" => "#accordion" %>
+    	</h2>
+    </div>
+    <div id="collapse_part_<%= part.id %>" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <%= render partial: "options/radio_option", collection: part.options.reverse %>
+        <% if part.children.exists? %>
+          <%= render partial: "parts/part_child", collection: part.children %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+
+<% end %>
