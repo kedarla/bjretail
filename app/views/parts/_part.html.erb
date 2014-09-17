@@ -7,6 +7,9 @@
   <div id="collapse_part_<%= part.id %>" class="panel-collapse collapse in">
     <div class="panel-body">
       <%= render partial: "options/radio_option", collection: part.options.reverse %>
+      <% if part.children.exists? %>
+        <%= render partial: "parts/part_child", collection: part.children %>
+      <% end %>
     </div>
   </div>
 </div>
