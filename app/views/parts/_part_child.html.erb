@@ -6,6 +6,14 @@
     <div class="col-md-10">
       <% if part_child.display_type == "dropdown" %>
   	    <%= select_tag "order[part][#{part_child.id}][option]", options_for_part_child(part_child), class: "form-control" %>
+      <% elsif part_child.display_type == "radio" %>
+        <div class="row">
+          <%= options_radio_tag part_child %>
+        </div>
+      <% elsif part_child.display_type == "checkbox" %>
+        <div class="row">
+          <%= options_checkbox_tag part_child %>
+        </div>
       <% end %>
     </div>
   </div>
