@@ -13,6 +13,9 @@ class Option < ActiveRecord::Base
   has_many :disables, :class_name => 'Disable', :foreign_key => 'option_id'
   has_many :disablers, :class_name => 'Disable', :foreign_key => 'disable_element_id'
 
+  has_many :enables, :class_name => 'Enable', :foreign_key => 'option_id'
+  has_many :enablers, :class_name => 'Enable', :foreign_key => 'enable_element_id'
+
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates_attachment_content_type :printable_photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 end

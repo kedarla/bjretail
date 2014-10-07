@@ -20,6 +20,17 @@ $(function() {
       elem_to_be_disabled.closest(".part_option_wrapper").prepend("<div class='option_overlay'/>");
     }
   	$("#selected_part_" + elem.attr("data-option-part")).find(".selected_part_option").html(elem.attr("data-option-name"));
+
+    // Enable related options
+    enables = JSON.parse(elem.attr("data-option-enables"));
+    for(i = 0; i < enables.length; i++) {
+      elem_to_be_enabled = $("[data-option-subid='option_subid_" + enables[i] + "']");
+      console.log(elem_to_be_enabled);
+      elem_to_be_enabled.prop("selected", true);
+      elem_to_be_enabled.prop("checked", true);
+      // elem_to_be_enabled.prop("disabled", true).addClass("c_disabled");
+      // elem_to_be_enabled.closest(".part_option_wrapper").prepend("<div class='option_overlay'/>");
+    }
   });
 
   $("#proceed_to_order").on('click', function() {

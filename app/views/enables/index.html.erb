@@ -1,0 +1,29 @@
+<h1>Listing enables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Enable element</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enables.each do |enable| %>
+      <tr>
+        <td><%= enable.option_id %></td>
+        <td><%= enable.enable_element_id %></td>
+        <td><%= link_to 'Show', enable %></td>
+        <td><%= link_to 'Edit', edit_enable_path(enable) %></td>
+        <td><%= link_to 'Destroy', enable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enable', new_enable_path %>

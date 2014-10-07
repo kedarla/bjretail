@@ -11,7 +11,7 @@ module PartsHelper
   	html = ""
   	part_child.options.each do |o|
   	  html += "<div class='col-sm-2'>"
-  	  html += label_tag "order[part][#{part_child.id}][option]", raw("#{radio_button_tag('order[part][#{part_child.id}][option]', o.id, o.is_default?)} #{o.name}")
+  	  html += label_tag "order[part][#{part_child.id}][option]", raw("<input id='order_part_#{part_child.id}_option_#{o.id}' name='order[part][#{part_child.id}][option]' type='radio' value='#{o.id}' #{o.is_default? ? 'checked' : ''} data-option-subid='option_subid_#{o.id}'> #{o.name}")
   	  html += "</div>"
   	end
   	html.html_safe
@@ -21,7 +21,7 @@ module PartsHelper
   	html = ""
   	part_child.options.each do |o|
   	  html += "<div class='col-sm-2'>"
-  	  html += label_tag "order[part][#{part_child.id}][option]", raw("#{check_box_tag('order[part][#{part_child.id}][option]', o.id, o.is_default?)} #{o.name}")
+  	  html += label_tag "order[part][#{part_child.id}][option]", raw("<input id='order_part_#{part_child.id}_option_#{o.id}' name='order[part][#{part_child.id}][option]' type='checkbox' value='#{o.id}' #{o.is_default? ? 'checked' : ''} data-option-subid='option_subid_#{o.id}'> #{o.name}")
   	  html += "</div>"
   	end
   	html.html_safe

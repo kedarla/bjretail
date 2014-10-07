@@ -1,5 +1,7 @@
 Bjretail::Application.routes.draw do
 
+  resources :enables
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :users
