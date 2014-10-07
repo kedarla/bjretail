@@ -33,6 +33,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Option' do
+    exclude_fields :disables, :disablers
     list do
       field :id
       field :name
@@ -42,7 +43,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Part do
+  config.model 'Part' do
     field :name
     field :display_type
     field :parent_id, :enum do
