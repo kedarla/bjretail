@@ -33,7 +33,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Option' do
-    exclude_fields :disables, :disablers
+    exclude_fields :disables, :disablers, :enables, :enablers
     list do
       field :id
       field :name

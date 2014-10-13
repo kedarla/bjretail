@@ -26,4 +26,15 @@ module PartsHelper
   	end
   	html.html_safe
   end
+
+  def options_textfield_tag(part_child)
+    html = ""
+    part_child.options.each do |o|
+      html += "<div class='col-sm-2'>"
+      html += label_tag "order[part][#{part_child.id}][option]", raw("<input id='order_part_#{part_child.id}_option_#{o.id}' name='order[part][#{part_child.id}][option]' type='text' value='' data-option-subid='option_subid_#{o.id}'> #{o.name}")
+      html += "</div>"
+    end
+    html.html_safe
+  end
+
 end
