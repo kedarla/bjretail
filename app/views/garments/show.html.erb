@@ -1,16 +1,16 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
-  <h1><%= @garment.name %></h1>
-  <div class="row">
-    <%= form_tag proceed_orders_path, method: :post, id: "proceed_to_order_form" do %>
-    	<div class="col-md-12">
-        <div class="panel-group" id="accordion"> 
-          <%= render partial: "parts/part", collection: @garment.parts.reverse %>
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+    <h1><%= @garment.name %></h1>
+    <div class="row">
+      <%= form_tag proceed_orders_path, method: :post, id: "proceed_to_order_form" do %>
+      	<div class="col-md-12">
+          <div class="panel-group" id="accordion"> 
+            <%= render partial: "parts/part", collection: @garment.parts.reverse %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><button type="button" class="btn btn-primary" id="proceed_to_order">Proceed</button></div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-md-12"><button type="button" class="btn btn-primary" id="proceed_to_order">Proceed</button></div>
-  </div>
-</div>

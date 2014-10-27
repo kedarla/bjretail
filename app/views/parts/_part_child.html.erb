@@ -1,11 +1,11 @@
-<div class="col-md-12 part-child-wrapper">
-  <div class="row">
-    <div class="col-md-2">
-      <label><%= part_child.name %></label>
-    </div>
+  <div class="col-md-12 part-child-wrapper">
+    <div class="row">
+      <div class="col-md-2">
+        <label><%= part_child.name %></label>
+      </div>
     <div class="col-md-10">
       <% if part_child.display_type == "dropdown" %>
-  	    <%= select_tag "order[part][#{part_child.id}][option]", options_for_part_child(part_child), class: "form-control" %>
+        <%= select_tag "order[part][#{part_child.id}][option]", options_for_part_child(part_child), class: "form-control" %>
       <% elsif part_child.display_type == "radio" %>
         <div class="row">
           <%= options_radio_tag part_child %>

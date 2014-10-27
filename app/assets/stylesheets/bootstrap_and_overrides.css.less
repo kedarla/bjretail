@@ -1,54 +1,65 @@
-@import "twitter/bootstrap/bootstrap";
+      @import "twitter/bootstrap/bootstrap";
 
-// Set the correct sprite paths
-@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
-@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+      // Set the correct sprite paths
+      @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+      @iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
-// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
-@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
-@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
-@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
-@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+      // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+      //@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+      //@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+      //@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+      //@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+      //@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
 
-// Font Awesome
-@import "fontawesome/font-awesome";
+      // Font Awesome
+      //@import "fontawesome/font-awesome";
 
-// Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+      // Glyphicons
+      //@import "twitter/bootstrap/sprites.less";
 
-// Your custom LESS stylesheets goes here
-//
-// Since bootstrap was imported above you have access to its mixins which
-// you may use and inherit here
-//
-// If you'd like to override bootstrap's own variables, you can do so here as well
-// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
-//
-// Example:
-// @link-color: #ff0000;
+      // Your custom LESS stylesheets goes here
+      //
+      // Since bootstrap was imported above you have access to its mixins which
+      // you may use and inherit here
+      //
+      // If you'd like to override bootstrap's own variables, you can do so here as well
+      // See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+      //
+      // Example:
+      // @link-color: #ff0000;
 
-img {
-  max-width: 100%;
-}
+      @import url(http://fonts.googleapis.com/css?family=EB+Garamond&subset=cyrillic-ext,latin);
 
-.navbar-bjr {
-  background-color: #4486F7;
-  border-color: #4486F7;
 
-  .navbar-nav > li > a, .navbar-brand {
-    color: #FFF !important;
-  }
-}
 
-.panel-title a {
-  display: block;
-  padding: 10px 15px;
-  margin: -10px -15px;
+      img {
+        max-width: 100%;
+      }
 
-  &:hover {
-    background-color: transparent;
-    color: #333;
-    text-decoration: none;
-  }
-}
+      .navbar-bjr {
+        background-color: #234988 ;
+        border-color: #234988 ; 
+
+        .navbar-nav > li > a, .navbar-brand {
+          color: #FFF !important;
+        }
+      }
+
+      .panel-title a {
+        display: block;
+        padding: 10px 15px;
+        margin: -10px -15px;
+        background-color: white;
+
+        &:hover {
+          background-color: transparent;
+          color: #333;
+          text-decoration: none;
+        }
+      }
+
+      .btn-primary {
+      color: #ffffff;
+      background-color: #234988;
+      border-color: #234988;
+      }
