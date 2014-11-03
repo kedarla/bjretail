@@ -1,0 +1,27 @@
+<h1>Listing print_sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @print_sections.each do |print_section| %>
+      <tr>
+        <td><%= print_section.name %></td>
+        <td><%= link_to 'Show', print_section %></td>
+        <td><%= link_to 'Edit', edit_print_section_path(print_section) %></td>
+        <td><%= link_to 'Destroy', print_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Print section', new_print_section_path %>

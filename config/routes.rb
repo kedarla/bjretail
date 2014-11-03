@@ -1,5 +1,7 @@
 Bjretail::Application.routes.draw do
 
+  resources :print_sections
+
   resources :enables
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

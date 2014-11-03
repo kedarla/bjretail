@@ -32,6 +32,11 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  config.model 'Enable' do
+    label "On Select" 
+    label_plural "On Selects"
+  end
+
   config.model 'Option' do
     exclude_fields :disables, :disablers, :enables, :enablers
     list do
