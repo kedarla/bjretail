@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h2 class="panel-title" id="">
+  	  <%= link_to raw("<b>#{print_section.name}</b>"), "#collapse_part_#{print_section.id}", class: "collapser", "data-toggle" => "collapse", "data-parent" => "#accordion" %>
+  	</h2>
+  </div>
+  <div id="collapse_part_<%= print_section.id %>" class="panel-collapse collapse in">
+    <div class="panel-body">
+      <% @parts_options.each do |part, option| %>
+        <%# if part.parent.present? %>
+          <!-- <div class="col-md-12">
+            <%#= "#{part.name}: #{option.name}" %>
+          </div> -->
+        <%# else %>
+          <% if part.print_sections.include?(print_section) %>
+            <div class="col-md-2">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3><%= part.name %></h3>
+                </div>
+                <div class="col-md-12">
+                  <%= image_tag option.photo(:small) %>
+                  <h4><%= option.name %></h4>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <%# end %>
+      <% end %>
+    </div>
+  </div>
+</div>

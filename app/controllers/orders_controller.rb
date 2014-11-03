@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @print_sections = PrintSection.all
     parts_arr = []
     options_arr = []
 
