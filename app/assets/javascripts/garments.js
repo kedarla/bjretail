@@ -28,17 +28,10 @@ $(function() {
       console.log(elem_to_be_enabled);
       elem_to_be_enabled.prop("selected", true);
       elem_to_be_enabled.prop("checked", true);
-      // elem_to_be_enabled.prop("disabled", true).addClass("c_disabled");
-      // elem_to_be_enabled.closest(".part_option_wrapper").prepend("<div class='option_overlay'/>");
     }
   });
 
   $("#proceed_to_order").on('click', function() {
   	$("#proceed_to_order_form").submit();
-  });
-
-  $('.collapse').collapse();
-  $('#accordion').on('show.bs.collapse', function () {
-    $('#accordion .in').collapse('hide');
   });
 });
