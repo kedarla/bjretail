@@ -5,19 +5,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <% @parts_options.each do |part, option| %>
+      <div class="panel-group" id="accordion"> 
+        <%= render partial: "orders/print_section", collection: @print_sections %>
+      </div>
+      <!-- <%# @parts_options.each do |part, option| %>
         <div class="col-md-2">
           <div class="row">
             <div class="col-md-12">
-              <h3><%= part.name %></h3>
+              <h3><%#= part.name %></h3>
             </div>
             <div class="col-md-12">
-              <%= image_tag option.photo(:small) %>
-              <h4><%= option.name %></h4>
+              <%#= image_tag option.photo(:small) %>
+              <h4><%#= option.name %></h4>
             </div>
           </div>
         </div>
-      <% end %>
+      <%# end %> -->
     </div>
   </div>
   <%= link_to "Print", order_path(@order, view: 'print'), class: 'btn btn-primary print-btn' %>

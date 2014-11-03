@@ -10,8 +10,8 @@ class Option < ActiveRecord::Base
   # validates_attachment_content_type :printable_photo, :content_type => ['image/jpeg', 'image/jpg', 'image/png']
   # default_scope order('created_at DESC')
 
-  has_many :disables, :class_name => 'Disable', :foreign_key => 'option_id'
-  has_many :disablers, :class_name => 'Disable', :foreign_key => 'disable_element_id'
+  has_many :disables, :class_name => 'Disable', :foreign_key => 'option_id', :source => :disabled
+  has_many :disablers, :class_name => 'Disable', :foreign_key => 'disable_element_id', :source => :disablers
 
   has_many :enables, :class_name => 'Enable', :foreign_key => 'option_id'
   has_many :enablers, :class_name => 'Enable', :foreign_key => 'enable_element_id'

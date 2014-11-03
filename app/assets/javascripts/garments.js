@@ -1,6 +1,6 @@
 $(function() {
   $(".radio_option").on("change", function() {
-  	elem = $(this);
+    elem = $(this);
 
     grouped_inputs = $("input[data-option-group='" + elem.attr("data-option-group") + "']");
     grouped_inputs.each(function() {
@@ -19,7 +19,7 @@ $(function() {
       elem_to_be_disabled.prop("disabled", true).addClass("c_disabled");
       elem_to_be_disabled.closest(".part_option_wrapper").prepend("<div class='option_overlay'/>");
     }
-  	$("#selected_part_" + elem.attr("data-option-part")).find(".selected_part_option").html(elem.attr("data-option-name"));
+    $("#selected_part_" + elem.attr("data-option-part")).find(".selected_part_option").html(elem.attr("data-option-name"));
 
     // Enable related options
     enables = JSON.parse(elem.attr("data-option-enables"));
@@ -28,18 +28,11 @@ $(function() {
       console.log(elem_to_be_enabled);
       elem_to_be_enabled.prop("selected", true);
       elem_to_be_enabled.prop("checked", true);
-      // elem_to_be_enabled.prop("disabled", true).addClass("c_disabled");
-      // elem_to_be_enabled.closest(".part_option_wrapper").prepend("<div class='option_overlay'/>");
     }
   });
 
   $("#proceed_to_order").on('click', function() {
-  	$("#proceed_to_order_form").submit();
-  });
-
-  $('.collapse').collapse();
-  $('#accordion').on('show.bs.collapse', function () {
-    $('#accordion .in').collapse('hide');
+    $("#proceed_to_order_form").submit();
   });
 });
 
@@ -50,6 +43,6 @@ $(document).ready(function(){
 
     $('.selected_part_option').text = $(this).text();
 
-  }) 
+  })  
 
-})    
+});   

@@ -1,8 +1,12 @@
+<% pre_disabled = radio_option.disablers.map(&:option).map(&:is_default?).first %>
 <div class="col-md-2">
   <div class="row">
     <div class="col-md-12 part_option_wrapper">
+      <% if pre_disabled %>
+        <div class='option_overlay'></div>
+      <% end %>
       <label for="order_part_<%= radio_option.part.id %>_option_<%= radio_option.id %>" class="option_radio_label">
-        <%= radio_button_tag "order[part][#{radio_option.part.id}][option]", radio_option.id, radio_option.is_default?, class: "radio_option", "data-option-part" => radio_option.part.id, "data-option-name" => radio_option.name, "data-option-disables" => "#{radio_option.disables.map(&:disable_element_id)}", "data-option-subid" => "option_subid_#{radio_option.id}", "data-option-group" => "part_#{radio_option.part_id}", "data-option-enables" => "#{radio_option.enables.map(&:enable_element_id)}" %>
+        <%= radio_button_tag "order[part][#{radio_option.part.id}][option]", radio_option.id, radio_option.is_default?, class: "radio_option #{pre_disabled ? 'c_disabled' : ''}", "data-option-part" => radio_option.part.id, "data-option-name" => radio_option.name, "data-option-disables" => "#{radio_option.disables.map(&:disable_element_id)}", "data-option-subid" => "option_subid_#{radio_option.id}", "data-option-group" => "part_#{radio_option.part_id}", "data-option-enables" => "#{radio_option.enables.map(&:enable_element_id)}", disabled: (pre_disabled ? true : false) %>
         <%= image_tag radio_option.photo(:small), class: "radio_option_img", "data-option-part" => radio_option.part.id, "data-option-name" => radio_option.name %>
         <br><%= radio_option.name %>
       </label>
