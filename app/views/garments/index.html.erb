@@ -1,14 +1,22 @@
-<h1>Listing garments</h1>
+<div class = "container">
+
+	<h1>Listing garments</h1>
+	
+	
+
+	<% @garments.each do |garment| %>
+
+	<div class = "garment-margin">
+		<div class="btn-group btn-group-justified">
 
 
-    <% @garments.each do |garment| %>
-<div class="btn-group btn-group-justified">
+			<%= link_to garment.name, garment_path(garment.id), :class => "btn btn-default" %>
+		</div>
+	</div>
+	<% end %>
 
 
-<%= link_to garment.name, garment_path(garment.id), :class => "btn btn-default " %>
-</div>
-<% end %>
-
-<br>
+	<br>
 
 
+	

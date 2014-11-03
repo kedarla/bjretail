@@ -42,3 +42,14 @@ $(function() {
     $('#accordion .in').collapse('hide');
   });
 });
+
+$(document).ready(function(){
+
+
+  $('.radio_option_img').click(function(){
+
+    $('.selected_part_option').text = $(this).text();
+
+  }) 
+
+})    
