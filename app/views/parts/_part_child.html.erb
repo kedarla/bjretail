@@ -8,7 +8,7 @@
       <% if part_child.display_type == "dropdown" %>
 
       
-      <%= select_tag "order[part][#{part_child.id}][option]", options_for_part_child(part_child), class: "form-control" %>
+      <%= select_tag "order[part][#{part_child.parent.id}][children][][part][#{part_child.id}][option][][id]", options_for_part_child(part_child), class: "form-control" %>
       <% elsif part_child.display_type == "radio" %>
       <div class="row">
         <%= options_radio_tag part_child %>
@@ -17,7 +17,7 @@
       <div class="row">
         <%= options_checkbox_tag part_child %>
       </div>
-      <% elsif part_child.display_type == "text" %>
+      <% elsif part_child.display_type == "textbox" %>
       <div class="row">
         <%= options_textfield_tag part_child %>
       </div>
