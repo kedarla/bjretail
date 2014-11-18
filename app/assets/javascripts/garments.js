@@ -1,6 +1,6 @@
 $(function() {
   $(".radio_option").on("change", function() {
-  	elem = $(this);
+    elem = $(this);
 
     grouped_inputs = $("input[data-option-group='" + elem.attr("data-option-group") + "']");
     grouped_inputs.each(function() {
@@ -19,7 +19,7 @@ $(function() {
       elem_to_be_disabled.prop("disabled", true).addClass("c_disabled");
       elem_to_be_disabled.closest(".part_option_wrapper").prepend("<div class='option_overlay'/>");
     }
-  	$("#selected_part_" + elem.attr("data-option-part")).find(".selected_part_option").html(elem.attr("data-option-name"));
+    $("#selected_part_" + elem.attr("data-option-part")).find(".selected_part_option").html(elem.attr("data-option-name"));
 
     // Enable related options
     enables = JSON.parse(elem.attr("data-option-enables"));
@@ -32,6 +32,17 @@ $(function() {
   });
 
   $("#proceed_to_order").on('click', function() {
-  	$("#proceed_to_order_form").submit();
+    $("#proceed_to_order_form").submit();
   });
 });
+
+$(document).ready(function(){
+
+
+  $('.radio_option_img').click(function(){
+
+    $('.selected_part_option').text = $(this).text();
+
+  })  
+
+});   
