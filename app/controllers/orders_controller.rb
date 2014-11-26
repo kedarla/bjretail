@@ -11,17 +11,18 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @print_sections = PrintSection.all
-    parts_arr = []
-    options_arr = []
+    @order_data = eval(@order.data)
+    # parts_arr = []
+    # options_arr = []
 
-    strhash = eval(@order.data).with_indifferent_access
+    # strhash = eval(@order.data).with_indifferent_access
 
-    strhash[:part].each do |key, val|
-      parts_arr << Part.find(key)
-      options_arr << Option.find(val[:option])
-    end
+    # strhash[:part].each do |key, val|
+    #   parts_arr << Part.find(key)
+    #   options_arr << Option.find(val[:option])
+    # end
 
-    @parts_options = parts_arr.zip(options_arr)
+    # @parts_options = parts_arr.zip(options_arr)
 
     if params[:view] == 'print'
       render action: 'print', :layout => 'application'
@@ -33,15 +34,15 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order_data = params[:order]
 
-    parts_arr = []
-    options_arr = []
+    # parts_arr = []
+    # options_arr = []
 
-    @order_data[:part].each do |key, val|
-      parts_arr << Part.find(key)
-      options_arr << Option.find(val[:option])
-    end
+    # @order_data[:part].each do |key, val|
+    #   parts_arr << Part.find(key)
+    #   options_arr << Option.find(val[:option])
+    # end
 
-    @parts_options = parts_arr.zip(options_arr)
+    # @parts_options = parts_arr.zip(options_arr)
     respond_to do |format|
       format.html { render action: 'new' }
     end
