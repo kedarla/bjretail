@@ -3,3 +3,81 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', options_path %>
+
+<%#
+{
+  "part" => {
+    "7" => {
+      "option" => "23",
+      "children" => [
+        {
+          "part" => {
+            "10" => {
+              "option" => [
+                {"id"=>"30"}, {"id"=>"31"}
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "6" => {
+      "option" => "20",
+      "children" => [
+        {
+          "part" => {
+            "9" => {
+              "option" => [
+                {"id"=>"29"}
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "5" => {
+      "option"=>"15"
+    },
+
+    "4" => {
+      "option" => "13",
+      "children" => [
+        {
+          "part" => {
+            "11" => {
+              "option" => [
+                {"value"=>"Monogram"}
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "3" => {
+      "option" => "11",
+      "children" => [
+        {
+          "part" => {
+            "8" => {
+              "option" => [
+                {"id"=>"26"}
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    "2" => {
+      "option" => "5"
+    },
+
+    "1" => {
+      "option" => "2"
+    }
+  }
+}
+%>

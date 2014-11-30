@@ -6,15 +6,13 @@
   </div>
   <div id="collapse_part_<%= print_section.id %>" class="panel-collapse collapse in">
     <div class="panel-body">
-      <% @parts_options.each do |part, option| %>
-        <%# if part.parent.present? %>
-          <!-- <div class="col-md-12">
-            <%#= "#{part.name}: #{option.name}" %>
-          </div> -->
-        <%# else %>
+      <% @order_data.each do |k, v| %>
+        <% v.each do |part_key, part_values| %>
+          <% part = Part.find part_key %>
           <% if part.print_sections.include?(print_section) %>
             <div class="col-md-2">
               <div class="row">
+                <% option = Option.find part_values["option"] %>
                 <div class="col-md-12">
                   <h3><%= part.name %></h3>
                 </div>
@@ -22,10 +20,31 @@
                   <%= image_tag option.photo(:small) %>
                   <h4><%= option.name %></h4>
                 </div>
+                <% if part_values["children"].present? %>
+                  <div class="col-md-12">
+                    <% part_values["children"].each do |subpart_hash| %>
+                      <% subpart_hash.each do |sub_k, sub_v| %>
+                        <% sub_v.each do |subpart_key, subpart_value| %>
+                          <% child_part = Part.find subpart_key %>
+                          <h4><%= child_part.name %></h4>
+
+                          <% subpart_value["option"].each do |opt_hash| %>
+                            <% if opt_hash["id"].present? %>
+                              <% child_part_option = Option.find opt_hash["id"] %>
+                              <h5><%= child_part_option.name %></h5>
+                            <% else %>
+                              <h5><%= opt_hash["value"] %></h5>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </div>
           <% end %>
-        <%# end %>
+        <% end %>
       <% end %>
     </div>
   </div>
