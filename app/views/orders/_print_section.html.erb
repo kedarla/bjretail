@@ -9,7 +9,8 @@
       <% @order_data.each do |k, v| %>
         <% v.each do |part_key, part_values| %>
           <% part = Part.find part_key %>
-          <% if part.print_sections.include?(print_section) %>
+           <% option = Option.find part_values["option"] %>
+          <% if option.print_sections.include?(print_section) %>
             <div class="col-md-2">
               <div class="row">
                 <% option = Option.find part_values["option"] %>

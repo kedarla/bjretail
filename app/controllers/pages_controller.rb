@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
 	def home
-		redirect_to garment_path(1)
+		redirect_to garments_path
 	end
 end
