@@ -1,43 +1,47 @@
 <div class="row">
   <div class="col-md-12">
+    <div class = "panel-group">
+
     <% @order_data.each do |k, v| %>
       <% v.each do |part_key, part_values| %>
-        <div class="col-md-2">
-          <div class="row">
+        
+            
             <% part = Part.find part_key %>
             <% option = Option.find part_values["option"] %>
-            <div class="col-md-12">
-              <h3><%= part.name %>:</h3>
-            </div>
-            <div class="col-md-12">
-              <h4><%= option.name %></h4>
+
+            <div class="col-md-12 panel panel-default">
+
+              <span class = "span1"><b><%= part.name %>: </b> 
+           
+              <%= option.name %> </span>
             </div>
             <% if part_values["children"].present? %>
-              <div class="col-md-12">
+              <div class="col-md-12 panel panel-default">
                 <% part_values["children"].each do |subpart_hash| %>
                   <% subpart_hash.each do |sub_k, sub_v| %>
                     <% sub_v.each do |subpart_key, subpart_value| %>
                       <% child_part = Part.find subpart_key %>
-                      <h4><%= child_part.name %>:</h4>
-
+                      <span class = "span1"> <b><%= child_part.name %>: </b>
                       <% subpart_value["option"].each do |opt_hash| %>
                         <% if opt_hash["id"].present? %>
                           <% child_part_option = Option.find opt_hash["id"] %>
-                          <h5><%= child_part_option.name %></h5>
+                         <%= child_part_option.name %>
                         <% else %>
-                          <h5><%= opt_hash["value"] %></h5>
+                          <%= opt_hash["value"] %> 
                         <% end %>
                       <% end %>
+                   </span>
                     <% end %>
                   <% end %>
                 <% end %>
               </div>
             <% end %>
-          </div>
-        </div>
+            
+        
       <% end %>
     <% end %>
   </div>
+</div>
 </div>
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
