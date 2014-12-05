@@ -10,7 +10,7 @@
           <% if part.children.exists? %>
           <% part.children.each do |part_child| %>
           <% if part_child.display_type == "radio" || part_child.display_type == "dropdown" %> 
-          <% @link_text = @link_text + " | <span id='part_child_" + part_child.id.to_s + "'>" + part_child.options.first.name + "</span>" %>
+          <%# @link_text = @link_text + " | <span id='part_child_" + part_child.id.to_s + "'>" + part_child.options.first.name + "</span>" %>
           <% end %>
           <% end %>
           <% end %>
