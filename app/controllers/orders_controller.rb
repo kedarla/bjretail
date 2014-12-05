@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @title = " - Order#" + @order.id.to_s
     @print_sections = PrintSection.all
     @order_data = eval(@order.data)
     # parts_arr = []
@@ -108,3 +109,4 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:data)
     end
 end
+

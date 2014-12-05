@@ -7,7 +7,7 @@ label.option_radio_label > input{ /* HIDE RADIO */
 }
 label.option_radio_label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
-  border:2px solid transparent;
+  border:1px solid transparent;
 }
 label.option_radio_label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border: 1px solid #000;
