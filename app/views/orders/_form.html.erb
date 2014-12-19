@@ -1,7 +1,5 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class = "panel-group">
-
+    
     <% @order_data.each do |k, v| %>
       <% v.each do |part_key, part_values| %>
         
@@ -9,14 +7,14 @@
             <% part = Part.find part_key %>
             <% option = Option.find part_values["option"] %>
 
-            <div class="col-md-12 panel panel-default">
+            <div class="col-md-2">
 
               <span class = "span1"><b><%= part.name %>: </b> 
            
               <%= option.name %> </span>
             </div>
             <% if part_values["children"].present? %>
-              <div class="col-md-12 panel panel-default">
+              <div class="col-md-2">
                 <% part_values["children"].each do |subpart_hash| %>
                   <% subpart_hash.each do |sub_k, sub_v| %>
                     <% sub_v.each do |subpart_key, subpart_value| %>
@@ -40,8 +38,7 @@
         
       <% end %>
     <% end %>
-  </div>
-</div>
+
 </div>
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
