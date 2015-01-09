@@ -63,9 +63,11 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
+
+
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order }
+        format.html { redirect_to @order, :print => 'true' }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
