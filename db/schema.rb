@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104092549) do
+ActiveRecord::Schema.define(version: 20150109113301) do
 
   create_table "disables", force: true do |t|
     t.integer  "option_id"
@@ -61,7 +61,10 @@ ActiveRecord::Schema.define(version: 20141104092549) do
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "garment_id"
   end
+
+  add_index "orders", ["garment_id"], name: "index_orders_on_garment_id"
 
   create_table "parts", force: true do |t|
     t.string   "name"

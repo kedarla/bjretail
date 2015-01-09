@@ -34,6 +34,8 @@ class OrdersController < ApplicationController
   def proceed
     @order = Order.new
     @order_data = params[:order]
+    @garment = Garment.find(params[:garment_id])
+    @order.garment_id = params[:garment_id]
 
     # parts_arr = []
     # options_arr = []
@@ -62,8 +64,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
-
+    
 
     respond_to do |format|
       if @order.save
@@ -78,6 +79,10 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
+
+
+
+
   def update
     respond_to do |format|
       if @order.update(order_params)
@@ -108,7 +113,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:data)
+      params.require(:order).permit(:data, :garment_id)
     end
-end
+  end
 

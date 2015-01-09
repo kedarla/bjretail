@@ -7,7 +7,7 @@
             <% part = Part.find part_key %>
             <% option = Option.find part_values["option"] %>
 
-            <div class="col-md-2">
+            <div class="col-md-12">
 
               <span class = "span1"><b><%= part.name %>: </b> 
            
@@ -55,6 +55,8 @@
 
   <div class="field form-group">
     <%= f.hidden_field :data, value: @order_data %>
+    <%= f.hidden_field :garment_id, value: @order.garment_id %>
+
     <%#= @order_data %>
     <%#= f.label :data %><br>
     <%#= f.text_area :data, :value => @order_data, class: "form-control" %>
