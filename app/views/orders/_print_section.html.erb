@@ -31,10 +31,10 @@
 
                           <% subpart_value["option"].each do |opt_hash| %>
                             <% if opt_hash["id"].present? %>
-                              <%# child_part_option = Option.find opt_hash["id"] %>
+                              <% child_part_option = Option.find opt_hash["id"] %>
                               <%= image_tag child_part_option.printable_photo(:small) %>
 
-                              <h5><%= child_part_option.printable_photo %></h5>
+                              <h5><%# child_part_option.printable_photo %></h5>
                             <% else %>
                               <h5><%= opt_hash["value"] %></h5>
                             <% end %>
