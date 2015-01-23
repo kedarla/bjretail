@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109113301) do
+ActiveRecord::Schema.define(version: 20150123075044) do
 
   create_table "disables", force: true do |t|
     t.integer  "option_id"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20150109113301) do
     t.integer  "printable_photo_file_size"
     t.datetime "printable_photo_updated_at"
     t.boolean  "is_default"
-    t.integer  "parent_id"
   end
 
   add_index "options", ["part_id"], name: "index_options_on_part_id"
