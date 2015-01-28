@@ -8,4 +8,8 @@ class Part < ActiveRecord::Base
   def parent_enum
     Part.where.not(id: id).map { |p| [ p.name, p.id ] }
   end 
+
+  def display_type_enum
+   [['dropdown'],['checkbox'],['textbox'],['radio']]
+  end
 end
