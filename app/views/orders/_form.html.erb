@@ -46,7 +46,7 @@
 </div>
 </div>
 </div>
-
+</div>
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -59,7 +59,7 @@
       </ul>
     </div>
   <% end %>
-</div>
+
   <div class="field form-group">
     <%= f.hidden_field :data, value: @order_data %>
     <%= f.hidden_field :garment_id, value: @order.garment_id %>
