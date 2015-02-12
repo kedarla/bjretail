@@ -13,10 +13,6 @@ group :production, :staging do
   gem 'rails_12factor'
 end
 
-gem 'rails_serve_static_assets'	
-
-gem 'rails_stdout_logging'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
