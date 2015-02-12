@@ -51,6 +51,7 @@ RailsAdmin.config do |config|
   config.model 'Part' do
     field :name
     field :display_type
+    field :garment
     field :parent_id, :enum do
       enum_method do
         :parent_enum
