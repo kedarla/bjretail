@@ -46,7 +46,6 @@
 </div>
 </div>
 </div>
-</div>
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -71,5 +70,5 @@
   <div class="actions">
     <%= f.submit 'Place Order', class: 'btn btn-primary' %>
   </div>
-
+</div>
 <% end %>
