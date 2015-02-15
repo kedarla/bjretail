@@ -2,6 +2,7 @@
 <div class="col-md-2">
   <div class="row">
     <div class="col-md-12 part_option_wrapper">
+      <center>
       <% if pre_disabled %>
         <div class='option_overlay'></div>
       <% end %>
@@ -10,6 +11,7 @@
         <%= image_tag radio_option.photo(:small), class: "radio_option_img", "data-option-part" => radio_option.part.id, "data-option-name" => radio_option.name %>
         <br><%= radio_option.name %>
       </label>
+    </center>
     </div>
   </div>
 </div>
