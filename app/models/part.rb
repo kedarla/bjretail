@@ -1,8 +1,9 @@
 class Part < ActiveRecord::Base
   belongs_to :garment
-  has_many :options, :order => "id DESC"
+  has_many :options
 
   has_ancestry
+  default_scope order('created_at ASC')
 
 
   def parent_enum

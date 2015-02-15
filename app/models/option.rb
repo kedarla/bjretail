@@ -1,5 +1,8 @@
 class Option < ActiveRecord::Base
   belongs_to :part
+
+  default_scope order('created_at ASC')
+
   has_attached_file :photo, :styles => { :small => "150x150>" }
   has_attached_file :printable_photo, :styles => { :small => "150x150>" }
   # validates_attachment_presence :photo
