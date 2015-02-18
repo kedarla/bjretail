@@ -37,12 +37,24 @@ $(function() {
 });
 
 $(document).ready(function(){
+    $(".child_option").on("change", function() {
+       elem = $(this);
+       e = $("option:selected", this).text();
+       //alert(e);
+    $("#part_child_" + elem.attr("data-option-subid")).html(e);
+    
+    //alert(elem.options[elem.selectedIndex].value);
+    //alert(elem.value); 
 
 
-  $('.radio_option_img').click(function(){
+   //alert("#part_child_" + elem.attr("data-option-subid"));
 
-    $('.selected_part_option').text = $(this).text();
+});
 
-  })  
+ // $('.radio_option_img').click(function(){
+
+   // $('.selected_part_option').text = $(this).text();
+
+  //})  
 
 });   
