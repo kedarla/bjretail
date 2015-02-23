@@ -8,11 +8,21 @@
           <% @link_text =  "<b>#{part.name}</b> : <span class='selected_part_option'>#{part.options.detect{|o| o.is_default?}.try(:name)}</span>" %>
 
           <% if part.children.exists? %>
-          <% part.children.each do |part_child| %>
-          <% if part_child.display_type == "radio" || part_child.display_type == "dropdown" %> 
-          <% @link_text = @link_text + " | <span id='part_child_" + part_child.id.to_s + "'>" + part_child.options.first.name + "</span>" %>
-          <% end %>
-          <% end %>
+            <% part.children.each do |part_child| %>
+              <% if part_child.display_type == "radio" || part_child.display_type == "dropdown" || part_child.display_type == "checkbox" %> 
+                <% if part_child.display_type == "checkbox" %>
+                  <% @checkbox_options = "" %>
+                  <% part_child.options.each do |o| %> 
+                    <% if o.is_default? %>
+                      <% @checkbox_options += " | " + o.name.to_s %>
+                    <% end %>
+                  <% end %>
+                  <% @link_text = @link_text + " <span id='part_child_" + part_child.id.to_s + "'>" + @checkbox_options + "</span>" %>
+                <% else %>
+                  <% @link_text = @link_text + " | <span id='part_child_" + part_child.id.to_s + "'>" + part_child.options.detect{|o| o.is_default?}.try(:name).to_s + "</span>" %>
+                <% end %>
+              <% end %>
+            <% end %>
           <% end %>
           <%= link_to raw(@link_text), "#collapse_part_#{part.id}", class: "collapser", "data-toggle" => "collapse", "data-parent" => "#accordion" %>
         </h2>
