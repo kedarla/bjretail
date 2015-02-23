@@ -91,8 +91,6 @@ GEM
     less-rails (2.5.0)
       actionpack (>= 3.1)
       less (~> 2.5.0)
-    less-rails-bootstrap (3.3.0.0)
-      less-rails (~> 2.5.0)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -206,7 +204,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   less-rails
-  less-rails-bootstrap
   paperclip (~> 4.2.0)
   pg
   rails (= 4.0.2)
