@@ -55,6 +55,39 @@ $(document).ready(function(){
 
    // $('.selected_part_option').text = $(this).text();
 
-  //})  
+  //})
+  $(function(){
+  $(".radio_option_child").change(function(){
+    elem = $(this);
+   // alert(elem);
+    if ($(this).is(':checked'))
+    {
+      e = ($(this).attr("data-option-name"));
+      //alert(e);
+      $("#part_child_" + elem.attr("data-option-id")).html(e);
+      //alert("#part_child_" + elem.attr("data-option-id"));
+    }
+  });
+});
+  
 
-});   
+$(document).ready(function(){
+
+        $('input[type="checkbox"]').click(function(){
+          elem = $(this);
+          part = $(this).attr("data-part-name");
+          //alert(part);
+          selected_options = "";
+          $('.' + part).each(function () {
+              if ($(this).is(":checked")) {
+                selected_options += ' | ' + $(this).attr("data-option-name");
+              }
+            });
+            $("#part_child_" + elem.attr("data-part-id")).html(selected_options);
+        });
+    });
+
+
+});
+
+
