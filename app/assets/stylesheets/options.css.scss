@@ -8,6 +8,8 @@ label.option_radio_label > input{ /* HIDE RADIO */
 label.option_radio_label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
   border:1px solid transparent;
+      height: 100px;
+      
 }
 label.option_radio_label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border: 1px solid #000;
