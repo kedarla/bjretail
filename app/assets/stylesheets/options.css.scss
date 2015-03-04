@@ -5,21 +5,35 @@
 label.option_radio_label > input{ /* HIDE RADIO */
   display:none;
 }
+
+input.part_child_18 + img,
+input.radio_option_child + img,
 label.option_radio_label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
   border:1px solid transparent;
       height: 100px;
+              display: block;
+
       
 }
+
+input:checked.part_child_15 + img,
+input:checked.part_child_18 + img,
+input:checked.radio_option_child + img,
 label.option_radio_label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border: 1px solid #000;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+
 }
-label.option_radio_label > input.c_disabled:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border: none;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
+
+input[type="radio"], input[type="checkbox"]{
+  width: 100px;
+height: 100px;
+position: absolute;
+opacity: 0;
+cursor: pointer;
 }
+
+

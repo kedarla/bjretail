@@ -14,6 +14,7 @@ $(function() {
 
     // Disable related options
     disables = JSON.parse(elem.attr("data-option-disables"));
+    //alert(disables);
     for(i = 0; i < disables.length; i++) {
       elem_to_be_disabled = $("input[data-option-subid='option_subid_" + disables[i] + "']");
       elem_to_be_disabled.prop("disabled", true).addClass("c_disabled");
@@ -66,27 +67,24 @@ $(document).ready(function(){
       //alert(e);
       $("#part_child_" + elem.attr("data-option-id")).html(e);
       //alert("#part_child_" + elem.attr("data-option-id"));
+      
     }
   });
 });
   
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-        $('input[type="checkbox"]').click(function(){
-          elem = $(this);
-          part = $(this).attr("data-part-name");
-          //alert(part);
-          selected_options = "";
-          $('.' + part).each(function () {
-              if ($(this).is(":checked")) {
-                selected_options += ' | ' + $(this).attr("data-option-name");
-              }
-            });
-            $("#part_child_" + elem.attr("data-part-id")).html(selected_options);
-        });
+    $('input[type="checkbox"]').click(function () {
+        var elem = $(this);
+        var part = $(this).attr("data-part-name");
+        //alert(part);
+        var selected_options = $('.' + part).filter(':checked').map(function () {
+            return '' + $(this).attr("data-option-name") + '</b>'
+        }).get();
+        $("#part_child_" + elem.attr("data-part-id")).html(selected_options.join(', '));
     });
-
+});
 
 });
 
