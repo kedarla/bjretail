@@ -1,0 +1,68 @@
+<div class="container">
+
+ <h1><%= @garment.name %></h1>
+ <% @parts = @garment.parts %>
+
+ <div class="row">
+
+
+   <div class="col-md-12">
+
+    <div class="panel-group" id="accordion"> 
+
+     <% @parts.each do |p| %>
+     <% if p.parent == nil %>
+
+     <div class="panel panel-default">
+
+      <div class = "panel-heading">
+        <h2 class = "panel-title" ><%= p.name %> </h2> 
+      </div>
+      <div class = "panel-body"> 
+
+        <% p.options.each do |po| %>  
+        <div class = "col-md-2">
+          <center>
+            <%= image_tag po.printable_photo.url(:small) %>
+            <label>
+             <%= po.name %>
+            </label>
+          </center>  
+        </div>
+        <% end %>
+
+       <% if p.children.exists? %>
+       <% p.children.each do |pc| %>
+       <div class="col-md-12 part-child-wrapper">
+        <div class = "row">
+          <div class = "col-md-2">
+            <label>
+              <%= pc.name %>
+            </label>
+          </div>
+        <div class = "col-md-10 selected_part_child">
+          <% pc.options.each do |pco| %>
+          <div class = "col-sm-2"> 
+             <center> 
+              <%= image_tag pco.printable_photo.url(:small) %>
+              <label>
+                <%= pco.name %>
+              </label>
+            </center>
+          </div>
+          <% end %>
+        </div>
+      </div> 
+    </div>
+    <% end %>
+    <% end %>
+
+  </div>
+</div>            
+
+<% end %>
+<% end %>
+</div>
+</div>
+</div>
+</div>

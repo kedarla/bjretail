@@ -61,6 +61,10 @@ class GarmentsController < ApplicationController
     end
   end
 
+  def manual
+    @garment = Garment.find(6)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_garment

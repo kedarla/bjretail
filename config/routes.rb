@@ -21,6 +21,9 @@ Bjretail::Application.routes.draw do
 
   resources :garments
 
+  resources :garments do
+      get 'manual'
+  end 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
