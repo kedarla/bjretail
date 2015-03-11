@@ -62,7 +62,7 @@ class GarmentsController < ApplicationController
   end
 
   def manual
-    @garment = Garment.find(6)
+    @garment = Garment.find(params[:garment_id] || params[:id])
   end
 
   private
