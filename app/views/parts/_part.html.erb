@@ -32,7 +32,9 @@
       <div id="collapse_part_<%= part.id %>" class="panel-collapse collapse">
 
         <div class="panel-body">
-          <%= options_radio_tag part %>
+          <div class="grouped_part_wrapper">
+            <%= options_radio_tag part %>
+          </div>
           <%#= render partial: "options/radio_option", collection: part.options %>
           <% if part.children.exists? %>
             <%= render partial: "parts/part_child", collection: part.children %>

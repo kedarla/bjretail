@@ -1,11 +1,13 @@
-<div class="col-md-12 part-child-wrapper">
+<div class="col-md-12 part-child-wrapper grouped_part_wrapper">
   <div class="row">
     <div class="col-md-2">
       <label><%= part_child.name %></label>
     </div>
     <div class="col-md-10 selected_part_child">
       <% if part_child.display_type == "dropdown" %>
-        <%= options_select_tag part_child %>
+        <div class="row">
+          <%= options_for_part_child part_child %>
+        </div>
         <%#= select_tag "order[part][#{part_child.parent.id}][children][][part][#{part_child.id}][option][][id]", options_for_part_child(part_child), class: "form-control child_option",  "data-option-subid" => part_child.id, "data-option-name" => part_child.name %>
       <% elsif part_child.display_type == "radio" %>
         <div class="row">
