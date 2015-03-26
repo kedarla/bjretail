@@ -1,10 +1,19 @@
 class Option < ActiveRecord::Base
   belongs_to :part
+  validates :name, uniqueness: true, presence: true
+  validates :part_id, presence: true
 
   default_scope order('created_at ASC')
 
   has_attached_file :photo, :styles => { :small => "150x150>" }
   has_attached_file :printable_photo, :styles => { :small => "150x150>" }
+
+  attr_accessor :delete_photo
+  before_validation { self.photo.clear if self.delete_photo == '1' }
+
+  attr_accessor :delete_printable_photo
+  before_validation { self.printable_photo.clear if self.delete_printable_photo == '1' }
+
   # validates_attachment_presence :photo
   # validates_attachment_size :photo, :less_than => 5.megabytes
   # validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/jpg', 'image/png']

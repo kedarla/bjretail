@@ -38,14 +38,22 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Option' do
-    exclude_fields :disables, :disablers, :enables, :enablers
     list do
       field :id
       field :name
       field :part
       field :photo
       field :printable_photo
+      field :position do # (1)
+        column_width 50
+      end
+      field :is_default do # (1)
+        column_width 50
+      end
+      field :created_at
+      field :updated_at
     end
+    exclude_fields :disables, :disablers, :enables, :enablers
   end
 
   config.model 'Part' do
@@ -57,6 +65,7 @@ RailsAdmin.config do |config|
         :parent_enum
       end
     end
+    field :position
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123075044) do
+ActiveRecord::Schema.define(version: 20150326035103) do
 
   create_table "disables", force: true do |t|
     t.integer  "option_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150123075044) do
     t.integer  "printable_photo_file_size"
     t.datetime "printable_photo_updated_at"
     t.boolean  "is_default"
+    t.integer  "position"
   end
 
   add_index "options", ["part_id"], name: "index_options_on_part_id"
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150123075044) do
     t.datetime "updated_at"
     t.string   "ancestry"
     t.string   "display_type"
+    t.integer  "position"
   end
 
   add_index "parts", ["garment_id"], name: "index_parts_on_garment_id"

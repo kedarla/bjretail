@@ -1,6 +1,8 @@
 class Part < ActiveRecord::Base
   belongs_to :garment
   has_many :options
+  validates :name, uniqueness: true, presence: true
+
 
   has_ancestry
   default_scope order('created_at ASC')
