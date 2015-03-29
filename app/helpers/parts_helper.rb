@@ -27,50 +27,28 @@ module PartsHelper
   	html.html_safe
   end
 
-  def options_radio_tag(part_child)
-  	html = ""
+  def tick_tag(part_child)
+    render_type = part_child.display_type == "radio" ? "radio_button_tag" : "check_box_tag"
+    html = ""
     attr_name = attribute_name(part_child.parent, part_child, 'id')
     part_child.options.each do |o|
-  	  html += "<div class='col-sm-2 uno_part_wrapper'>"
+      html += "<div class='col-sm-2 uno_part_wrapper'>"
       html += "<label for='#{attr_name}'>"
-      html += radio_button_tag attr_name, o.id,
-                      o.is_default?,
-                      "data-option-name" => o.name,
-                      "data-option-disables" => "#{o.disables.present? ? o.disables.map(&:disable_element_id) : nil}",
-                      "data-option-id" => "#{o.id}",
-                      "data-option-part-id" => "#{part_child.id}",
-                      "data-option-enables" => "#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}",
-                      class: "switcher"
-      html += image_tag o.photo(:small), class: "radio_option_img",
-                      "data-option-name" => o.name
-      html += o.name
-      html += "</label>"
-  	  html += "</div>"
-  	end
-  	html.html_safe
-  end
-
-  def options_checkbox_tag(part_child)
-  	html = ""
-    attr_name = attribute_name(part_child.parent, part_child, 'id')
-  	part_child.options.each do |o|
-  	  html += "<div class='col-sm-2 uno_part_wrapper'>"
-  	  html += "<label for='#{attr_name}'>"
-      html += check_box_tag attr_name, o.id,
-                      o.is_default?,
-                      "data-option-name" => o.name,
-                      "data-option-disables" => "#{o.disables.present? ? o.disables.map(&:disable_element_id) : nil}",
-                      "data-option-id" => "#{o.id}",
-                      "data-option-part-id" => "#{part_child.id}",
-                      "data-option-enables" => "#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}",
-                      class: "switcher"
-      html += image_tag o.photo(:small), class: "radio_option_img",
+      html += send(render_type, attr_name, o.id,
+                            o.is_default?,
+                            "data-option-name" => o.name,
+                            "data-option-disables" => "#{o.disables.present? ? o.disables.map(&:disable_element_id) : nil}",
+                            "data-option-id" => "#{o.id}",
+                            "data-option-part-id" => "#{part_child.id}",
+                            "data-option-enables" => "#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}",
+                            class: "switcher")
+      html += image_tag o.photo(:small), class: "tick_option_img",
                       "data-option-name" => o.name
       html += o.name
       html += "</label>"
       html += "</div>"
-  	end
-  	html.html_safe
+    end
+    html.html_safe
   end
 
   def options_textfield_tag(part_child)
