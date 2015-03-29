@@ -24,9 +24,9 @@ $(function() {
     }
   });
 
-  // $("#proceed_to_order").on('click', function() {
-  //   $("#proceed_to_order_form").submit();
-  // });
+  $("#proceed_to_order").on('click', function() {
+    $("#proceed_to_order_form").submit();
+  });
 });
 
 // $(document).ready(function(){

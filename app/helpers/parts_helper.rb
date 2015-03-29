@@ -81,4 +81,30 @@ module PartsHelper
     html.html_safe
   end
 
+  def construct_title(part)
+    html = []
+    html << title_html_for(part)
+
+    if part.children.present?
+      child_parts = part.children.collect{|subp| ['radio', 'checkbox', 'dropdown'].include?(subp.display_type) ? subp : nil}.compact
+      child_parts.each{|p| html << title_html_for(p)}
+    end
+
+    html.compact.join(' | ').html_safe
+  end
+
+  def title_html_for(part)
+    return unless part.options.present? || part.root?
+    html = ""
+    html += "<span id='part_#{part.id}_title_container'>"
+    html += "<span class='part_title_name'><b>#{part.name}</b></span>"
+    html += "<span class='part_title_options'>"
+    html += " : "
+    part_options = part.options.collect{|o| o.name if o.is_default?}.compact
+    html += part_options.present? ? part_options.join(', ') : " - "
+    html += "</span>"
+    html += "</span>"
+    html
+  end
+
 end
