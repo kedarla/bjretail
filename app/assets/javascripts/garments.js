@@ -1,7 +1,8 @@
 $(function() {
-  $(".switcher").on("change", function() {
+  $(".switcher").on("change", function(e) {
     var $this = $(this);
     var $switchers = $(".switcher");
+
     if($this.attr("data-option-disables")) {
       var $disables = JSON.parse($this.attr("data-option-disables"));
     }
@@ -22,6 +23,20 @@ $(function() {
                       .prepend("<div class='option_overlay'/>");
       }
     }
+
+    // Panel title update
+    var $mypart_id = $this.attr("data-option-part-id");
+    var $selection_name = $switchers.filter("[data-option-part-id='" + $mypart_id + "']").map(function(i, el) {
+      if($(el).is(':checked')) {
+        return $(el).attr('data-option-name');
+      }
+    }).get().join(', ');
+    if(!$mypart_id) {
+      $mypart_id = $this.attr("data-part-id");
+      $selection_name = $this.find(':selected').attr('data-option-name');
+    }
+    var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
+    $part_title_container.find(".part_title_options").html($selection_name);
   });
 
   $("#proceed_to_order").on('click', function() {
