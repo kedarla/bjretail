@@ -1,43 +1,27 @@
-      <% if part.parent == nil %>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-         <h2 class="panel-title" id="selected_part_<%= part.id %>">
-
-
-          <% @link_text =  "<b>#{part.name}</b> : <span class='selected_part_option'>#{part.options.detect{|o| o.is_default?}.try(:name)}</span>"  %>
-
-          <% if part.children.exists? %>
-          <% @link_text  += " <b>|</b> " %>
-            <% part.children.each do |part_child| %>
-              <% if part_child.display_type == "radio" || part_child.display_type == "dropdown" || part_child.display_type == "checkbox" %> 
-                <% if part_child.display_type == "checkbox" %>
-                  <% @checkbox_options = "" %>
-                  <% part_child.options.each do |o| %> 
-                    <% if o.is_default? %>
-                      <% @checkbox_options +=  o.name.to_s %>
-                    <% end %>
-                  <% end %>
-                  <% @link_text = @link_text + "<b>#{part_child.name}</b> : <span id='part_child_" + part_child.id.to_s + "'>" + @checkbox_options + "</span>" %>
-                <% else %>
-                  <% @link_text = @link_text + "<b>#{part_child.name}</b> : <span id='part_child_" + part_child.id.to_s + "'>" + part_child.options.detect{|o| o.is_default?}.try(:name).to_s + "</span>"   + " <b>|</b>  " %>
-                  
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-          <%= link_to raw(@link_text), "#collapse_part_#{part.id}", class: "collapser", "data-toggle" => "collapse", "data-parent" => "#accordion" %>
-        </h2>
-      </div>
-      <div id="collapse_part_<%= part.id %>" class="panel-collapse collapse">
-
-        <div class="panel-body">
-          <%= render partial: "options/radio_option", collection: part.options %>
-          <% if part.children.exists? %>
-          <%= render partial: "parts/part_child", collection: part.children %>
+<% if part.root? %>
+  <div class="panel panel-default" id="part_<%= part.id %>_panel">
+    <div class="panel-heading">
+      <h2 class="panel-title" id="part_<%= part.id %>_panel_title">
+        <%= link_to construct_panel_title(part), "#collapse_part_#{part.id}", class: "collapser", "data-toggle" => "collapse", "data-parent" => "#accordion" %>
+      </h2>
+    </div>
+      
+    <div id="collapse_part_<%= part.id %>" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="grouped_part_wrapper">
+          <% if part.display_type == "dropdown" %>
+            <%= options_for_part_child part %>
+          <% elsif ["radio", "checkbox"].include?(part.display_type) %>
+            <%= tick_tag part %>
+          <% elsif part.display_type == "textbox" %>
+            <%= options_textfield_tag part %>
           <% end %>
         </div>
+
+        <% if part.children.exists? %>
+          <%= render partial: "parts/part_child", collection: part.children %>
+        <% end %>
       </div>
     </div>
-
-    <% end %>
+  </div>
+<% end %>

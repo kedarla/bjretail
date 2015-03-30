@@ -1,44 +1,89 @@
 module PartsHelper
+  def attribute_name(parent_part, part, value)
+    return "order[part][#{parent_part.id}][children][][part][#{part.id}][option][][#{value}]" if parent_part.present?
+    "order[part][#{part.id}][option]"
+  end
+
   def options_for_part_child(part_child)
-  	options_str = ""
+    attr_name = attribute_name(part_child.parent, part_child, 'id')
+  	html = "<div class='col-sm-2 uno_part_wrapper'>"
+    html += "<select class='form-control switcher'
+                    name='#{attr_name}'
+                    data-part-name='#{part_child.name}'
+                    data-part-id='#{part_child.id}'
+                    data-parent-part-id='#{part_child.parent.id unless part_child.root?}'>"
   	part_child.options.each do |o|
-  	  options_str += "<option value='#{o.id}' data-option-subid='option_subid_#{o.id}', data-option-name='#{o.name}', data-option-id='#{part_child.id}
-      ' #{o.is_default? ? 'selected' : ''}>#{o.name}</option>"
+  	  html += "<option value='#{o.id}'
+                    data-option-part-id='#{part_child.id}'
+                    data-option-name='#{o.name}'
+                    data-option-id='#{o.id}'
+                    data-option-disables='#{o.disables.present? ? o.disables.map(&:disable_element_id) : nil}'
+                    data-option-enables='#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}'
+                    #{o.is_default? ? 'selected' : ''}>#{o.name}
+              </option>"
   	end
-  	options_str.html_safe
-  end
-
-  def options_radio_tag(part_child)
-  	html = ""
-    attr_name = "order[part][#{part_child.parent.id}][children][][part][#{part_child.id}][option][][id]"
-  	part_child.options.each do |o|
-  	  html += "<div class='col-sm-2'>"
-  	  html += label_tag "#{attr_name}", raw("<input id='order_part_#{part_child.id}_option_#{o.id}', class = 'radio_option_child', data-option-name='#{o.name}', data-option-id='#{part_child.id}', name='#{attr_name}' type='radio' value='#{o.id}' #{o.is_default? ? 'checked' : ''} data-option-subid='option_subid_#{o.id}'><img src = #{o.photo}> #{o.name} ")
-  	  html += "</div>"
-  	end
+    html += "</select>"
+    html += "</div>"
   	html.html_safe
   end
 
-  def options_checkbox_tag(part_child)
-  	html = ""
-    attr_name = "order[part][#{part_child.parent.id}][children][][part][#{part_child.id}][option][][id]"
-  	part_child.options.each do |o|
-  	  html += "<div class='col-sm-2'>"
-  	  html += label_tag "#{attr_name}", raw("<input id='order_part_#{part_child.id}_option_#{o.id}', class= 'part_child_#{part_child.id}', data-part-name='part_child_#{part_child.id}', data-part-id='#{part_child.id}', name='#{attr_name}' type='checkbox' value='#{o.id}' #{o.is_default? ? 'checked' : ''} data-option-subid='option_subid_#{o.id}',  data-option-name='#{o.name}'><img src = #{o.photo}> #{o.name}")
-  	  html += "</div>"
-  	end
-  	html.html_safe
+  def tick_tag(part_child)
+    render_type = part_child.display_type == "radio" ? "radio_button_tag" : "check_box_tag"
+    html = ""
+    attr_name = attribute_name(part_child.parent, part_child, 'id')
+    part_child.options.each do |o|
+      html += "<div class='col-sm-2 uno_part_wrapper'>"
+      html += "<label for='#{attr_name}'>"
+      html += send(render_type, attr_name, o.id,
+                            o.is_default?,
+                            "data-option-name" => o.name,
+                            "data-option-disables" => "#{o.disables.present? ? o.disables.map(&:disable_element_id) : nil}",
+                            "data-option-id" => "#{o.id}",
+                            "data-option-part-id" => "#{part_child.id}",
+                            "data-option-enables" => "#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}",
+                            class: "switcher")
+      html += image_tag o.photo(:small), class: "tick_option_img",
+                      "data-option-name" => o.name
+      html += o.name
+      html += "</label>"
+      html += "</div>"
+    end
+    html.html_safe
   end
 
   def options_textfield_tag(part_child)
     html = ""
-    attr_name = "order[part][#{part_child.parent.id}][children][][part][#{part_child.id}][option][][value]"
-    # part_child.options.each do |o|
-      html += "<div class='col-sm-2'>"
-      html += label_tag "#{attr_name}", raw("<input id='order_part_#{part_child.id}_option' name='#{attr_name}' type='text' value='', class = 'textfield_child' data-option-subid='option_subid'>")
-      html += "</div>"
-    # end
+    attr_name = attribute_name(part_child.parent, part_child, 'value')
+    html += "<div class='col-sm-2 uno_part_wrapper'>"
+    html += label_tag "#{attr_name}", raw("<input id='order_part_#{part_child.id}_option' name='#{attr_name}' type='text' value='' class = 'textfield_child' data-option-id='#{part_child.id}'>")
+    html += "</div>"
     html.html_safe
+  end
+
+  def construct_panel_title(part)
+    html = []
+    html << title_html_for(part)
+
+    if part.children.present?
+      child_parts = part.children.collect{|subp| ['radio', 'checkbox', 'dropdown'].include?(subp.display_type) ? subp : nil}.compact
+      child_parts.each{|p| html << title_html_for(p)}
+    end
+
+    html.compact.join(' | ').html_safe
+  end
+
+  def title_html_for(part)
+    return unless part.options.present? || part.root?
+    html = ""
+    html += "<span id='part_#{part.id}_title_container'>"
+    html += "<span class='part_title_name'><b>#{part.name}</b></span>"
+    html += " : "
+    html += "<span class='part_title_options'>"
+    part_options = part.options.collect{|o| o.name if o.is_default?}.compact
+    html += part_options.present? ? part_options.join(', ') : " - "
+    html += "</span>"
+    html += "</span>"
+    html
   end
 
 end

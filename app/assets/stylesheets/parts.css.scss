@@ -2,17 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.part_option_wrapper .option_overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  opacity: 0.5;
-  background-color: #FFF;
-}
-
 .part-options {
   border: 1px solid #DDD;
   margin-bottom: 20px;
@@ -22,4 +11,36 @@
 
 .part-child-wrapper {
   margin-top: 20px;
+}
+
+.uno_part_wrapper {
+  .option_overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0.5;
+    background-color: #FFF;
+  }
+
+  input[type="radio"], input[type="checkbox"] {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  input:checked + img {
+    cursor:pointer;
+    border:1px solid transparent;
+    height: 100px;
+    display: block;
+    border: 1px solid #000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
 }
