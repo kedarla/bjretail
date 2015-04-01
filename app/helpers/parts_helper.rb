@@ -11,6 +11,7 @@ module PartsHelper
                     name='#{attr_name}'
                     data-part-name='#{part_child.name}'
                     data-part-id='#{part_child.id}'
+                    data-part-type='#{part_child.display_type}'
                     data-parent-part-id='#{part_child.parent.id unless part_child.root?}'>"
   	part_child.options.each do |o|
   	  html += "<option value='#{o.id}'
@@ -37,6 +38,7 @@ module PartsHelper
       html += send(render_type, attr_name, o.id,
                             o.is_default?,
                             "data-option-name" => o.name,
+                             "data-part-type" =>"#{part_child.display_type}",
                             "data-option-disables" => "#{o.disables.present? ? o.disables.map(&:disable_element_id) : nil}",
                             "data-option-id" => "#{o.id}",
                             "data-option-part-id" => "#{part_child.id}",
