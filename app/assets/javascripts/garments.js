@@ -1,7 +1,10 @@
 $(function() {
+  var $switchers = $(".switcher");
+
+  run_disabler_for($switchers);
+  
   $(".switcher").on("change", function(e) {
     var $this = $(this);
-    var $switchers = $(".switcher");
 
     $switchers.each(function(index, elem) {
       $(elem).prop("disabled", false).removeClass("c_disabled")
@@ -11,9 +14,7 @@ $(function() {
     
     disable_for($this);
 
-    $switchers.filter(':checked').each(function(index, elem) {
-      disable_for($(elem));
-    });
+    run_disabler_for($switchers);
 
     // Panel title update
     var $mypart_id = $this.attr("data-option-part-id");
@@ -34,6 +35,12 @@ $(function() {
     $("#proceed_to_order_form").submit();
   });
 });
+
+function run_disabler_for($elements) {
+  $elements.filter(':checked').each(function(index, elem) {
+    disable_for($(elem));
+  });
+}
 
 function disable_for($element) {
   if($element.attr("data-option-disables")) {
