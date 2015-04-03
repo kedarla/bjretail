@@ -40,6 +40,11 @@ function run_disabler_for($elements) {
   $elements.filter(':checked').each(function(index, elem) {
     disable_for($(elem));
   });
+
+  // Disable options for dropdown
+  $elements.find(':selected').each(function(index, elem) {
+    disable_for($(elem));
+  });
 }
 
 function disable_for($element) {
