@@ -3,26 +3,17 @@ $(function() {
     var $this = $(this);
     var $switchers = $(".switcher");
 
-    if($this.attr("data-option-disables")) {
-      var $disables = JSON.parse($this.attr("data-option-disables"));
-    }
-
     $switchers.each(function(index, elem) {
       $(elem).prop("disabled", false).removeClass("c_disabled")
             .closest(".uno_part_wrapper")
             .find(".option_overlay").remove();
     });
     
-    if($disables) {
-      for(i = 0; i < $disables.length; i++) {
-        var elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
-        elem_to_disable.prop("disabled", true)
-                      .prop("checked", false)
-                      .addClass("c_disabled")
-                      .closest(".uno_part_wrapper")
-                      .prepend("<div class='option_overlay'/>");
-      }
-    }
+    disable_for($this);
+
+    $switchers.filter(':checked').each(function(index, elem) {
+      disable_for($(elem));
+    });
 
     // Panel title update
     var $mypart_id = $this.attr("data-option-part-id");
@@ -43,6 +34,23 @@ $(function() {
     $("#proceed_to_order_form").submit();
   });
 });
+
+function disable_for($element) {
+  if($element.attr("data-option-disables")) {
+    var $disables = JSON.parse($element.attr("data-option-disables"));
+  }
+
+  if($disables) {
+    for(i = 0; i < $disables.length; i++) {
+      var elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
+      elem_to_disable.prop("disabled", true)
+                    .prop("checked", false)
+                    .addClass("c_disabled")
+                    .closest(".uno_part_wrapper")
+                    .prepend("<div class='option_overlay'/>");
+    }
+  }
+}
 
 // $(document).ready(function(){
 //     $(".child_option").on("change", function() {
