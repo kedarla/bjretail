@@ -52,16 +52,31 @@ function disable_for($element) {
     var $disables = JSON.parse($element.attr("data-option-disables"));
   }
 
-  if($disables) {
-    for(i = 0; i < $disables.length; i++) {
-      var elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
-      elem_to_disable.prop("disabled", true)
-                    .prop("checked", false)
-                    .addClass("c_disabled")
-                    .closest(".uno_part_wrapper")
-                    .prepend("<div class='option_overlay'/>");
+    if($disables) {
+      for(i = 0; i < $disables.length; i++) {
+        var elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
+
+        //alert(elem_to_disable.parent().prop('tagName'));
+        if(elem_to_disable.parent().prop('tagName') != 'SELECT')
+        {
+         //alert("its not a dropdown!");
+         elem_to_disable.prop("disabled", true)
+         .prop("checked", false)
+         .addClass("c_disabled")
+         .closest(".uno_part_wrapper")
+         .prepend("<div class='option_overlay'/>");       
+       }
+       else
+       {
+        //alert("it is a dropdown");
+        elem_to_disable.prop("disabled", true)
+        .prop("checked", false)
+        .addClass("c_disabled")
+        .closest(".uno_part_wrapper")
+      //.prepend("<div class='option_overlay'/>");
     }
   }
+}
 }
 
 // $(document).ready(function(){
