@@ -34,7 +34,7 @@ module PartsHelper
     attr_name = attribute_name(part_child.parent, part_child, 'id')
     part_child.options.each do |o|
       html += "<div class='col-sm-2 uno_part_wrapper'>"
-      html += "<label for='#{attr_name}'>"
+      html += "<label class = 'p_name' for='#{attr_name}'>"
       html += send(render_type, attr_name, o.id,
                             o.is_default?,
                             "data-option-name" => o.name,
@@ -57,7 +57,7 @@ module PartsHelper
     html = ""
     attr_name = attribute_name(part_child.parent, part_child, 'value')
     html += "<div class='col-sm-2 uno_part_wrapper'>"
-    html += label_tag "#{attr_name}", raw("<input id='order_part_#{part_child.id}_option' name='#{attr_name}' type='text' value='' class = 'textfield_child' data-option-id='#{part_child.id}'>")
+    html += label_tag "#{attr_name}", raw("<input id='order_part_#{part_child.id}_option' name='#{attr_name}' type='text' value='' class = 'textfield_child p_name' data-option-id='#{part_child.id}'>")
     html += "</div>"
     html.html_safe
   end
