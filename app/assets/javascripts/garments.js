@@ -1,4 +1,5 @@
 $(function() {
+  elem = $(this);
   var $switchers = $(".switcher");
 
   run_disabler_for($switchers);
@@ -10,7 +11,13 @@ $(function() {
       $(elem).prop("disabled", false).removeClass("c_disabled")
       .closest(".uno_part_wrapper")
       .find(".option_overlay").remove();
+
+
+      if ($(elem).prop('tagName') == 'SELECT') {
+       $(elem).children().removeClass('c_disabled').removeAttr('disabled');   
+      }
     });
+
     
     disable_for($this);
 
@@ -22,14 +29,16 @@ $(function() {
       if($(el).is(':checked')) {
         return $(el).attr('data-option-name');
       }
+      
     }).get().join(', ');
     if(!$mypart_id) {
       $mypart_id = $this.attr("data-part-id");
       $selection_name = $this.find(':selected').attr('data-option-name');
     }
     var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
-    $part_title_container.find(".part_title_options").html($selection_name);
+    $part_title_container.find(".part_title_options").html($selection_name);  
   });
+
 
 $("#proceed_to_order").on('click', function() {
   $("#proceed_to_order_form").submit();
@@ -46,6 +55,7 @@ function run_disabler_for($elements) {
     disable_for($(elem));
   });
 }
+
 
 function disable_for($element) {
   if($element.attr("data-option-disables")) {
