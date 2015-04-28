@@ -16,6 +16,7 @@ $(function() {
       
         if($(elem).prop("tagName") == 'SELECT')
         {                             $(elem).find('option').each(function() {
+                 
                     $(this).prop("disabled", false)
         .prop("checked", true)
         .removeClass("c_disabled")
@@ -24,10 +25,9 @@ $(function() {
              });
                }
       
-   
  
     });
-    disable_for($this);
+   // disable_for($this);
 
     run_disabler_for($switchers);
 
