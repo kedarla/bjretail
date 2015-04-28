@@ -11,10 +11,8 @@
         <div class="grouped_part_wrapper">
           <% if part.display_type == "dropdown" %>
             <%= options_for_part_child part %>
-          <% elsif ["radio"].include?(part.display_type) %>
+          <% elsif ["radio", "checkbox"].include?(part.display_type) %>
             <%= tick_tag part %>
-          <% elsif ["checkbox"].include?(part.display_type) %>
-            <%= check_tag part %>    
           <% elsif part.display_type == "textbox" %>
             <%= options_textfield_tag part %>
           <% end %>
