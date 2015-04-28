@@ -24,8 +24,7 @@ $(function() {
              });
                }
       
-     
-      }
+   
  
     });
     disable_for($this);
