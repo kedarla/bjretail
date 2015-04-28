@@ -12,6 +12,7 @@ $(function() {
       $(elem).prop("disabled", false).removeClass("c_disabled")
       .closest(".uno_part_wrapper")
       .find(".option_overlay").remove();
+ 
       
         if($(elem).prop("tagName") == 'SELECT')
         {                             $(elem).find('option').each(function() {
@@ -23,7 +24,9 @@ $(function() {
              });
                }
       
-       
+     
+      }
+ 
     });
     disable_for($this);
 
@@ -142,5 +145,3 @@ function disable_for($element) {
 // });
 
 // });
-
-

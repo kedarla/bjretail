@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+
  *= require_tree .
  */
 
@@ -19,4 +20,12 @@
 body{
 	font-family: 'EB Garamond', serif;
 	
+}
+.p_name{
+	font-weight: 100;
+}
+
+
+.c_disabled {
+	color:#E6E6E6;
 }
