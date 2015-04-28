@@ -3,15 +3,28 @@ $(function() {
 
   run_disabler_for($switchers);
   
-  $(".switcher").on("change", function(e) {
+  $(".switcher").on("click", function(e) {
     var $this = $(this);
 
-    $switchers.each(function(index, elem) {
+     $switchers.each(function(index, elem) {
+        
+        
       $(elem).prop("disabled", false).removeClass("c_disabled")
       .closest(".uno_part_wrapper")
       .find(".option_overlay").remove();
+      
+        if($(elem).prop("tagName") == 'SELECT')
+        {                             $(elem).find('option').each(function() {
+                    $(this).prop("disabled", false)
+        .prop("checked", true)
+        .removeClass("c_disabled")
+        .closest(".uno_part_wrapper")
+         
+             });
+               }
+      
+       
     });
-    
     disable_for($this);
 
     run_disabler_for($switchers);
