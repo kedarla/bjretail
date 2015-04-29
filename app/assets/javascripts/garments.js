@@ -16,15 +16,15 @@ $(function() {
     
      if($this.attr("data-option-disables")) {
     var $disables = JSON.parse($this.attr("data-option-disables"));
-    console.log("4444444")
-    console.log($disables)
+  //  console.log("4444444")
+  //  console.log($disables)
     
   }
 //if the disables is there and if it is selected then the message changes
     if($disables) {
       for(i = 0; i < $disables.length; i++) {
-         console.log('need to check it is selected')
-         console.log($disables[i])
+    //     console.log('need to check it is selected')
+    //     console.log($disables[i])
          
            var $already_selected =   $("option[data-option-id='" + $disables[i] +"']").is(':selected');
            if  (!$already_selected){
@@ -34,24 +34,24 @@ $(function() {
               //now it is for radio button
                var $radio_button_name = $("input[data-option-id='" + $disables[i] +"']").attr('name')
                var $selected_radio_button_id = $("input[name='"+$radio_button_name+"']:checked").attr('data-option-id')
-               console.log($("input[data-option-id='" + $disables[i] +"']"));
-               console.log("///////")
-               console.log($selected_radio_button_id)
-               console.log($disables[i])
+     //          console.log($("input[data-option-id='" + $disables[i] +"']"));
+     //          console.log("///////")
+     //          console.log($selected_radio_button_id)
+     //          console.log($disables[i])
                
                
                 if ($selected_radio_button_id == $disables[i])
                {
                    $already_selected = true
                }
-               console.log($already_selected);
-               console.log($already_selected);
+       //        console.log($already_selected);
+         //      console.log($already_selected);
                
-               console.log('radio')
+           //    console.log('radio')
            }
-            console.log('selected')
-            console.log($already_selected) 
-            console.log($("option[data-option-id='" + $disables[i] +"']")) 
+      //      console.log('selected')
+        //    console.log($already_selected) 
+          //  console.log($("option[data-option-id='" + $disables[i] +"']")) 
             // if it is selected then what i should do is store this id in hidden text
             //when clicked on another radio at that time if this vcalue is false then show the value
             //so now need to store a parent id so that when click new radio then replace
@@ -59,8 +59,8 @@ $(function() {
             
             var $data_option_part_id = $("option[data-option-id='" + $disables[i] +"']").attr('data-option-part-id')
             var $parent_id =           $("option[data-option-id='" + $disables[i] +"']").parent().attr('data-parent-part-id')
-             console.log($("option[data-option-id='" + $disables[i] +"']").parent().attr('data-parent-part-id'))
-             console.log(7777777777)
+  //           console.log($("option[data-option-id='" + $disables[i] +"']").parent().attr('data-parent-part-id'))
+    //         console.log(7777777777)
              
              if(!$data_option_part_id)
              {
@@ -70,15 +70,15 @@ $(function() {
               $parent_id =   $disables[i]
                  
              }
-             console.log($data_option_part_id)
-             console.log($parent_id)
+      //       console.log($data_option_part_id)
+        //     console.log($parent_id)
              
              
              
               if ($already_selected){
               $("#previousdashedid").val($parent_id);
           }
-              console.log($("#previousdashedid").val())
+          //    console.log($("#previousdashedid").val())
               
           }
     }
@@ -131,7 +131,7 @@ $(function() {
     {
     //var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
     //$part_title_container.find(".part_title_options").html("--");
-              console.log($already_selected)
+       //       console.log($already_selected)
     
      
     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
@@ -144,13 +144,13 @@ $(function() {
     $part_title_container.find(".part_title_options").html($selection_name);
     
     
-    console.log(41578)
-    console.log(41578)
-    console.log($("#previousdashedid").val())
-    console.log($("select[data-parent-part-id='" + $("#previousdashedid").val() +"']").attr('data-part-id'))
+ //   console.log(41578)
+ //   console.log(41578)
+ //   console.log($("#previousdashedid").val())
+ //   console.log($("select[data-parent-part-id='" + $("#previousdashedid").val() +"']").attr('data-part-id'))
        var data_part_id_p = $("select[data-parent-part-id='" + $("#previousdashedid").val() +"']").attr('data-part-id')
-       console.log(4157)
-       console.log(data_part_id_p)
+ //      console.log(4157)
+ //      console.log(data_part_id_p)
      if(!data_part_id_p)
      {//when its radio
         data_part_id_p = 
@@ -171,7 +171,7 @@ $(function() {
     }
        
     
-              console.log($already_selected)
+    //          console.log($already_selected)
     
     }
     
