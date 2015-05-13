@@ -10,6 +10,7 @@ class GarmentsController < ApplicationController
   # GET /garments/1
   # GET /garments/1.json
   def show
+    
   end
 
   # GET /garments/new

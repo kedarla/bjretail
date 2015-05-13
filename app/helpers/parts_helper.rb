@@ -14,7 +14,8 @@ module PartsHelper
                     data-part-id='#{part_child.id}'
                     data-part-type='#{part_child.display_type}'
                     data-parent-part-id='#{part_child.parent.id unless part_child.root?}'>"
-  	part_child.options.each do |o|
+   part_child_option= parts_position(part_child.options)
+  	part_child_option.each do |o|
       
   	  html += "<option value='#{o.id}' id='#{o.id}_#{o.name}_#{o.part_id}'
                        
@@ -39,7 +40,8 @@ module PartsHelper
     render_type = part_child.display_type == "radio" ? "radio_button_tag" : "check_box_tag"
     html = ""
     attr_name = attribute_name(part_child.parent, part_child, 'id')
-    part_child.options.each do |o|
+    part_child_option = parts_position(part_child.options)
+    part_child_option.each do |o|
       html += "<div class='col-sm-2 uno_part_wrapper'>"
       html += "<label class = 'p_name' for='#{attr_name}'>"
       
@@ -77,7 +79,8 @@ module PartsHelper
         html << title_html_for(part)
 
         if part.children.present?
-          child_parts = part.children.collect{|subp| ['radio', 'checkbox', 'dropdown'].include?(subp.display_type) ? subp : nil}.compact
+          part_children = parts_position(part.children)
+          child_parts = part_children.collect{|subp| ['radio', 'checkbox', 'dropdown'].include?(subp.display_type) ? subp : nil}.compact
           child_parts.each{|p| html << title_html_for(p)}
         end
 
