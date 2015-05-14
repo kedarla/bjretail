@@ -477,46 +477,117 @@ $lockers.each(function(index, elem) {
             }
          }
          
+                  else if(tagname == 'checkbox')
+    {
+            ////console.log(arrayofelement[1])
+              ////console.log(arrayofelement[1])
+              //console.log('radio123')
+             //what i have to do here is check its disable is already clicked if yes then change the title 
+              
+            if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
+            {
+                
+                  //if the disabled is already selected then make a dash
+                  $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
+               //if this is same then hide a text of oldelement in text bar
+              
+             var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
+             $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
+              
+                    
+             }
+             else{
+                 //console.log("the checkbox is unchecked")
+             }
+             
+    }
+         
+         
      }
         //now this is copied code end this can be a new function
         //the above if ends and now need to write an else for removing an element and keeping back a text
     }else{
         
-        //here need to write original code back and remove an element
-        //
-         
-                    $data_option_part_id = $(".switcher").find("[data-option-uniq-id='" + arrayofelement[1] + "']").attr('data-option-part-id')
-                    ////////console.log($data_option_part_id)
-                    if (typeof $data_option_part_id == 'undefined')
-                    {
-                        $data_option_part_id = $(".switcher").filter("[data-option-uniq-id='" + arrayofelement[1] + "']").attr('data-option-part-id')
-
-
-                    }
-                    //console.log($data_option_part_id)
-                    //console.log("$data_option_part_id")
-                    
-
-                    ////////console.log($(".switcher").find("[data-option-uniq-id='" + arrayofelement[1] + "']").attr('data-option-name'))
+             //console.log("elseeeeeeeeeeeeeeeeeeeeeee")
+               $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
+              //console.log($data_option_part_id)
+               if (typeof $data_option_part_id == 'undefined')
+               {
+               $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
+               //console.log("from here the log is get set")    
+                   
+               }
+              //console.log($data_option_part_id)
+                
+ //console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
 //if this is same then hide a text of oldelement in text bar
-                    //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
+         //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
+           
+         replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
+         if (typeof replace_html == 'undefined')
+         {
+         replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
+             
+         }
+         
+         
+         
+         //here before replacing the html need to check weather it is an option if yes then see weather it 
+         //is selected if yes then chasnge else dont 
+    //     //////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName"))
+ //////console.log("tagnamee")
 
-                    replace_html = $(".switcher").find("[data-option-uniq-id='" + arrayofelement[1] + "']").attr('data-option-name')
-                    if (typeof replace_html == 'undefined')
-                    {
-                        replace_html = $(".switcher").filter("[data-option-uniq-id='" + arrayofelement[1] + "']").attr('data-option-name')
+     if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName") == "OPTION")
+     {
+         //check weather it is se,lected
 
-                    }
-//console.log("the replace html")
-//console.log(replace_html)
-//console.log($data_option_part_id)
-//console.log("$data_option_part_id")
-
-
-                        //no need to replace an html if its an radio button as it will be done as normally at upwards
-                        ////with normal replace html's
-                 //   $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-                    ////////console.log($this.attr('id'))
+        if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
+        {
+            $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
+            
+        }    
+     }
+     else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
+         ////console.log("this ios a checkbox")
+         
+            checkboxpartid = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("data-option-part-id");
+     checkboxnamename = $switchers.filter("[data-option-part-id='" + checkboxpartid + "']").map(function(i, el) {
+      if($(el).is(':checked')) {
+        return $(el).attr('data-option-name');
+      }
+    }).get().join(', ');
+         
+              $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
+      
+         
+     }
+     else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
+          get_an_id_of_radio = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('id')
+        //now the first element that is radio is unclicked 
+        //now the second element is also unclicked then dont do anything
+        if ($('#'+get_an_id_of_radio).is(':checked')){
+            $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
+             
+         }
+         else{
+             
+         }
+          
+         
+         
+     }
+     
+     else
+            {
+         ////console.log("ultimetly printed from here")
+         ////console.log(arrayofelement[1])
+         //here i am copying from above the code of displaying the selected checkbox names as it is
+         //the reason is if i first take a string and then add this selected element then the order
+         //might be changed that is why i am copying these 3-4 lines
+         
+            $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
+ 
+     }
                     
               if(typeof arrayofelement[0] != 'undefined')
                     {
@@ -925,4 +996,3 @@ function disable_for($element) {
   }
 }
 }
- 

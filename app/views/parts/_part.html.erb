@@ -19,7 +19,7 @@
         </div>
 
         <% if part.children.exists? %>
-          <%= render partial: "parts/part_child", collection: part.children %>
+          <%= render partial: "parts/part_child", collection: parts_position(part.children) %>
         <% end %>
       </div>
     </div>
