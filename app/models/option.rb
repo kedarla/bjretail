@@ -2,7 +2,7 @@ class Option < ActiveRecord::Base
   belongs_to :part
   validates :name, uniqueness: true, presence: true
   validates :part_id, presence: true
-
+  before_save :change_position
   default_scope order('created_at ASC')
 
   has_attached_file :photo, :styles => { :small => "150x150>" }
@@ -32,4 +32,20 @@ class Option < ActiveRecord::Base
 
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates_attachment_content_type :printable_photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
+  
+  
+  def change_position
+    if !self.position.blank?
+    existing_model=Option.where("part_id = #{self.part_id} and position = #{self.position}") 
+    if !existing_model[0].blank?
+       if !self.changes['position'].blank?  
+         existing_model[0].update_columns(position: self.changes['position'][0])
+        end
+    end
+    end  
+  end
+  
+
+
 end

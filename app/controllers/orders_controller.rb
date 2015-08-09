@@ -32,11 +32,13 @@ class OrdersController < ApplicationController
   end
 
   def proceed
+     
     @order = Order.new
     @order_data = params[:order]
     @garment = Garment.find(params[:garment_id])
     @order.garment_id = params[:garment_id]
-
+   
+     
     # parts_arr = []
     # options_arr = []
 

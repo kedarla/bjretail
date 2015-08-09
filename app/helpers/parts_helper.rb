@@ -62,7 +62,7 @@ module PartsHelper
           html += "</div>"
         end
         html.html_safe
-      end
+    end
 
       def options_textfield_tag(part_child)
          
