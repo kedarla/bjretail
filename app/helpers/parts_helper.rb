@@ -7,7 +7,7 @@ module PartsHelper
 
   def options_for_part_child(part_child)
     attr_name = attribute_name(part_child.parent, part_child, 'id')
-  	html = "<div class='col-sm-2 uno_part_wrapper'>"
+    html = "<div class='col-sm-2 uno_part_wrapper'>"
     html += "<select class='form-control switcher'
                     name='#{attr_name}'
                     data-part-name='#{part_child.name}'
@@ -15,9 +15,10 @@ module PartsHelper
                     data-part-type='#{part_child.display_type}'
                     data-parent-part-id='#{part_child.parent.id unless part_child.root?}'>"
    part_child_option= parts_position(part_child.options)
-  	part_child_option.each do |o|
+
+    part_child_option.each do |o|
       
-  	  html += "<option value='#{o.id}' id='#{o.id}_#{o.name}_#{o.part_id}'
+      html += "<option value='#{o.id}' id='#{o.id}_#{o.name}_#{o.part_id}'
                        
                     data-option-part-id='#{part_child.id}'
                     data-option-name='#{o.name}'
@@ -30,10 +31,10 @@ module PartsHelper
                     data-option-enables='#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}'
                     #{o.is_default? ? 'selected' : ''}>#{o.name}
               </option>"
-  	end
+    end
     html += "</select>"
     html += "</div>"
-  	html.html_safe
+    html.html_safe
   end
 
   def tick_tag(part_child)

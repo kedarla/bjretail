@@ -13,9 +13,8 @@ module GarmentsHelper
   
     copy_default_part1 = copy_default_part1.sort{|x,y|x.position.to_i  <=> y.position.to_i}
     for i in 0..copy_default_part1.size-1
-      
+
       newarray[copy_default_part1[i].position-1] = copy_default_part1[i]
-      
     end
    
     
@@ -42,4 +41,5 @@ module GarmentsHelper
   end
    
     
+
 end

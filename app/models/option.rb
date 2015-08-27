@@ -14,6 +14,8 @@ class Option < ActiveRecord::Base
   attr_accessor :delete_printable_photo
   before_validation { self.printable_photo.clear if self.delete_printable_photo == '1' }
 
+  before_save :change_position
+
   # validates_attachment_presence :photo
   # validates_attachment_size :photo, :less_than => 5.megabytes
   # validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/jpg', 'image/png']
@@ -33,11 +35,11 @@ class Option < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates_attachment_content_type :printable_photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  
-  
-  def change_position
+
+ def change_position
     if !self.position.blank?
     existing_model=Option.where("part_id = #{self.part_id} and position = #{self.position}") 
+   
     if !existing_model[0].blank?
        if !self.changes['position'].blank?  
          existing_model[0].update_columns(position: self.changes['position'][0])
@@ -45,7 +47,5 @@ class Option < ActiveRecord::Base
     end
     end  
   end
-  
-
 
 end

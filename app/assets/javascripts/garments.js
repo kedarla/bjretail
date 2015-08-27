@@ -1864,4 +1864,3 @@ function disable_for($element) {
     //console.log($element)
 }
 }
- 
