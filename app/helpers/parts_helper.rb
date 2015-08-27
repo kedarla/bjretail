@@ -64,6 +64,41 @@ module PartsHelper
         html.html_safe
     end
 
+
+ def tick_tag_slice(part_child)
+    render_type = part_child.display_type == "radio" ? "radio_button_tag" : "check_box_tag"
+    html = ""
+    attr_name = attribute_name(part_child.parent, part_child, 'id')
+    part_child_option = parts_position(part_child.options)
+    part_child_option.  each_slice(6) do | six_o|
+      html += "<div class = 'row'>"
+      six_o.each do |o|
+      html += "<div class='col-sm-2 uno_part_wrapper'>"
+      html += "<label class = 'p_name' for='#{attr_name}'>"
+     
+      html += send(render_type, attr_name, o.id,
+        o.is_default?,
+        "data-option-name" => o.name,
+        "data-part-type" =>"#{part_child.display_type}",
+        "data-option-disables" => "#{o.disables.present? ? o.disables.map(&:disable_element_id) : nil}",
+        "data-option-id" => "#{o.id}",
+        "data-option-part-id" => "#{part_child.id}",
+         "data-option-uniq-id " => "#{o.id}_#{o.name}_#{o.part_id}",                  
+        "data-option-enables" => "#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}",
+        class: "switcher ")
+        html += image_tag o.photo(:small), class: "tick_option_img",
+            "data-option-name" => o.name
+          html += o.name
+          html += "</label>"
+          html += "</div>"
+       end 
+          html += "</div>"
+ 
+      end
+        html.html_safe
+    end
+
+
       def options_textfield_tag(part_child)
          
         html = ""

@@ -9,10 +9,8 @@
         <div class="row">
           <%= options_for_part_child part_child %>
         </div>
-      <% elsif ["radio", "checkbox"].include?(part_child.display_type) %>
-        <div class="row">
-          <%= tick_tag part_child %>
-        </div>
+      <% elsif ["radio", "checkbox"].include?(part_child.display_type) %>  
+      <%=   tick_tag_slice  part_child%>
       <% elsif part_child.display_type == "textbox" %>
         <div class="row">
           <%= options_textfield_tag part_child %>
