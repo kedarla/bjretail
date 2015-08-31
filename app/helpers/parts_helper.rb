@@ -93,8 +93,7 @@ module PartsHelper
           html += "</label>"
           html += "</div>"
        end 
-          html += "</div>"
- 
+          html += "</div>" 
       end
         html.html_safe
     end

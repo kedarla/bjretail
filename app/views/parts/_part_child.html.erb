@@ -1,21 +1,25 @@
+
+
 <div class="col-md-12 part-child-wrapper grouped_part_wrapper">
-  <div class="row">
-    <div class="col-md-2">
-      <label><%= part_child.name %></label>
-    </div>
-     <br /> <br />
-    <div class="col-md-10 selected_part_child">
-      <% if part_child.display_type == "dropdown" %>
-        <div class="row">
-          <%= options_for_part_child part_child %>
-        </div>
-      <% elsif ["radio", "checkbox"].include?(part_child.display_type) %>  
-      <%=   tick_tag_slice  part_child%>
-      <% elsif part_child.display_type == "textbox" %>
-        <div class="row">
-          <%= options_textfield_tag part_child %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+ <div class="row">
+   <div class="col-md-2">
+     <label><%= part_child.name %></label>
+   </div>
+    <br /> <br />
+   <div class="col-md-10 selected_part_child ">
+     <% if part_child.display_type == "dropdown" %>
+       <div class="row">
+         <%= options_for_part_child part_child %>
+       </div>
+     <% elsif ["radio", "checkbox"].include?(part_child.display_type) %>
+  
+     <%=   tick_tag_slice  part_child%>
+
+     <% elsif part_child.display_type == "textbox" %>
+       <div class="row">
+         <%= options_textfield_tag part_child %>
+       </div>
+     <% end %>
+   </div>
+ </div>
 </div>
