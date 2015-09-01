@@ -12,7 +12,7 @@
           <% if part.display_type == "dropdown" %>
             <%= options_for_part_child part %>
           <% elsif ["radio", "checkbox"].include?(part.display_type) %>
-            <%= tick_tag part %>
+            <%= tick_tag_slice part %>
           <% elsif part.display_type == "textbox" %>
             <%= options_textfield_tag part %>
           <% end %>

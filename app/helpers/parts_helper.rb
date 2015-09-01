@@ -71,7 +71,7 @@ module PartsHelper
     html = ""
     attr_name = attribute_name(part_child.parent, part_child, 'id')
     part_child_option = parts_position(part_child.options)
-    part_child_option.each_slice(6) do | six_o|
+    part_child_option.each_slice(5) do | six_o|
       html += "<div class = 'row'>"
       six_o.each do |o|
       html += "<div class='col-sm-2 uno_part_wrapper'>"
