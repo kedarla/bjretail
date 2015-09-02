@@ -23,7 +23,9 @@ body{
 }
 .p_name{
 	font-weight: 100;
-	text-align: center;
+    margin-left: 25px;
+    margin-right: 22px;
+   display: inline-block;
 }
 
 
