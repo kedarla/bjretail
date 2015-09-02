@@ -71,8 +71,26 @@ module PartsHelper
     html = ""
     attr_name = attribute_name(part_child.parent, part_child, 'id')
     part_child_option = parts_position(part_child.options)
+    rowcount=0
+    show_more = false
+    if ((part_child.options.size/6) > 2)
+      show_more = true
+    elsif ((part_child.options.size/6) == 2)
+        if ((part_child.options.size%6) >0 )
+              show_more = true
+        end
+    end
     part_child_option.each_slice(6) do | six_o|
-      html += "<div class = 'row'>"
+    rowcount = rowcount + 1
+      if show_more == true
+         if rowcount < 3
+          html += "<div class = 'row'>"
+         else
+         html += "<div class = 'row show_more_hide hide#{part_child.id}' >"
+        end
+      else
+        html += "<div class = 'row'>"
+      end
       six_o.each do |o|
       html += "<div class='col-sm-2 uno_part_wrapper'>"
       html += "<label   for='#{attr_name}'>"
@@ -93,10 +111,18 @@ module PartsHelper
           html += "</label>"
           html += "</div>"
        end 
-          html += "</div>" 
+     
+           html += "</div>" 
+             if show_more == true
+         if rowcount == 2
+          html += "<div class='row' onclick=$('.hide#{part_child.id}').toggle();>show more</div>"
+        end
+      else
       end
+      end
+     
         html.html_safe
-    end
+ end
 
 
       def options_textfield_tag(part_child)
