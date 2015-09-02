@@ -23,12 +23,16 @@ body{
 }
 .p_name{
 	font-weight: 100;
-    margin-left: 25px;
-    margin-right: 22px;
+    margin-left: 18px;
+    margin-right: 40px;
    display: inline-block;
 }
 
 
 .c_disabled {
 	color:#E6E6E6;
+}
+
+.show_more_hide{
+	display: none;
 }

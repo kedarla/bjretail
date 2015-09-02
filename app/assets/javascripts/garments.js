@@ -325,8 +325,9 @@ $lockers.each(function(index, elem) {
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
         
         var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+             if (element != null) {
            element.parentNode.removeChild(element);
-        
+           }
         
         
         }
