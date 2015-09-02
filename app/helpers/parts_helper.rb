@@ -75,7 +75,7 @@ module PartsHelper
       html += "<div class = 'row'>"
       six_o.each do |o|
       html += "<div class='col-sm-2 uno_part_wrapper'>"
-      html += "<label class = 'p_name' for='#{attr_name}'>"
+      html += "<label   for='#{attr_name}'>"
      
       html += send(render_type, attr_name, o.id,
         o.is_default?,
@@ -86,10 +86,10 @@ module PartsHelper
         "data-option-part-id" => "#{part_child.id}",
          "data-option-uniq-id " => "#{o.id}_#{o.name}_#{o.part_id}",                  
         "data-option-enables" => "#{o.enables.present? ? o.enables.map(&:enable_element_id) : nil}",
-        class: "switcher ")
+        class: "switcher")
         html += image_tag o.photo(:small), class: "tick_option_img",
             "data-option-name" => o.name
-          html += o.name
+          html += "<span class='p_name'>"+o.name+"</span>"
           html += "</label>"
           html += "</div>"
        end 
