@@ -16,8 +16,13 @@ function needtocallonload(){
              if($this.prop('tagName') == "SELECT")
             {
                if ($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-disables') != '')
-              { $disables=JSON.parse($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-disables'))
-              }
+              {   console.log("4125")
+                  console.log($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-disables'))
+                        if(typeof $("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-disables') != 'undefined')
+                        {    
+                      $disables=JSON.parse($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-disables'))
+              }       
+                  }
              }
             
         }      if($disables) {
@@ -144,7 +149,11 @@ $lockers.each(function(index, elem) {
          ////////console.log("11111111111");
          //now it is undefined that means the disablers is there  so now first check that element type
          //first get that element
-         tagname = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName')
+         console.log("14666666666666")
+         console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']"))
+         console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName'))
+         
+                tagname = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName')
          ////////console.log(tagname);
           ////////console.log("tagname44444444444444444455555666");
           //now try here it may be an radio and not a option
@@ -262,7 +271,9 @@ $lockers.each(function(index, elem) {
          //is selected if yes then chasnge else dont 
     //     //////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName"))
  //////console.log("tagnamee")
-
+console.log(11111111111111111);
+console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']"))
+console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName"))
      if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName") == "OPTION")
      {
          //check weather it is se,lected
@@ -546,7 +557,9 @@ $lockers.each(function(index, elem) {
                         
                        // //console.log($("#newlyclickedelement" + arrayofelement[0]+arrayofelement[1]).remove()); 
                          var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+           if (element != null) {
            element.parentNode.removeChild(element);
+          }
                     }
                     
         //
@@ -753,8 +766,9 @@ $lockers.each(function(index, elem) {
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
         
         var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+        if( element != null){
            element.parentNode.removeChild(element);
-        
+        }
         
         
         }
@@ -780,7 +794,14 @@ $lockers.each(function(index, elem) {
      
      
      //so what now i need to check that the type of 
+      console.log('wwwwwww');
+      console.log(arrayofelement[1])
+      console.log(arrayofelement[1])
+      
+      console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']"));
+      console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName'));
       elementtype1 = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName')
+      
       if(typeof elementtype1 == 'undefined')
       {
       elementtype1 = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
@@ -1000,6 +1021,11 @@ $(function() {
     }
     
      var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
+    console.log("88888888888888888")
+    console.log($part_title_container)
+    console.log($mypart_id)
+    
+    
     $part_title_container.find(".part_title_options").html($selection_name);
     //////console.log("setting an html")
     //////console.log($selection_name)
@@ -1224,8 +1250,9 @@ $lockers.each(function(index, elem) {
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
         
         var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+ if (element != null) {
            element.parentNode.removeChild(element);
-        
+        }
         
         
         }
@@ -1444,8 +1471,11 @@ $lockers.each(function(index, elem) {
                         
                        // //console.log($("#newlyclickedelement" + arrayofelement[0]+arrayofelement[1]).remove()); 
                          var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+            if (element != null) {
            element.parentNode.removeChild(element);
                     }
+                    }
+
                     
         //
         //
@@ -1651,8 +1681,9 @@ $lockers.each(function(index, elem) {
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
         
         var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+            if (element != null) {
            element.parentNode.removeChild(element);
-        
+        }
         
         
         }
@@ -1719,7 +1750,9 @@ $lockers.each(function(index, elem) {
                        // $("#newlyclickedelement" + get_an_id_of_radio+arrayofelement[1]).remove(); 
                        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
         var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+            if (element != null) {
            element.parentNode.removeChild(element);
+                    }
                     }
             
           }}
@@ -1824,7 +1857,8 @@ function disable_for($element) {
     if($disables) {
       for(i = 0; i < $disables.length; i++) {
         var elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
-
+          console.log(elem_to_disable)
+          console.log("elem_to_disable")
         //alert(elem_to_disable.parent().prop('tagName'));
         if(elem_to_disable.parent().prop('tagName') != 'SELECT')
         {
@@ -1849,13 +1883,7 @@ function disable_for($element) {
       //.prepend("<div class='option_overlay'/>");
        
        $("#readonlyoptions").val($("#readonlyoptions").val()+" "+elem_to_disable.prop("value"));
-       
-        
-        
-            
-  
-      
-      
+     
       
     }
   }
