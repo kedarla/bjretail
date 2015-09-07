@@ -61,7 +61,7 @@ function needtocallonload(){
     
     //then stARTED THE LOOP on .switcher class.
      //then there is a switcher which will actually enabeling all the values
-     $switchers.each(function(index, elem) {
+     /*$switchers.each(function(index, elem) {
       //so first step is when click a radio botton check how many times click
       //////////console.log('123  ')
         
@@ -82,10 +82,10 @@ function needtocallonload(){
                }
       
  
-    });
+    });*/
    // disable_for($this);
     // then there is a run for disableing all the values
-    run_disabler_for($switchers);
+   // run_disabler_for($switchers);
     //now here the code will be run on lock class elements as they are hidden and according to that a 
     //title is shown
     // Panel title update
@@ -112,7 +112,8 @@ function needtocallonload(){
     //let it change the title but my locker should wsork
     
    //the above code is for normal display now need to work on logic for .lock class
-   // to change the title text bar changes 
+   // to change the title text bar changes
+    });
   var $lockers = $(".lock");
   ////////console.log("2222222222222")
     //now here is a loop on .lock inputs,what i have to do is from each text box get his value
@@ -917,7 +918,7 @@ console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']")
     }
     */
   
-  });
+ 
 }
 $(function() {
    
