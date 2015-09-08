@@ -115,7 +115,7 @@ module PartsHelper
            html += "</div>" 
              if show_more == true
          if rowcount == 2
-          html += "<div class='row' onclick=$('.hide#{part_child.id}').toggle();>show more</div>"
+          html += "<div class='row' style='color: darkblue;text-align: center;text-decoration: underline;' onclick=$('.hide#{part_child.id}').toggle();>show more</div>"
         end
       else
       end
