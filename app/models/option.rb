@@ -42,7 +42,9 @@ class Option < ActiveRecord::Base
    
     if !existing_model[0].blank?
        if !self.changes['position'].blank?  
-         existing_model[0].update_columns(position: self.changes['position'][0])
+         errors.add(:position, ' is not uniq')  
+         return false;
+        # existing_model[0].update_columns(position: self.changes['position'][0])
         end
     end
     end  

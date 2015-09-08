@@ -34,8 +34,10 @@ before_save :change_position
     end 
      
     if !existing_model[0].blank?
-       if !self.changes['position'].blank?  
-         existing_model[0].update_columns(position: self.changes['position'][0])
+       if !self.changes['position'].blank?
+       errors.add(:position, ' is not uniq')  
+         return false;
+         #existing_model[0].update_columns(position: self.changes['position'][0])
         end
     end
     end  
