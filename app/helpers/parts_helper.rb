@@ -115,7 +115,7 @@ module PartsHelper
            html += "</div>" 
              if show_more == true
          if rowcount == 2
-          html += "<div class='row' style='color: darkblue;text-align: center;text-decoration: underline;' onclick=$('.hide#{part_child.id}').toggle();>show more</div>"
+          html += "<div class='row' style='cursor:pointer;color: darkblue;text-align: center;text-decoration: underline;' onclick=change_label_images(#{part_child.id},this); >Show More</div>"
         end
       else
       end

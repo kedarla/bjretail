@@ -1894,3 +1894,16 @@ function disable_for($element) {
     //console.log($element)
 }
 }
+
+function change_label_images(divids,thisref)
+{
+console.log($(thisref).text());
+$(".hide"+divids).toggle();
+if($(thisref).text() == 'Show More')
+{
+$(thisref).text('Show Less')
+}
+else{
+$(thisref).text('Show More')
+}
+}
