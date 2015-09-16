@@ -1695,7 +1695,7 @@ $lockers.each(function(index, elem) {
   
     //var previouselem = arrayofelement[2]        
      });
-     
+    /*this loop is not required as its breaking the drop down function 
     $lockers.each(function(index, elem) { 
       //so first step is when click a radio botton check how many times click
       //////////console.log('123  ') 
@@ -1758,21 +1758,10 @@ $lockers.each(function(index, elem) {
             
           }}
       
-      
-      
        
-      
-      
-      
-      
-      
-      
-      
-        
-                 
        });
      
-
+*/
 //////////console.log("11111111111*************");
 /*
 //THIS IS second loop for making an dash
