@@ -926,6 +926,7 @@ $(function() {
   var $switchers = $(".switcher");
    run_disabler_for($switchers);
     needtocallonload();
+    
     $(".switcher").on("click", function(e) {
       var $this = $(this);
         if($this.attr("data-option-disables")) {
@@ -964,9 +965,22 @@ $(function() {
       input.setAttribute( "value", uniqidforsetattr + "enter"+dis_uniq_attr );
       
       input.setAttribute( "class", "lock" );
+      alreadyexist = false;
+      $('.lock').each(function() {
       
+        if($(this).val() == (uniqidforsetattr + "enter"+dis_uniq_attr) )
+        {
+            alreadyexist = true;
+        }
+       });
+       if (alreadyexist)
+       {}
+       else{
       document.getElementById('herelocktextboxkept').appendChild(input);
-        
+  }
+     
+                
+                
           }
     }
     
@@ -1960,15 +1974,19 @@ if($element.attr("data-option-disables")) {
         if(elem_to_disable.parent().prop('tagName') != 'SELECT')
         {
          //alert("its not a dropdown!");
-         elem_to_disable.prop("readonly", "readonly")
-        
-         .addClass("c_disabled")
+         console.log(elem_to_disable.hasClass('c_disabled'));
+         console.log("checking class")
+         //if already has class then dont add it
+         if(!elem_to_disable.hasClass('c_disabled'))
+         {
+        elem_to_disable.prop("readonly", "readonly")
+          .addClass("c_disabled")
          .closest(".uno_part_wrapper")
          .prepend("<div class='option_overlay'/>");       
-
+         
             
          $("#readonlyoptions").val($("#readonlyoptions").val()+" "+elem_to_disable.prop("value"));
-
+     }
             }
        else
        {
