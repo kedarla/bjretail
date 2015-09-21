@@ -4,8 +4,6 @@ function needtocallonload(){
      * document.load 
      */
     var $switchers = $(".switcher");
-   
-    
       $(".switcher").each(function( index ) {
       var $this = $(this);
         if($this.attr("data-option-disables")) {
@@ -921,18 +919,14 @@ $lockers.each(function(index, elem) {
   
  
 }
-$(function() {
-   
-  var $switchers = $(".switcher");
-   run_disabler_for($switchers);
-    needtocallonload();
-    
-    $(".switcher").on("click", function(e) {
-      var $this = $(this);
-        if($this.attr("data-option-disables")) {
+
+function create_a_lock_element($this)
+{
+      if($this.attr("data-option-disables")) {
           var $disables = JSON.parse($this.attr("data-option-disables"));
         }
          if(typeof $disables == 'undefined')
+        
         {
              if($this.prop('tagName') == "SELECT")
             {
@@ -983,12 +977,7 @@ $(function() {
                 
           }
     }
-    
-    
-    
-    
-    
-    //then stARTED THE LOOP on .switcher class.
+     //then stARTED THE LOOP on .switcher class.
      //then there is a switcher which will actually enabeling all the values
      /*$switchers.each(function(index, elem) {
       //so first step is when click a radio botton check how many times click
@@ -1012,12 +1001,32 @@ $(function() {
       
  
     });*/
-           $("#readonlyoptions").val($(''));
+    
+    
+    
+}
+$(function() {
+   
+  var $switchers = $(".switcher");
+   run_disabler_for($switchers);
+    needtocallonload();
+     $("#enable_elment_id").val('');
+    $(".switcher").on("click", function(e) {
+        var $this = $(this);
+        /*
+         copied the code for a creating a new function so this function will be called when
+        an element is clicked and that element is not clicked for enabeling itself that means.
+        when an element is clicked and that is in enable state then dont create an hidden field of 
+        lock element
+         */
+      create_a_lock_element($this);
+ 
+        
+        $("#readonlyoptions").val($(''));
 
     disable_for_click_elment($this);
    // disable_for($this);
-    
-    // then there is a run for disableing all the values
+     // then there is a run for disableing all the values
    // run_disabler_for($switchers);
     //now here the code will be run on lock class elements as they are hidden and according to that a 
     //title is shown
@@ -1028,28 +1037,21 @@ $(function() {
         return $(el).attr('data-option-name');
       }
     }).get().join(', ');
-    
-    //////console.log("all the selection name will be there")
+     //////console.log("all the selection name will be there")
     //////console.log($selection_name)
-    
-    
-    if(!$mypart_id) {
+     if(!$mypart_id) {
       $mypart_id = $this.attr("data-part-id");
       $selection_name = $this.find(':selected').attr('data-option-name');
     }
-    
-     var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
+      var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
     //console.log("88888888888888888")
     //console.log($part_title_container)
     //console.log($mypart_id)
-    
-    
-    $part_title_container.find(".part_title_options").html($selection_name);
+     $part_title_container.find(".part_title_options").html($selection_name);
     ////////console.log("setting an html")
     ////////console.log($selection_name)
     //let it change the title but my locker should wsork
-    
-   //the above code is for normal display now need to work on logic for .lock class
+    //the above code is for normal display now need to work on logic for .lock class
    // to change the title text bar changes 
   var $lockers = $(".lock");
   //////////console.log("2222222222222")
@@ -1059,8 +1061,7 @@ $(function() {
    //not like that have to work on each element
 //the first loop is for remove an element which is unclicked and which are previously clicked
 //then there is a first loop of lockers
-
-$lockers.each(function(index, elem) {
+ $lockers.each(function(index, elem) {
       //so first step is when click a radio botton check how many times click
       ////////////console.log('123  ') 
       var arrayofelement = $(elem).val().split("enter")
@@ -1658,49 +1659,27 @@ $lockers.each(function(index, elem) {
                ////console.log("from here the log is get set")    
                    
                }
-              ////console.log($data_option_part_id)
-                
- ////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
-//if this is same then hide a text of oldelement in text bar
-         //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-           
-         replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
-         if (typeof replace_html == 'undefined')
-         {
-         replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
-             
-         }
-         
-         
-         
-         //here before replacing the html need to check weather it is an option if yes then see weather it 
-         //is selected if yes then chasnge else dont 
-    //     ////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName"))
- ////////console.log("tagnamee")
-
-     if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName") == "OPTION")
-     {
-         //check weather it is se,lected
-
-        if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
-        {
-            $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-            
-        }    
-     }
-     else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
-         //////console.log("this ios a checkbox")
-         
-            checkboxpartid = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("data-option-part-id");
-     checkboxnamename = $switchers.filter("[data-option-part-id='" + checkboxpartid + "']").map(function(i, el) {
-      if($(el).is(':checked')) {
-        return $(el).attr('data-option-name');
-      }
-    }).get().join(', ');
-         
-              $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
-      
-         
+          replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
+          if (typeof replace_html == 'undefined')
+          {
+            replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
+          }
+           if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName") == "OPTION")
+          {
+              if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
+              {
+                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
+              }    
+          }
+          else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
+                 checkboxpartid = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("data-option-part-id");
+                 checkboxnamename = $switchers.filter("[data-option-part-id='" + checkboxpartid + "']").map(function(i, el) {
+                if($(el).is(':checked')) {
+                  return $(el).attr('data-option-name');
+                }
+              }).get().join(', ');
+               $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
+  
      }
      else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
           get_an_id_of_radio = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('id')
@@ -1720,30 +1699,11 @@ $lockers.each(function(index, elem) {
      
      else
             {
-         //////console.log("ultimetly printed from here")
-         //////console.log(arrayofelement[1])
-         //here i am copying from above the code of displaying the selected checkbox names as it is
-         //the reason is if i first take a string and then add this selected element then the order
-         //might be changed that is why i am copying these 3-4 lines
-         
-            $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
- 
-     }
-            // if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
-           
-         
-            
-            ////////console.log($this.attr('id')+"removed")    
-        //$("#newlyclickedelement"+ get_an_id_of_radio+arrayofelement[1] ).remove(); 
-        ////console.log("now need to remove")
-        ////console.log("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1])
-       // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
-        
-        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
+             $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
+            }
+         var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
             if (element != null) {
-                
-                
-                    elem = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']");
+                     elem = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']");
      if(elem.attr("data-option-disables")) {
         var $disables = JSON.parse(elem.attr("data-option-disables"));
      }
@@ -1751,149 +1711,99 @@ $lockers.each(function(index, elem) {
       for(i = 0; i < $disables.length; i++) {
           elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
         enable_element(elem_to_disable)
-   
+            }
+       }
+              element.parentNode.removeChild(element);
+        }
          }
-  }
-  
-  
-           element.parentNode.removeChild(element);
-        }
-        
-        
-        }
-        // $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked')
-         //$('#order_part_1_option_1').is(':checked')
-         //$('#order_part_1_option_1').is(':checked')
-  }
+     }
   
     //var previouselem = arrayofelement[2]        
      });
-    /*this loop is not required as its breaking the drop down function 
-    $lockers.each(function(index, elem) { 
-      //so first step is when click a radio botton check how many times click
-      ////////////console.log('123  ') 
-      var arrayofelement = $(elem).val().split("enter")
-     ////////console.log("this array is there")
-     ////////console.log(arrayofelement[0])
-     ////////console.log(arrayofelement[1])
-     //////////console.log("0000000000000");
-     //now first get an element type of second element because according to that
-     //and then check that this element is unclicked or not 
      
      
-     
-     //so what now i need to check that the type of 
-      elementtype1 = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName')
-      if(typeof elementtype1 == 'undefined')
-      {
-      elementtype1 = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
-          
-      }
-      //////////console.log(elementtype1);
-      //////////console.log(elementtype1);
-      //if it is option then check it is selected with the same id
-      
-      
-      //////////console.log("this is from second loop");
-      
-      
-      if (elementtype1 == "OPTION")
-                  {
-                   //why 
-                   ////////console.log("why this condition is trues")
-                   ////////console.log(elementtype1)
-                   
-         //////////console.log(arrayofelement[0])
-         //////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id'))
-         
-      
-        if(arrayofelement[1] != $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
-          {
-              //if user click on another option box
-            //in the variable i stored the part id which will be used for title part   
-          
-                
-                //then remove the text box
-                get_an_id_of_radio = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[0]+"']").attr('id')
-                //////////console.log('the idddd')
-                //////////console.log(get_an_id_of_radio)
-                
-                 if(typeof get_an_id_of_radio != 'undefined')
-                    {//////////console.log("enternewly7777777")
-                        ////////console.log("removedrs102")
-                       // $("#newlyclickedelement" + get_an_id_of_radio+arrayofelement[1]).remove(); 
-                       // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
-        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
-            if (element != null) {
-           element.parentNode.removeChild(element);
-                    }
-                    }
-            
-          }}
-      
-       
-       });
-     
-*/
-////////////console.log("11111111111*************");
-/*
-//THIS IS second loop for making an dash
-      $lockers.each(function(index, elem) {
-      //so first step is when click a radio botton check how many times click
-      ////////////console.log('123  ') 
-      var arrayofelement = $(elem).val().split("enter")
-     //////////console.log("this array is there")
-     //////////console.log(arrayofelement[0])
-     //////////console.log(arrayofelement[1])
-     if (typeof arrayofelement[1] != 'undefined')
-     {
-         //now it is undefined that means the disablers is there  so now first check that element type
-         //first get that element
-         tagname = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName')
-         if (tagname == "OPTION")
-         {
-          if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
-          {
-            //in the variable i stored the part id which will be used for title part   
-                  //////////console.log("first time it comess here")  
-               $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
-               //if this is same then hide a text of oldelement in text bar
-              $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-            }
-             
-         }
-         
-     }
-     var previouselem = arrayofelement[2]        
-     });
-   */
-    
-    
-    //im commenting this as above now every thing is now changed
-    /*
-    if ($already_selected)
-    {
-   
- 
-     
-    $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-    
-  
-    }
-    else{
-    var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
-    $part_title_container.find(".part_title_options").html($selection_name);
-   
-    }
-    */
-  
+make_enable_fields($this);
+//the above function will just creates a text box value with a fields of enabled values
+//now have a loop on text box to click on it and after a click make that text box empty
+
+
   });
+
+//this is starting of making fields enable.
+
+function  make_enable_fields($this){
+    
+    console.log("enablesss");
+    
+                        var inp = $("#enable_elment_id").val();
+                        if(jQuery.trim(inp).length > 0)
+                        {
+                           //enable all this fields
+                        }
+                        else
+                        {
+                            
+                console.log("5555555555555")  
+                console.log($this.attr("data-option-enables"))  
+                
+        if($this.attr("data-option-enables")) {
+          var $enables = JSON.parse($this.attr("data-option-enables"));
+        }
+         if(typeof $enables == 'undefined')
+        {
+             if($this.prop('tagName') == "SELECT")
+            {
+               if ($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-enables') != '')
+              {    
+                  if(typeof $("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-enables') != 'undefined')
+                        {    
+                      $enables=JSON.parse($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-enables'))
+              }       
+                  }
+             }
+            
+        }      if($enables) {
+                      console.log("enavlessss");
+                      $("#enable_elment_id").val($enables);
+                       if($enables) {
+        for(i = 0; i < $enables.length; i++) {
+             console.log($enables[i]);
+             
+         if($("[data-option-id='" + $enables[i] + "']").attr('type')=='radio')
+         {
+              $("[data-option-id='" + $enables[i] + "']").prop("checked", true);
+               $("[data-option-id='" + $enables[i] + "']").click();
+         }
+                        else
+         { $("[data-option-id='" + $enables[i] + "']").click();
+        
+         }
+        
+                  }
+     $("#enable_elment_id").val('');
+                
+                
+          }
+    }             
+         
+        }
+                           
+                         
+    
+    
+    
+ 
+}
+
+
 
 $("#proceed_to_order").on('click', function() {
   $("#proceed_to_order_form").submit();
 });
 });
 
+
+ 
  
 
 
@@ -1954,13 +1864,43 @@ function disable_for($element) {
 }
 }
 
+
+
+
+function enable_for_click_elment($element)
+{
+ 
+    if($element.attr("data-option-enables")) {
+    var $enables = JSON.parse($element.attr("data-option-enables"));
+  }
+
+    if($enables) {
+      for(i = 0; i < $enables.length; i++) {
+        var elem_to_enable = $("[data-option-id='" + $enables[i] + "']");
+          //console.log(elem_to_disable)
+          //console.log("elem_to_disable")
+        //alert(elem_to_disable.parent().prop('tagName'));
+       
+         elem_to_enable.prop("disabled", false).removeClass("c_disabled")
+        .closest(".uno_part_wrapper")
+        .find(".option_overlay").remove();
+         //here not only removing a disable but also select that element.means
+        
+        
+        
+        }
+   
+}
+    
+}
+
+
+
+
+
 function disable_for_click_elment($element)
 {
-  //console.log("element")
-  //console.log($element)
-  //console.log($element.attr("data-option-disables"))
-  
-  
+   
 if($element.attr("data-option-disables")) {
     var $disables = JSON.parse($element.attr("data-option-disables"));
   }

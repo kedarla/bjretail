@@ -1,4 +1,4 @@
-module PartsHelper
+  module PartsHelper
   def attribute_name(parent_part, part, value)
     return "order[part][#{parent_part.id}][children][][part][#{part.id}][option][][#{value}]" if parent_part.present?
     
