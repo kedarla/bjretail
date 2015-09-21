@@ -1768,13 +1768,32 @@ function  make_enable_fields($this){
                        if($enables) {
         for(i = 0; i < $enables.length; i++) {
              console.log($enables[i]);
+      tagname = $("[data-option-id='" + $enables[i] + "']").attr('type')
+     if(typeof tagname == 'undefined')
+     {//this might be a option
+     tagname = $("[data-option-id='" + $enables[i] + "']").prop('tagName')
+         
+     }    
              
-         if($("[data-option-id='" + $enables[i] + "']").attr('type')=='radio')
+             
+             
+         if(tagname =='radio')
          {
               $("[data-option-id='" + $enables[i] + "']").prop("checked", true);
                $("[data-option-id='" + $enables[i] + "']").click();
+         } 
+         if(tagname =='OPTION')
+         {
+              $("   option[value='"+$enables[i]+"']").prop('selected', true)
+             // $("[data-option-id='" + $enables[i] + "']").prop("checked", true);
+               $("[data-option-id='" + $enables[i] + "']").click();
          }
+
+                    
                         else
+                            
+                            
+                      
          { $("[data-option-id='" + $enables[i] + "']").click();
         
          }
