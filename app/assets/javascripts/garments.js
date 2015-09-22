@@ -44,7 +44,7 @@ function needtocallonload(){
          }
             finalid = uniqidforsetattr+dis_uniq_attr
       input.setAttribute( "id", "newlyclickedelement"+finalid);
-      input.setAttribute( "value", uniqidforsetattr + "enter"+dis_uniq_attr );
+      input.setAttribute( "value", uniqidforsetattr + "enterkey"+dis_uniq_attr );
       
       input.setAttribute( "class", "lock" );
       
@@ -125,7 +125,7 @@ function needtocallonload(){
 $lockers.each(function(index, elem) {
       //so first step is when click a radio botton check how many times click
       ////////////console.log('123  ') 
-      var arrayofelement = $(elem).val().split("enter")
+      var arrayofelement = $(elem).val().split("enterkey")
      //////////console.log("this array is there")
      //////////console.log(arrayofelement[0])
      //////////console.log(arrayofelement[1])
@@ -956,13 +956,13 @@ function create_a_lock_element($this)
          }
             finalid = uniqidforsetattr+dis_uniq_attr
       input.setAttribute( "id", "newlyclickedelement"+finalid);
-      input.setAttribute( "value", uniqidforsetattr + "enter"+dis_uniq_attr );
+      input.setAttribute( "value", uniqidforsetattr + "enterkey"+dis_uniq_attr );
       
       input.setAttribute( "class", "lock" );
       alreadyexist = false;
       $('.lock').each(function() {
       
-        if($(this).val() == (uniqidforsetattr + "enter"+dis_uniq_attr) )
+        if($(this).val() == (uniqidforsetattr + "enterkey"+dis_uniq_attr) )
         {
             alreadyexist = true;
         }
@@ -1064,7 +1064,7 @@ $(function() {
  $lockers.each(function(index, elem) {
       //so first step is when click a radio botton check how many times click
       ////////////console.log('123  ') 
-      var arrayofelement = $(elem).val().split("enter")
+      var arrayofelement = $(elem).val().split("enterkey")
      //////////console.log("this array is there")
      //////////console.log(arrayofelement[0])
      //////////console.log(arrayofelement[1])
@@ -1077,8 +1077,8 @@ $(function() {
      tagname = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").prop('tagName')
          
      }
-      ////console.log("tagname1111")
-      ////console.log(tagname)
+      console.log("tagname1111")
+      console.log(tagname)
      if (tagname == 'radio')
      {   get_an_id_of_radio = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[0]+"']").attr('id')
          if ($('#'+get_an_id_of_radio).is(':checked'))
@@ -1099,8 +1099,12 @@ $(function() {
               
           }
                 
-          //////////console.log(tagname)
-          //////////console.log(879654)
+           console.log(tagname)
+           console.log(879654)
+           console.log(arrayofelement[0])
+           console.log(arrayofelement[1])
+           console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop('tagName'))
+           console.log($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type'))
          if (tagname == "OPTION")
          {  
              //////////console.log("1111111111122222222");
@@ -1162,6 +1166,8 @@ $(function() {
                   //if the disabled is already selected then make a dash
                   $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
+              console.log("making a dash here")
+              console.log($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
               
              var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
              $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
@@ -1169,7 +1175,8 @@ $(function() {
                     
              }
              else{
-                 ////console.log("the checkbox is unchecked")
+                         console.log(arrayofelement[1])
+                         console.log("the checkbox is unchecked")
              }
              
     }
