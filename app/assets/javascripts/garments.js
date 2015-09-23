@@ -1021,7 +1021,7 @@ $(function() {
          */
       create_a_lock_element($this);
  
-        
+        console.log("aaaaaaaaaaaa")
         $("#readonlyoptions").val($(''));
 
     disable_for_click_elment($this);
@@ -1949,11 +1949,37 @@ function enable_for_click_elment($element)
 
 function disable_for_click_elment($element)
 {
+   console.log("777777777777777")
+   console.log($element)
+   console.log($element.attr('type'))
+   console.log($element.prop('tagName'))
+   
+   
+   console.log($element.attr("data-option-disables"))
+   console.log($element.prop("data-option-disables"))
    
 if($element.attr("data-option-disables")) {
     var $disables = JSON.parse($element.attr("data-option-disables"));
   }
-
+  
+     if(typeof $disables == 'undefined')
+        {
+             if($element.prop('tagName') == "SELECT")
+            {
+               if ($("select[name='"+$element.attr('name')+"'] option:selected").attr('data-option-disables') != '')
+              {   ////console.log("4125")
+                  ////console.log($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-disables'))
+                        if(typeof $("select[name='"+$element.attr('name')+"'] option:selected").attr('data-option-disables') != 'undefined')
+                        {    
+                      $disables=JSON.parse($("select[name='"+$element.attr('name')+"'] option:selected").attr('data-option-disables'))
+              }       
+                  }
+             }
+            
+        }
+  
+  
+console.log($disables)
     if($disables) {
       for(i = 0; i < $disables.length; i++) {
         var elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
@@ -1963,8 +1989,8 @@ if($element.attr("data-option-disables")) {
         if(elem_to_disable.parent().prop('tagName') != 'SELECT')
         {
          //alert("its not a dropdown!");
-         //console.log(elem_to_disable.hasClass('c_disabled'));
-         //console.log("checking class")
+         console.log(elem_to_disable.hasClass('c_disabled'));
+         console.log("checking class")
          //if already has class then dont add it
          if(!elem_to_disable.hasClass('c_disabled'))
          {
