@@ -22,7 +22,7 @@ function needtocallonload(){
                   }       
                 }
               }
-              
+
             }      if($disables) {
               for(i = 0; i < $disables.length; i++) {
                input = document.createElement( "input" );
@@ -32,31 +32,31 @@ function needtocallonload(){
                {
                 dis_uniq_attr = $("input[data-option-id='" + $disables[i] +"']").attr('data-option-uniq-id')
               }
-              
+
               uniqidforsetattr=$this.attr('data-option-uniq-id')
               idforsetattr =  $this.attr('id')
-              
+
               if(typeof $this.attr('data-option-uniq-id') == 'undefined')
               {
                uniqidforsetattr= $("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-uniq-id')
                idforsetattr =  $("select[name='"+$this.attr('name')+"'] option:selected").attr('id')
-               
+
              }
              finalid = uniqidforsetattr+dis_uniq_attr
              input.setAttribute( "id", "newlyclickedelement"+finalid);
              input.setAttribute( "value", uniqidforsetattr + "enterkey"+dis_uniq_attr );
-             
+
              input.setAttribute( "class", "lock" );
-             
+
              document.getElementById('herelocktextboxkept').appendChild(input);
-             
+
            }
          }
-         
-         
-         
-         
-         
+
+
+
+
+
     //then stARTED THE LOOP on .switcher class.
      //then there is a switcher which will actually enabeling all the values
      /*$switchers.each(function(index, elem) {
@@ -136,7 +136,7 @@ $lockers.each(function(index, elem) {
      if(typeof tagname == 'undefined')
      {//this might be a option
        tagname = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").prop('tagName')
-       
+
      }
       //////////console.log("tagname1111")
       //////////console.log(tagname)
@@ -161,9 +161,9 @@ $lockers.each(function(index, elem) {
           if(typeof tagname == 'undefined')
           {
             tagname = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
-            
+
           }
-          
+
           ////////////////console.log(tagname)
           ////////////////console.log(879654)
           if (tagname == "OPTION")
@@ -174,16 +174,16 @@ $lockers.each(function(index, elem) {
               //here first check if this is currently selected or not if not then remove from div 
               // and release text
            //   if $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']") 
-           
+
               ////////////////console.log("11111111111333333");
             //in the variable i stored the part id which will be used for title part   
                   ////////////////console.log("first time it comess here")  
                   $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
-               
-               
+
+
+
              }
          /* else{
               //now else is for like unclicked of elem,ent
@@ -194,21 +194,21 @@ $lockers.each(function(index, elem) {
      
             
               }*/
-              
+
             }
             else if(tagname == 'radio'){
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log('radio1')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
                 //if the disabled is already selected then make a dash
                 $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
+
              }
              else{
                 //////////console.log("it is unchecked")
@@ -220,27 +220,27 @@ $lockers.each(function(index, elem) {
               ////////////console.log(arrayofelement[1])
               //////////console.log('radio123')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
-              
+
                   //if the disabled is already selected then make a dash
                   $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
-               
+
                var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
-               
-               
+
+
              }
              else{
                  //////////console.log("the checkbox is unchecked")
                }
-               
+
              }
-             
+
            }
-           
+
          }
          else{
               //////////console.log("elseeeeeeeeeeeeeeeeeeeeeee")
@@ -250,19 +250,19 @@ $lockers.each(function(index, elem) {
               {
                $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //////////console.log("from here the log is get set")    
-               
+
              }
               //////////console.log($data_option_part_id)
-              
+
  //////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
 //if this is same then hide a text of oldelement in text bar
          //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-         
+
          replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
          if (typeof replace_html == 'undefined')
          {
            replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
-           
+
          }
          
          
@@ -281,7 +281,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
          {
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }    
       }
       else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
@@ -295,7 +295,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         }).get().join(', ');
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
-         
+
          
        }
        else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
@@ -304,16 +304,16 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         //now the second element is also unclicked then dont do anything
         if ($('#'+get_an_id_of_radio).is(':checked')){
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }
         else{
-         
+
         }
-        
-        
-        
+
+
+
       }
-      
+
       else
       {
          ////////////console.log("ultimetly printed from here")
@@ -323,29 +323,29 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          //might be changed that is why i am copying these 3-4 lines
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-         
+
        }
             // if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
-            
-            
+
+
             
             //////////////console.log($this.attr('id')+"removed")    
         //$("#newlyclickedelement"+ get_an_id_of_radio+arrayofelement[1] ).remove(); 
         //////////console.log("now need to remove")
         //////////console.log("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1])
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
-       
+
        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
        if (element != null) {
          element.parentNode.removeChild(element);
        }
-       
-       
+
+
      }
         // $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked')
          //$('#order_part_1_option_1').is(':checked')
          //$('#order_part_1_option_1').is(':checked')
-         
+
        }
        else if(tagname == "OPTION"){
         //if it is an option then we have to see 
@@ -355,24 +355,24 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         //remove the input element
         
         get_an_id_of_option = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").parent().attr('name')
-        
+
        ////////////////console.log('getting an id of option')
        ////////////////console.log(get_an_id_of_option)
        ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text())
        
 //  if ($('#'+get_an_id_of_radio).is(':checked'))
        //  {  
-        
+
        //if it is not selected then remove element and then remove dash
      //  if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
    ////////////////console.log('final testing')
    ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text())
    ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text())
    ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").parent().find('option:selected').text())
-   
-   
+
+
    if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text() == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").parent().find('option:selected').text())
-     
+
    {
     if (typeof arrayofelement[1] != 'undefined')
     {
@@ -387,9 +387,9 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
           if(typeof tagname == 'undefined')
           {
             tagname = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
-            
+
           }
-          
+
           ////////////////console.log(tagname)
           ////////////////console.log(879654)
           if (tagname == "OPTION")
@@ -400,16 +400,16 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
               //here first check if this is currently selected or not if not then remove from div 
               // and release text
            //   if $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']") 
-           
+
               ////////////////console.log("11111111111333333");
             //in the variable i stored the part id which will be used for title part   
                   ////////////////console.log("first time it comess here")  
                   $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
-               
-               
+
+
+
              }
          /* else{
               //now else is for like unclicked of elem,ent
@@ -420,55 +420,55 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
      
             
               }*/
-              
+
             }
             else if(tagname == 'radio'){
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log('radio1')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
                 //if the disabled is already selected then make a dash
                 $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
+
              }
            }
-           
+
            else if(tagname == 'checkbox')
            {
             ////////////console.log(arrayofelement[1])
               ////////////console.log(arrayofelement[1])
               //////////console.log('radio123')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
-              
+
                   //if the disabled is already selected then make a dash
                   $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
-               
+
                var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
-               
-               
+
+
              }
              else{
                  //////////console.log("the checkbox is unchecked")
                }
-               
+
              }
-             
-             
+
+
            }
         //now this is copied code end this can be a new function
         //the above if ends and now need to write an else for removing an element and keeping back a text
       }else{
-        
+
              //////////console.log("elseeeeeeeeeeeeeeeeeeeeeee")
              $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
               //////////console.log($data_option_part_id)
@@ -476,19 +476,19 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
               {
                $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //////////console.log("from here the log is get set")    
-               
+
              }
               //////////console.log($data_option_part_id)
-              
+
  //////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
 //if this is same then hide a text of oldelement in text bar
          //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-         
+
          replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
          if (typeof replace_html == 'undefined')
          {
            replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
-           
+
          }
          
          
@@ -505,7 +505,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
          {
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }    
       }
       else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
@@ -519,7 +519,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         }).get().join(', ');
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
-         
+
          
        }
        else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
@@ -528,16 +528,16 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         //now the second element is also unclicked then dont do anything
         if ($('#'+get_an_id_of_radio).is(':checked')){
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }
         else{
-         
+
         }
-        
-        
-        
+
+
+
       }
-      
+
       else
       {
          ////////////console.log("ultimetly printed from here")
@@ -547,9 +547,9 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          //might be changed that is why i am copying these 3-4 lines
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-         
+
        }
-       
+
        if(typeof arrayofelement[0] != 'undefined')
        {
                         //////////console.log("removedrs")
@@ -561,12 +561,12 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
                          element.parentNode.removeChild(element);
                        }
                      }
-                     
+
         //
         //
         //end of else copied elements
       } 
-      
+
     }
     else if (tagname == 'checkbox'){
       ////////console.log("checkbox")
@@ -574,9 +574,9 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
    // get_an_id_of_radio = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[0]+"']").attr('id')
    //   ////////console.log(get_an_id_of_radio)
           //  if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
-          
+
           if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked') )
-           
+
           {
             if (typeof arrayofelement[1] != 'undefined')
             {
@@ -591,9 +591,9 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
           if(typeof tagname == 'undefined')
           {
             tagname = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
-            
+
           }
-          
+
           ////////////////console.log(tagname)
           ////////////////console.log(879654)
           if (tagname == "OPTION")
@@ -604,16 +604,16 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
               //here first check if this is currently selected or not if not then remove from div 
               // and release text
            //   if $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']") 
-           
+
               ////////////////console.log("11111111111333333");
             //in the variable i stored the part id which will be used for title part   
                   ////////////////console.log("first time it comess here")  
                   $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
-               
-               
+
+
+
              }
          /* else{
               //now else is for like unclicked of elem,ent
@@ -624,14 +624,14 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
      
             
               }*/
-              
+
             }
             else if(tagname == 'radio'){
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log(arrayofelement[1])
               ////////console.log('radio1874')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
                 ////////console.log('radio187488')
@@ -640,7 +640,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
                //if this is same then hide a text of oldelement in text bar
          ////////console.log($data_option_part_id)     
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-         
+
        }
        else{
                 //////////console.log("it is unchecked")
@@ -652,27 +652,27 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
               ////////////console.log(arrayofelement[1])
               //////////console.log('radio123')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
-              
+
                   //if the disabled is already selected then make a dash
                   $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
-               
+
                var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
-               
-               
+
+
              }
              else{
                  //////////console.log("the checkbox is unchecked")
                }
-               
+
              }
-             
+
            }
-           
+
          }
          else{
               //////////console.log("elseeeeeeeeeeeeeeeeeeeeeee")
@@ -682,19 +682,19 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
               {
                $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //////////console.log("from here the log is get set")    
-               
+
              }
               //////////console.log($data_option_part_id)
-              
+
  //////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
 //if this is same then hide a text of oldelement in text bar
          //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-         
+
          replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
          if (typeof replace_html == 'undefined')
          {
            replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
-           
+
          }
          
          
@@ -711,7 +711,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
          {
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }    
       }
       else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
@@ -725,7 +725,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         }).get().join(', ');
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
-         
+
          
        }
        else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
@@ -734,16 +734,16 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         //now the second element is also unclicked then dont do anything
         if ($('#'+get_an_id_of_radio).is(':checked')){
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }
         else{
-         
+
         }
-        
-        
-        
+
+
+
       }
-      
+
       else
       {
          ////////////console.log("ultimetly printed from here")
@@ -753,30 +753,30 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          //might be changed that is why i am copying these 3-4 lines
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-         
+
        }
             // if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
-            
-            
+
+
             
             //////////////console.log($this.attr('id')+"removed")    
         //$("#newlyclickedelement"+ get_an_id_of_radio+arrayofelement[1] ).remove(); 
         //////////console.log("now need to remove")
         //////////console.log("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1])
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
-       
+
        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
        if( element != null){
          element.parentNode.removeChild(element);
        }
-       
-       
+
+
      }
         // $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked')
          //$('#order_part_1_option_1').is(':checked')
          //$('#order_part_1_option_1').is(':checked')
        }
-       
+
     //var previouselem = arrayofelement[2]        
   });
      /*
@@ -916,8 +916,8 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
    
     }
     */
-    
-    
+
+
   }
 
   function create_a_lock_element($this)
@@ -926,7 +926,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
       var $disables = JSON.parse($this.attr("data-option-disables"));
     }
     if(typeof $disables == 'undefined')
-      
+
     {
      if($this.prop('tagName') == "SELECT")
      {
@@ -934,7 +934,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         { $disables=JSON.parse($("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-disables'))
     }
   }
-  
+
 }      if($disables) {
   for(i = 0; i < $disables.length; i++) {
    input = document.createElement( "input" );
@@ -944,24 +944,24 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
    {
     dis_uniq_attr = $("input[data-option-id='" + $disables[i] +"']").attr('data-option-uniq-id')
   }
-  
+
   uniqidforsetattr=$this.attr('data-option-uniq-id')
   idforsetattr =  $this.attr('id')
-  
+
   if(typeof $this.attr('data-option-uniq-id') == 'undefined')
   {
    uniqidforsetattr= $("select[name='"+$this.attr('name')+"'] option:selected").attr('data-option-uniq-id')
    idforsetattr =  $("select[name='"+$this.attr('name')+"'] option:selected").attr('id')
-   
+
  }
  finalid = uniqidforsetattr+dis_uniq_attr
  input.setAttribute( "id", "newlyclickedelement"+finalid);
  input.setAttribute( "value", uniqidforsetattr + "enterkey"+dis_uniq_attr );
- 
+
  input.setAttribute( "class", "lock" );
  alreadyexist = false;
  $('.lock').each(function() {
-  
+
   if($(this).val() == (uniqidforsetattr + "enterkey"+dis_uniq_attr) )
   {
     alreadyexist = true;
@@ -1006,11 +1006,12 @@ else{
 
 }
 $(function() {
- 
+
   var $switchers = $(".switcher");
   run_disabler_for($switchers);
   needtocallonload();
   $("#enable_elment_id").val('');
+  /*
   $(".switcher").on("change", function(e){
     //to update panel title in case of dropdown on Chrome on mac / android - Nirav Shah
 
@@ -1029,9 +1030,9 @@ $(function() {
     $part_title_container.find(".part_title_options").html($selection_name);
     //alert("done");
   });
+  */
 
-
-  $(".switcher").on("click", function(e) {
+  $(".switcher").on("change", function(e) {
     var $this = $(this);
         /*
          copied the code for a creating a new function so this function will be called when
@@ -1040,7 +1041,7 @@ $(function() {
         lock element
         */
         create_a_lock_element($this);
-        
+
         ////console.log("aaaaaaaaaaaa")
         $("#readonlyoptions").val($(''));
 
@@ -1099,7 +1100,7 @@ $lockers.each(function(index, elem) {
      if(typeof tagname == 'undefined')
      {//this might be a option
        tagname = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").prop('tagName')
-       
+
      }
       //////console.log("tagname1111")
       //////console.log(tagname)
@@ -1123,9 +1124,9 @@ $lockers.each(function(index, elem) {
           if(typeof tagname == 'undefined')
           {
             tagname = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
-            
+
           }
-          
+
            //////console.log(tagname)
            //////console.log(879654)
            //////console.log(arrayofelement[0])
@@ -1140,16 +1141,16 @@ $lockers.each(function(index, elem) {
               //here first check if this is currently selected or not if not then remove from div 
               // and release text
            //   if $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']") 
-           
+
               ////////////////console.log("11111111111333333");
             //in the variable i stored the part id which will be used for title part   
                   ////////////////console.log("first time it comess here")  
                   $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
-               
-               
+
+
+
              }
          /* else{
               //now else is for like unclicked of elem,ent
@@ -1160,21 +1161,21 @@ $lockers.each(function(index, elem) {
      
             
               }*/
-              
+
             }
             else if(tagname == 'radio'){
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log('radio1')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
                 //if the disabled is already selected then make a dash
                 $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
+
              }
              else{
                 //////////console.log("it is unchecked")
@@ -1186,10 +1187,10 @@ $lockers.each(function(index, elem) {
               ////////////console.log(arrayofelement[1])
               //////////console.log('radio123')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
-              
+
                   //if the disabled is already selected then make a dash
                   $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
@@ -1199,17 +1200,17 @@ $lockers.each(function(index, elem) {
               var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
               $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
               
-              
+
             }
             else{
                          //////console.log(arrayofelement[1])
                          //////console.log("the checkbox is unchecked")
                        }
-                       
+
                      }
-                     
+
                    }
-                   
+
                  }
                  else{
               //////////console.log("elseeeeeeeeeeeeeeeeeeeeeee")
@@ -1219,19 +1220,19 @@ $lockers.each(function(index, elem) {
               {
                $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //////////console.log("from here the log is get set")    
-               
+
              }
               //////////console.log($data_option_part_id)
-              
+
  //////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
 //if this is same then hide a text of oldelement in text bar
          //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-         
+
          replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
          if (typeof replace_html == 'undefined')
          {
            replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
-           
+
          }
          
          
@@ -1248,7 +1249,7 @@ $lockers.each(function(index, elem) {
          if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
          {
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }    
       }
       else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
@@ -1262,7 +1263,7 @@ $lockers.each(function(index, elem) {
         }).get().join(', ');
          make
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
-         
+
          
        }
        else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
@@ -1271,16 +1272,16 @@ $lockers.each(function(index, elem) {
         //now the second element is also unclicked then dont do anything
         if ($('#'+get_an_id_of_radio).is(':checked')){
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }
         else{
-         
+
         }
-        
-        
-        
+
+
+
       }
-      
+
       else
       {
          ////////////console.log("ultimetly printed from here")
@@ -1290,21 +1291,21 @@ $lockers.each(function(index, elem) {
          //might be changed that is why i am copying these 3-4 lines
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-         
+
        }
             // if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
-            
-            
+
+
             
             //////////////console.log($this.attr('id')+"removed")    
         //$("#newlyclickedelement"+ get_an_id_of_radio+arrayofelement[1] ).remove(); 
         //////////console.log("now need to remove")
         //////////console.log("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1])
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
-       
+
        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
        if (element != null) {
-         
+
      //
     ////////console.log("now i am enabling");
     elem = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[0]+"']");
@@ -1323,22 +1324,22 @@ $lockers.each(function(index, elem) {
         elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
        ////////console.log(elem_to_disable)
        enable_element(elem_to_disable)
-       
+
      }
    }
     //
     element.parentNode.removeChild(element);
         //here whenever i am removing this element from .lock then enable all the elements which are
         //disabled by this click event.
-        
+
       }
-      
-      
+
+
     }
         // $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked')
          //$('#order_part_1_option_1').is(':checked')
          //$('#order_part_1_option_1').is(':checked')
-         
+
        }
        else if(tagname == "OPTION"){
         //if it is an option then we have to see 
@@ -1348,24 +1349,24 @@ $lockers.each(function(index, elem) {
         //remove the input element
         
         get_an_id_of_option = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").parent().attr('name')
-        
+
        ////////////////console.log('getting an id of option')
        ////////////////console.log(get_an_id_of_option)
        ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text())
        
 //  if ($('#'+get_an_id_of_radio).is(':checked'))
        //  {  
-        
+
        //if it is not selected then remove element and then remove dash
      //  if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
    ////////////////console.log('final testing')
    ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text())
    ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text())
    ////////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").parent().find('option:selected').text())
-   
-   
+
+
    if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text() == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").parent().find('option:selected').text())
-     
+
    {
     if (typeof arrayofelement[1] != 'undefined')
     {
@@ -1380,9 +1381,9 @@ $lockers.each(function(index, elem) {
           if(typeof tagname == 'undefined')
           {
             tagname = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
-            
+
           }
-          
+
           ////////////////console.log(tagname)
           ////////////////console.log(879654)
           if (tagname == "OPTION")
@@ -1393,16 +1394,16 @@ $lockers.each(function(index, elem) {
               //here first check if this is currently selected or not if not then remove from div 
               // and release text
            //   if $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']") 
-           
+
               ////////////////console.log("11111111111333333");
             //in the variable i stored the part id which will be used for title part   
                   ////////////////console.log("first time it comess here")  
                   $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
-               
-               
+
+
+
              }
          /* else{
               //now else is for like unclicked of elem,ent
@@ -1413,55 +1414,55 @@ $lockers.each(function(index, elem) {
      
             
               }*/
-              
+
             }
             else if(tagname == 'radio'){
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log('radio1')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
                 //if the disabled is already selected then make a dash
                 $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
+
              }
            }
-           
+
            else if(tagname == 'checkbox')
            {
             ////////////console.log(arrayofelement[1])
               ////////////console.log(arrayofelement[1])
               //////////console.log('radio123')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
-              
+
                   //if the disabled is already selected then make a dash
                   $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
-               
+
                var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
-               
-               
+
+
              }
              else{
                  //////////console.log("the checkbox is unchecked")
                }
-               
+
              }
-             
-             
+
+
            }
         //now this is copied code end this can be a new function
         //the above if ends and now need to write an else for removing an element and keeping back a text
       }else{
-        
+
              //////////console.log("elseeeeeeeeeeeeeeeeeeeeeee")
              $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
               //////////console.log($data_option_part_id)
@@ -1469,19 +1470,19 @@ $lockers.each(function(index, elem) {
               {
                $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //////////console.log("from here the log is get set")    
-               
+
              }
               //////////console.log($data_option_part_id)
-              
+
  //////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'))
 //if this is same then hide a text of oldelement in text bar
          //     $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-         
+
          replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
          if (typeof replace_html == 'undefined')
          {
            replace_html = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
-           
+
          }
          
          
@@ -1498,7 +1499,7 @@ $lockers.each(function(index, elem) {
          if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
          {
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }    
       }
       else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "checkbox"){
@@ -1512,7 +1513,7 @@ $lockers.each(function(index, elem) {
         }).get().join(', ');
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
-         
+
          
        }
        else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
@@ -1521,16 +1522,16 @@ $lockers.each(function(index, elem) {
         //now the second element is also unclicked then dont do anything
         if ($('#'+get_an_id_of_radio).is(':checked')){
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }
         else{
-         
+
         }
-        
-        
-        
+
+
+
       }
-      
+
       else
       {
          ////////////console.log("ultimetly printed from here")
@@ -1540,9 +1541,9 @@ $lockers.each(function(index, elem) {
          //might be changed that is why i am copying these 3-4 lines
          
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-         
+
        }
-       
+
        if(typeof arrayofelement[0] != 'undefined')
        {
                         //////////console.log("removedrs")
@@ -1551,7 +1552,7 @@ $lockers.each(function(index, elem) {
                        // //////////console.log($("#newlyclickedelement" + arrayofelement[0]+arrayofelement[1]).remove()); 
                        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
                        if (element != null) {
-                        
+
                         elem = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']");
                         if(elem.attr("data-option-disables")) {
                           var $disables = JSON.parse(elem.attr("data-option-disables"));
@@ -1564,12 +1565,12 @@ $lockers.each(function(index, elem) {
                           for(i = 0; i < $disables.length; i++) {
                             elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
                             enable_element(elem_to_disable)
-                            
+
                           }
                         }
-                        
-                        
-                        
+
+
+
                         element.parentNode.removeChild(element);
                       }
                     }
@@ -1579,7 +1580,7 @@ $lockers.each(function(index, elem) {
         //
         //end of else copied elements
       } 
-      
+
     }
     else if (tagname == 'checkbox'){
       //////console.log("checkbox5458")
@@ -1587,9 +1588,9 @@ $lockers.each(function(index, elem) {
    // get_an_id_of_radio = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[0]+"']").attr('id')
    //   ////////console.log(get_an_id_of_radio)
           //  if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
-          
+
           if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked') )
-           
+
           {
             if (typeof arrayofelement[1] != 'undefined')
             {
@@ -1604,9 +1605,9 @@ $lockers.each(function(index, elem) {
           if(typeof tagname == 'undefined')
           {
             tagname = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('type')
-            
+
           }
-          
+
            //////console.log(tagname)
            //////console.log(879654)
            if (tagname == "OPTION")
@@ -1617,16 +1618,16 @@ $lockers.each(function(index, elem) {
               //here first check if this is currently selected or not if not then remove from div 
               // and release text
            //   if $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']") 
-           
+
               ////////////////console.log("11111111111333333");
             //in the variable i stored the part id which will be used for title part   
                   ////////////////console.log("first time it comess here")  
                   $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-               
-               
-               
+
+
+
              }
          /* else{
               //now else is for like unclicked of elem,ent
@@ -1637,14 +1638,14 @@ $lockers.each(function(index, elem) {
      
             
               }*/
-              
+
             }
             else if(tagname == 'radio'){
              ////////////////console.log(arrayofelement[1])
              ////////////////console.log(arrayofelement[1])
               ////////console.log('radio1874')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
                 ////////console.log('radio187488')
@@ -1653,7 +1654,7 @@ $lockers.each(function(index, elem) {
                //if this is same then hide a text of oldelement in text bar
          ////////console.log($data_option_part_id)     
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html('-');
-         
+
        }
        else{
                 //////////console.log("it is unchecked")
@@ -1665,27 +1666,27 @@ $lockers.each(function(index, elem) {
               ////////////console.log(arrayofelement[1])
               //////////console.log('radio123')
              //what i have to do here is check its disable is already clicked if yes then change the title 
-             
+
              if( $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").is(':checked') )
              {
-              
+
                   //if the disabled is already selected then make a dash
                   $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                //if this is same then hide a text of oldelement in text bar
-               
+
                var make_dash = $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html()
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(make_dash.replace($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name'),"-") );
-               
-               
+
+
              }
              else{
                  //////////console.log("the checkbox is unchecked")
                }
-               
+
              }
-             
+
            }
-           
+
          }
          else{
                //////console.log("elseeeeeeeeeeeeeeeeeeeeeee")
@@ -1695,7 +1696,7 @@ $lockers.each(function(index, elem) {
               {
                $data_option_part_id=$(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
                 //////console.log("from here the log is get set")    
-                
+
               }
                //////console.log($data_option_part_id)
                replace_html = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-name')  
@@ -1718,7 +1719,7 @@ $lockers.each(function(index, elem) {
                 }
               }).get().join(', ');
                $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
-               
+
              }
              else if($(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr("type") == "radio"){
               get_an_id_of_radio = $(".switcher").filter("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('id')
@@ -1726,16 +1727,16 @@ $lockers.each(function(index, elem) {
         //now the second element is also unclicked then dont do anything
         if ($('#'+get_an_id_of_radio).is(':checked')){
           $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
-          
+
         }
         else{
-         
+
         }
-        
-        
-        
+
+
+
       }
-      
+
       else
       {
        $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
@@ -1745,11 +1746,11 @@ $lockers.each(function(index, elem) {
             //////console.log(element)
             //////console.log(arrayofelement[0])
             //////console.log(arrayofelement[1])
-            
+
             
             if (element != null) {
              elem = $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']");
-             
+
           //////console.log(elem.attr("data-option-disables"))           
           if(elem.attr("data-option-disables")) {
             var $disables = JSON.parse(elem.attr("data-option-disables"));
@@ -1769,7 +1770,7 @@ $lockers.each(function(index, elem) {
         }
       }
     }
-    
+
     //var previouselem = arrayofelement[2]        
   });
 
@@ -1784,7 +1785,7 @@ make_enable_fields($this);
 //this is starting of making fields enable.
 
 function  make_enable_fields($this){
-  
+
     //////console.log("enablesss");
     
     var inp = $("#enable_elment_id").val();
@@ -1794,7 +1795,7 @@ function  make_enable_fields($this){
                          }
                          else
                          {
-                          
+
                 //////console.log("5555555555555")  
                 //////console.log($this.attr("data-option-enables"))  
                 
@@ -1813,7 +1814,7 @@ function  make_enable_fields($this){
                     }       
                   }
                 }
-                
+
               }      if($enables) {
                       //////console.log("enavlessss");
                       $("#enable_elment_id").val($enables);
@@ -1824,17 +1825,17 @@ function  make_enable_fields($this){
              if(typeof tagname == 'undefined')
      {//this might be a option
        tagname = $("[data-option-id='" + $enables[i] + "']").prop('tagName')
-       
+
      }    
-     
-     
-     
+
+
+
      if(tagname =='radio')
      {
       $("[data-option-id='" + $enables[i] + "']").prop("checked", true);
-      
+
       $("[data-option-id='" + $enables[i] + "']").click();
-      
+
     } 
     if(tagname =='OPTION')
     {
@@ -1843,11 +1844,11 @@ function  make_enable_fields($this){
              $("[data-option-id='" + $enables[i] + "']").click();
            }
 
-           
+
            else
-            
-            
-            
+
+
+
            { 
              //console.log("enabeling")
              //console.log($("[data-option-id='" + $enables[i] + "']").is(':checked'))
@@ -1856,11 +1857,11 @@ function  make_enable_fields($this){
           $("[data-option-id='" + $enables[i] + "']").click();
         }
       }
-      
+
     }
     $("#enable_elment_id").val('');
-    
-    
+
+
   }
 }             
 
@@ -1895,7 +1896,7 @@ function run_disabler_for($elements) {
   $elements.find(':selected').each(function(index, elem) {
 //     ////////console.log("disable");
   //   ////////console.log(elem.click()) ;
-  
+
   disable_for($(elem));
 });
 }
@@ -1916,12 +1917,12 @@ function disable_for($element) {
         {
          //alert("its not a dropdown!");
          elem_to_disable.prop("readonly", "readonly")
-         
+
          .addClass("c_disabled")
          .closest(".uno_part_wrapper")
          .prepend("<div class='option_overlay'/>");       
 
-         
+
          $("#readonlyoptions").val($("#readonlyoptions").val()+" "+elem_to_disable.prop("value"));
 
        }
@@ -1932,13 +1933,13 @@ function disable_for($element) {
         ////////console.log("elem_to_disable11111111")
         elem_to_disable.prop("readonly","readonly").addClass("c_disabled").closest(".uno_part_wrapper")
       //.prepend("<div class='option_overlay'/>");
-      
+
       $("#readonlyoptions").val($("#readonlyoptions").val()+" "+elem_to_disable.prop("value"));
-      
+
       
     }
   }
-  
+
 }
 }
 
@@ -1947,7 +1948,7 @@ function disable_for($element) {
 
 function enable_for_click_elment($element)
 {
- 
+
   if($element.attr("data-option-enables")) {
     var $enables = JSON.parse($element.attr("data-option-enables"));
   }
@@ -1958,18 +1959,18 @@ function enable_for_click_elment($element)
           ////////console.log(elem_to_disable)
           ////////console.log("elem_to_disable")
         //alert(elem_to_disable.parent().prop('tagName'));
-        
+
         elem_to_enable.prop("disabled", false).removeClass("c_disabled")
         .closest(".uno_part_wrapper")
         .find(".option_overlay").remove();
          //here not only removing a disable but also select that element.means
-         
-         
-         
+
+
+
        }
-       
+
      }
-     
+
    }
 
 
@@ -2004,10 +2005,10 @@ function enable_for_click_elment($element)
                   }       
                 }
               }
-              
+
             }
-            
-            
+
+
 ////console.log($disables)
 if($disables) {
   for(i = 0; i < $disables.length; i++) {
@@ -2027,8 +2028,8 @@ if($disables) {
           .addClass("c_disabled")
           .closest(".uno_part_wrapper")
           .prepend("<div class='option_overlay'/>");       
-          
-          
+
+
           $("#readonlyoptions").val($("#readonlyoptions").val()+" "+elem_to_disable.prop("value"));
         }
       }
@@ -2040,14 +2041,14 @@ if($disables) {
         ////////console.log("elem_to_disable11111111")
         elem_to_disable.prop("readonly","readonly").addClass("c_disabled").closest(".uno_part_wrapper")
       //.prepend("<div class='option_overlay'/>");
-      
+
       $("#readonlyoptions").val($("#readonlyoptions").val()+" "+elem_to_disable.prop("value"));
-      
-      
+
+
       
     }
   }
-  
+
 }
 }
 
@@ -2075,6 +2076,6 @@ function  enable_element(elem)
     elem.prop("disabled", false).removeClass("c_disabled")
     .closest(".uno_part_wrapper")
     .find(".option_overlay").remove();
-    
-    
+
+
   }
