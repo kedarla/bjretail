@@ -1261,7 +1261,7 @@ $lockers.each(function(index, elem) {
             return $(el).attr('data-option-name');
           }
         }).get().join(', ');
-         make
+         //make
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(checkboxnamename);
 
          
