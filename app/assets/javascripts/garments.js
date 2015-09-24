@@ -1,4 +1,4 @@
-function needtocallonload(){
+ function needtocallonload(){
     /*
      * copied this function same as down because i want this complete functionality should work for 
      * document.load 
@@ -6,6 +6,7 @@ function needtocallonload(){
      var $switchers = $(".switcher");
      $(".switcher").each(function( index ) {
       var $this = $(this);
+      
       if($this.attr("data-option-disables")) {
         var $disables = JSON.parse($this.attr("data-option-disables"));
       }
@@ -112,7 +113,9 @@ function needtocallonload(){
     
    //the above code is for normal display now need to work on logic for .lock class
    // to change the title text bar changes
+   //make_enable_fields($this);
  });
+ 
 var $lockers = $(".lock");
   ////////////////console.log("2222222222222")
     //now here is a loop on .lock inputs,what i have to do is from each text box get his value
@@ -243,7 +246,8 @@ $lockers.each(function(index, elem) {
 
          }
          else{
-              //////////console.log("elseeeeeeeeeeeeeeeeeeeeeee")
+             
+         
               $data_option_part_id=$(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").attr('data-option-part-id')
               //////////console.log($data_option_part_id)
               if (typeof $data_option_part_id == 'undefined')
@@ -274,6 +278,20 @@ $lockers.each(function(index, elem) {
 ////////console.log(11111111111111111);
 ////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']"))
 ////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName"))
+// one more condition i am adding here before make its title in panel and that is if the same
+// element is disabled by other element then dont change its panel title.
+// for that using the lock input box here. here i used .lock hidden values but as talked with nirav just for
+//this we are using .lock the other uses of .lock may not b useful
+console.log(arrayofelement[1])
+console.log(arrayofelement[0])
+console.log("")
+//this if condition means if the same elemnt is disable by another element
+if($("input[id$='"+arrayofelement[1]+"']").length>1)
+{
+    
+}
+else
+{
 if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName") == "OPTION")
 {
          //check weather it is se,lected
@@ -325,7 +343,8 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
 
        }
-            // if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
+   }
+                // if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
 
 
             
@@ -334,12 +353,13 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         //////////console.log("now need to remove")
         //////////console.log("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1])
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
-
+  if(typeof arrayofelement[0] != 'undefined')
+       {
        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
        if (element != null) {
          element.parentNode.removeChild(element);
        }
-
+       }
 
      }
         // $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked')
@@ -372,7 +392,6 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
 
 
    if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").text() == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").parent().find('option:selected').text())
-
    {
     if (typeof arrayofelement[1] != 'undefined')
     {
@@ -497,7 +516,12 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          //is selected if yes then chasnge else dont 
     //     //////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName"))
  //////////////console.log("tagnamee")
-
+if($("input[id$='"+arrayofelement[1]+"']").length>1)
+{
+    
+}
+else
+{
  if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName") == "OPTION")
  {
          //check weather it is se,lected
@@ -549,7 +573,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
 
        }
-
+       }
        if(typeof arrayofelement[0] != 'undefined')
        {
                         //////////console.log("removedrs")
@@ -703,7 +727,12 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          //is selected if yes then chasnge else dont 
     //     //////////////console.log($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName"))
  //////////////console.log("tagnamee")
-
+if($("input[id$='"+arrayofelement[1]+"']").length>1)
+{
+    
+}
+else
+{
  if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("tagName") == "OPTION")
  {
          //check weather it is se,lected
@@ -755,6 +784,7 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          $('span#part_' + $data_option_part_id + '_title_container').find('.part_title_options').html(replace_html);
 
        }
+   }
             // if(arrayofelement[1] == $(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").parent().find('option:selected').attr('data-option-uniq-id') ) 
 
 
@@ -764,12 +794,13 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
         //////////console.log("now need to remove")
         //////////console.log("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1])
        // $("#newlyclickedelement"+ arrayofelement[0]+arrayofelement[1] ).remove(); 
-
+  if(typeof arrayofelement[0] != 'undefined')
+       {
        var element = document.getElementById("newlyclickedelement"+ arrayofelement[0]+arrayofelement[1]);
        if( element != null){
          element.parentNode.removeChild(element);
        }
-
+       }
 
      }
         // $(".switcher").find("[data-option-uniq-id='"+arrayofelement[0]+"']").is(':checked')
@@ -777,8 +808,10 @@ if($(".switcher").find("[data-option-uniq-id='"+arrayofelement[1]+"']").prop("ta
          //$('#order_part_1_option_1').is(':checked')
        }
 
-    //var previouselem = arrayofelement[2]        
+    //var previouselem = arrayofelement[2]     
+    
   });
+  
      /*
     $lockers.each(function(index, elem) { 
       //so first step is when click a radio botton check how many times click
@@ -1011,82 +1044,30 @@ $(function() {
   run_disabler_for($switchers);
   needtocallonload();
   $("#enable_elment_id").val('');
-  /*
-  $(".switcher").on("change", function(e){
-    //to update panel title in case of dropdown on Chrome on mac / android - Nirav Shah
-
-    //alert("in case of dropdown");
-    //var $mypart_id = $this.attr("data-option-part-id");
-    $selection_name = $(this).find(':selected').attr('data-option-name');
-    //alert($selection_name);
-    var $mypart_id = $(this).attr("data-option-part-id");
-    if(!$mypart_id) {
-      $mypart_id = $(this).attr("data-part-id");
-      $selection_name = $(this).find(':selected').attr('data-option-name');
-    }
-    console.log($mypart_id);
-    var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
-    console.log($part_title_container)
-    $part_title_container.find(".part_title_options").html($selection_name);
-    //alert("done");
-  });
-  */
-
-  $(".switcher").on("change", function(e) {
+   
+  $(".switcher").on("click", function(e) {
     var $this = $(this);
-        /*
-         copied the code for a creating a new function so this function will be called when
-        an element is clicked and that element is not clicked for enabeling itself that means.
-        when an element is clicked and that is in enable state then dont create an hidden field of 
-        lock element
-        */
-        create_a_lock_element($this);
+         create_a_lock_element($this);
 
-        ////console.log("aaaaaaaaaaaa")
+       console.log("aaaaaaaaaaaa")
         $("#readonlyoptions").val($(''));
 
-        disable_for_click_elment($this);
-   // disable_for($this);
-     // then there is a run for disableing all the values
-   // run_disabler_for($switchers);
-    //now here the code will be run on lock class elements as they are hidden and according to that a 
-    //title is shown
-    // Panel title update
+     
     var $mypart_id = $this.attr("data-option-part-id");
-    //console.log("5555555")
-    //console.log($mypart_id)
-    
-    
+     
     var $selection_name = $switchers.filter("[data-option-part-id='" + $mypart_id + "']").map(function(i, el) {
       if($(el).is(':checked')) {
         return $(el).attr('data-option-name');
       }
     }).get().join(', ');
-     //console.log("all the selection name will be there")
-    //console.log($selection_name)
-    if(!$mypart_id) {
+       if(!$mypart_id) {
       $mypart_id = $this.attr("data-part-id");
       $selection_name = $this.find(':selected').attr('data-option-name');
     }
     var $part_title_container = $("span#part_" + $mypart_id + "_title_container");
-    //console.log("88888888888888888")
-    //console.log($part_title_container)
-    //console.log($mypart_id)
-    $part_title_container.find(".part_title_options").html($selection_name);
-    //console.log("setting an html")
-    //console.log($selection_name)
-    //let it change the title but my locker should wsork
-    //the above code is for normal display now need to work on logic for .lock class
-   // to change the title text bar changes 
-   var $lockers = $(".lock");
-  ////////////////console.log("2222222222222")
-    //now here is a loop on .lock inputs,what i have to do is from each text box get his value
-   //split it via a word enter then first will be newly cllicked element and another is its disabled uniq id
-   //now first get that element. if that type is drop  down and it is selected then change its title else
-   //not like that have to work on each element
-//the first loop is for remove an element which is unclicked and which are previously clicked
-//then there is a first loop of lockers
-$lockers.each(function(index, elem) {
+     $part_title_container.find(".part_title_options").html($selection_name);
+       var $lockers = $(".lock");
+   $lockers.each(function(index, elem) {
       //so first step is when click a radio botton check how many times click
       //////////////////console.log('123  ') 
       var arrayofelement = $(elem).val().split("enterkey")
@@ -1323,6 +1304,7 @@ $lockers.each(function(index, elem) {
       for(i = 0; i < $disables.length; i++) {
         elem_to_disable = $("[data-option-id='" + $disables[i] + "']");
        ////////console.log(elem_to_disable)
+       
        enable_element(elem_to_disable)
 
      }
@@ -1778,7 +1760,7 @@ $lockers.each(function(index, elem) {
 make_enable_fields($this);
 //the above function will just creates a text box value with a fields of enabled values
 //now have a loop on text box to click on it and after a click make that text box empty
-
+disable_for_click_elment($this);
 
 });
 
@@ -1979,14 +1961,14 @@ function enable_for_click_elment($element)
 
    function disable_for_click_elment($element)
    {
-   ////console.log("777777777777777")
-   ////console.log($element)
+    console.log("777777777777777")
+    console.log($element)
    ////console.log($element.attr('type'))
    ////console.log($element.prop('tagName'))
    
    
-   ////console.log($element.attr("data-option-disables"))
-   ////console.log($element.prop("data-option-disables"))
+    console.log($element.attr("data-option-disables"))
+    console.log($element.prop("data-option-disables"))
    
    if($element.attr("data-option-disables")) {
     var $disables = JSON.parse($element.attr("data-option-disables"));
@@ -2022,8 +2004,12 @@ if($disables) {
          ////console.log(elem_to_disable.hasClass('c_disabled'));
          ////console.log("checking class")
          //if already has class then dont add it
+         console.log(elem_to_disable.hasClass('c_disabled'));
+         console.log(!elem_to_disable.hasClass('c_disabled'));
+         
          if(!elem_to_disable.hasClass('c_disabled'))
          {
+             console.log("adding a class")
           elem_to_disable.prop("readonly", "readonly")
           .addClass("c_disabled")
           .closest(".uno_part_wrapper")
@@ -2037,8 +2023,8 @@ if($disables) {
       {
         //alert("it is a dropdown");
         
-        ////////console.log(elem_to_disable)
-        ////////console.log("elem_to_disable11111111")
+         console.log(elem_to_disable)
+         console.log("elem_to_disable11111111")
         elem_to_disable.prop("readonly","readonly").addClass("c_disabled").closest(".uno_part_wrapper")
       //.prepend("<div class='option_overlay'/>");
 
@@ -2050,6 +2036,7 @@ if($disables) {
   }
 
 }
+ 
 }
 
 
@@ -2070,12 +2057,29 @@ else{
 
 function  enable_element(elem)
 {
-    //////console.log("enabeling lement");
-    //////console.log(elem);
-    
-    elem.prop("disabled", false).removeClass("c_disabled")
+     console.log("enabeling lement");
+     console.log(elem.attr('data-option-uniq-id'));
+     console.log(elem.prop('data-option-uniq-id'));
+    $elemuniid =  elem.attr('data-option-uniq-id')
+    if (typeof $elemuniid == 'undefined'){
+    $elemuniid =  elem.prop('data-option-uniq-id')
+        
+    }
+console.log($("input[id$='"+$elemuniid+"']").length)
+    if($("input[id$='"+$elemuniid+"']").length>1)
+{
+   
+
+}
+else
+{
+  elem.prop("disabled", false).removeClass("c_disabled")
     .closest(".uno_part_wrapper")
     .find(".option_overlay").remove();
+   
+}  
 
+    
+   
 
   }
