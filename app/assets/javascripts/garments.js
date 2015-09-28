@@ -109,7 +109,7 @@ function enable_for($element,$elements) {
     if ($element.attr("data-option-enables")) {
         var $enables = JSON.parse($element.attr("data-option-enables"));
     }
-    //console.log($enables)
+    
     if ($enables) {
         for (i = 0; i < $enables.length; i++) {
             var elem_to_enable = $("[data-option-id='" + $enables[i] + "']");
