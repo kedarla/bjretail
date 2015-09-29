@@ -64,12 +64,16 @@ $(function() {
     });
 
     function run_title_update_for($elements)
-    {
+    {   console.log("running title updateee")
+        
         $elements.filter(':checked').each(function(index, elem) {
             update_enable_title($(elem), $elements)
         });
         // Disable options for dropdown
         $elements.find(':selected').each(function(index, elem) {
+        console.log(($(elem)))
+        console.log("ssssssssssssss")
+        
             update_enable_title($(elem), $elements)
         });
     }
@@ -89,15 +93,15 @@ function run_disabler_for($elements) {
 }
 
 function run_enabler_for($elements) {
-    //console.log("running enabler")
+    console.log("running enabler")
     $elements.filter(':checked').each(function(index, elem) {
         enable_for($(elem),$elements);
     });
     // Disable options for dropdown
     
     $elements.find(':selected').each(function(index, elem) {
-        //console.log("selected element");
-        //console.log($(elem));
+        console.log("selected element");
+        console.log($(elem));
         
         enable_for($(elem),$elements);
     });
@@ -109,14 +113,16 @@ function enable_for($element,$elements) {
     if ($element.attr("data-option-enables")) {
         var $enables = JSON.parse($element.attr("data-option-enables"));
     }
+    console.log("the enablers will be nothing")
+    console.log($enables)
     
     if ($enables) {
         for (i = 0; i < $enables.length; i++) {
             var elem_to_enable = $("[data-option-id='" + $enables[i] + "']");
         //here i need to check that this element is not disabled otherwise its a conflict    
         //test this condition for all the elements
-        //console.log("checking it has class")
-        //console.log(elem_to_enable.hasClass('c_disabled'))
+        console.log("checking it has class")
+        console.log(elem_to_enable.hasClass('c_disabled'))
         
         if(elem_to_enable.hasClass('c_disabled'))
         {
@@ -283,3 +289,15 @@ function set_enable_title(elem_to_enable, tagname, $elements)
         }
     }
  }
+ function change_label_images(divids,thisref)
+{
+////////console.log($(thisref).text());
+$(".hide"+divids).toggle();
+if($(thisref).text() == 'Show More')
+{
+  $(thisref).text('Show Less')
+}
+else{
+  $(thisref).text('Show More')
+}
+}
