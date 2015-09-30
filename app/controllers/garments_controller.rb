@@ -1,6 +1,7 @@
 class GarmentsController < ApplicationController
   before_action :set_garment, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /garments
   # GET /garments.json
   def index

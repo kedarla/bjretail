@@ -1,8 +1,15 @@
   module PartsHelper
   def attribute_name(parent_part, part, value)
     return "order[part][#{parent_part.id}][children][][part][#{part.id}][option][][#{value}]" if parent_part.present?
+  if part.display_type == "checkbox"
+  return "order[part][#{part.id}][option][]"
+  
+  else
+ return  "order[part][#{part.id}][option]"
+  
+  end
     
-    "order[part][#{part.id}][option]"
+ 
   end
 
   def options_for_part_child(part_child)
