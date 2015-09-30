@@ -19,12 +19,12 @@
 
         <span class = "span1"><b><%= part.name %>: </b> 
         <% if !option.blank?%>
-        <%if params[:readonlyoptions].split(" ").uniq.include? option.id.to_s%>
-           -
-        <%else%>  
+       
+          <%if option.class == Array%>
+          <%option.map(&:name).join(",")%>   
+          <%else%>
           <%= option.name %>
-        <%end%>
-    
+           <%end%>
         <%else%>  
           -
         <%end%>

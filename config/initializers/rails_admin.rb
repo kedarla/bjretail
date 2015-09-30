@@ -3,11 +3,18 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
-
+   config.authenticate_with do
+     warden.authenticate! scope: :user
+   end
+   config.current_user_method(&:current_user)
+ config.authorize_with do |controller|
+    unless current_user.email == 'admin@gmaill.com'
+      render :text => "You are not an admin"
+       
+    end
+  end
+  
+  
   ## == Cancan ==
   # config.authorize_with :cancan
 

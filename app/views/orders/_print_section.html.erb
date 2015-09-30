@@ -12,41 +12,17 @@
           <% part = Part.find part_key %>
      <%if !part_values["option"].blank? %>         
            <% option = Option.find part_values["option"]  %>
-      
-    <% if option.print_sections.include?(print_section) %>
-            
-              
-                <% option = Option.find part_values["option"] %>
-
-                <div class = "col-xs-2">
-                  <%= image_tag option.printable_photo(:small) %>
-                </div> 
-            
-                <% if part_values["children"].present? %>
-                  
-                    <% part_values["children"].each do |subpart_hash| %>
-                      <% subpart_hash.each do |sub_k, sub_v| %>
-                        <% sub_v.each do |subpart_key, subpart_value| %>
-                          <% child_part = Part.find subpart_key %>
-
-                          <% subpart_value["option"].each do |opt_hash| %>
-                            <% if opt_hash["id"].present? %>
-                              <% child_part_option = Option.find opt_hash["id"] %>
-                              <div class = "col-xs-2">
-                              <%= image_tag child_part_option.printable_photo(:small) %>
-                              </div>
-                            <% else %>
-                              <h5><%= opt_hash["value"] %></h5>
-                            <% end %>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                  
-                <% end %>
-             
-            
-          <% end %>
+               <%if option.class == Array%>
+                    <%option.each do |opt|%>
+                         <%if !opt.printable_photo(:small).include? "missing"%>
+                        <%=render :partial=>"p_section",:locals=>{:option=>opt,:print_section=>print_section,:part_values=>part_values}%>
+                         <%end%>   
+        <%end%>
+               <%else%>
+       <%if !option.printable_photo(:small).include? "missing"%>
+                 <%=render :partial=>"p_section",:locals=>{:option=>option,:print_section=>print_section,:part_values=>part_values}%>
+       <% end %>
+        <% end %>                                             
         <% end %>
       <% end %>
                               <% end %>
@@ -54,3 +30,4 @@
   </div>
   </div>
 </div>
+
