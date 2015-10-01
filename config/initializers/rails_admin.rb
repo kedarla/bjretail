@@ -8,7 +8,7 @@ RailsAdmin.config do |config|
    end
    config.current_user_method(&:current_user)
  config.authorize_with do |controller|
-    unless current_user.email == 'admin@gmaill.com'
+    unless current_user.email == 'admin@bjretail.com'
       render :text => "You are not an admin"
        
     end
