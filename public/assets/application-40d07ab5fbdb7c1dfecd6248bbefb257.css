@@ -23,10 +23,9 @@ body{
 	
 }
 .p_name{
-	font-weight: 100;
-    margin-left: 18px;
-    margin-right: 40px;
+	 
    display: inline-block;
+   font-weight: normal;
 }
 
 
@@ -5876,18 +5875,18 @@ img {
 .btn-extra {
   margin-left: 15px;
 }
-/* line 1, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/manual.css.scss */
+/* line 1, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/manual.css.scss */
 img {
   height: 100px;
   display: block;
 }
-/* line 5, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/options.css.scss */
+/* line 5, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/options.css.scss */
 label.option_radio_label > input {
   /* HIDE RADIO */
   display: none;
 }
 
-/* line 11, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/options.css.scss */
+/* line 11, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/options.css.scss */
 input.part_child_18 + img,
 input.radio_option_child + img,
 label.option_radio_label > input + img {
@@ -5897,7 +5896,7 @@ label.option_radio_label > input + img {
   height: 100px;
   display: block;
 }
-/* line 5, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
+/* line 5, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
 .part-options {
   border: 1px solid #DDD;
   margin-bottom: 20px;
@@ -5905,12 +5904,12 @@ label.option_radio_label > input + img {
   over-flow: hidden;
 }
 
-/* line 12, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
+/* line 12, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
 .part-child-wrapper {
   margin-top: 20px;
 }
 
-/* line 17, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
+/* line 17, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
 .uno_part_wrapper .option_overlay {
   position: absolute;
   top: 0;
@@ -5921,7 +5920,7 @@ label.option_radio_label > input + img {
   opacity: 0.5;
   background-color: #FFF;
 }
-/* line 28, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
+/* line 28, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
 .uno_part_wrapper input[type="radio"], .uno_part_wrapper input[type="checkbox"] {
   width: 100px;
   height: 100px;
@@ -5929,7 +5928,7 @@ label.option_radio_label > input + img {
   opacity: 0;
   cursor: pointer;
 }
-/* line 36, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
+/* line 36, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/parts.css.scss */
 .uno_part_wrapper input:checked + img {
   cursor: pointer;
   border: 1px solid transparent;
@@ -5940,11 +5939,11 @@ label.option_radio_label > input + img {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 6, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/print_sections.css.scss */
+/* line 6, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/print_sections.css.scss */
 .panel-body {
   padding: 5px;
 }
-/* line 1, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 1, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 body {
   background-color: #fff;
   color: #333;
@@ -5953,52 +5952,52 @@ body {
   line-height: 18px;
 }
 
-/* line 9, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 9, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-/* line 15, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 15, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
 
-/* line 21, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 21, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 a {
   color: #000;
 }
-/* line 23, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 23, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 a:visited {
   color: #666;
 }
-/* line 26, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 26, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 a:hover {
   color: #fff;
   background-color: #000;
 }
 
-/* line 33, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 33, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 div.field, div.actions {
   margin-bottom: 10px;
 }
 
-/* line 38, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 38, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 #notice {
   color: green;
 }
 
-/* line 42, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 42, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 48, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 48, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -6007,7 +6006,7 @@ div.field, div.actions {
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-/* line 55, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 55, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -6018,7 +6017,7 @@ div.field, div.actions {
   background-color: #c00;
   color: #fff;
 }
-/* line 65, /home/kedar/bjretail/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
+/* line 65, /home/kedar/Downloads/bjretaildownload/bjretail-letsalign/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
