@@ -15,8 +15,10 @@
         <%if !part_values["option"].blank?%>
         <% option = Option.find part_values["option"] %>
           <%end%>
+       
         
-
+         <%if part.display_type == "textbox" and option.blank?%>
+          <%else%>
         <span class = "span1"><b><%= part.name %>: </b> 
         <% if !option.blank?%>
        
@@ -29,30 +31,28 @@
           -
         <%end%>
         </span>
+        <%end%>
           
           <% if part_values["children"].present? %>
           <% part_values["children"].each do |subpart_hash| %>
           <% subpart_hash.each do |sub_k, sub_v| %>
           <% sub_v.each do |subpart_key, subpart_value| %>
           <% child_part = Part.find subpart_key %>
-          <span class = "span1"> <b><%= child_part.name %>: </b>
-            <% subpart_value["option"].each do |opt_hash| %>
-            <% if opt_hash["id"].present? %>
-            <% child_part_option = Option.find opt_hash["id"] %>
-        <%if params[:readonlyoptions].split(" ").uniq.include? child_part_option.id.to_s%>
-            -
-                <%else%>
-               <%= child_part_option.name %>
-                <%end%>
-                
-             
-            
-              
+        
+        <%if child_part.display_type == "textbox" and subpart_value["option"][0]["value"].blank?%>
+          <%else%>
+           <span class = "span1"> <b><%= child_part.name %>: </b>
+             <% subpart_value["option"].each do |opt_hash| %>
+             <% if opt_hash["id"].present? %>
+                 <% child_part_option = Option.find opt_hash["id"] %>
+                  <%= child_part_option.name %>
               <% else %>
-            <%= opt_hash["value"] %> 
-            <% end %>
+                <%= opt_hash["value"] %> 
+             <% end %>
             <% end %>
           </span>
+        <% end %>
+        
           <% end %>
           <% end %>
           <% end %>
