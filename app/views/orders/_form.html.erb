@@ -21,7 +21,7 @@
         <% if !option.blank?%>
        
           <%if option.class == Array%>
-          <%=option.map(&:name).join(",")%>   
+          <%=  option.map(&:name).join(",")%>   
           <%else%>
           <%= option.name %>
            <%end%>
