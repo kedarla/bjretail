@@ -36,13 +36,20 @@
                                                          <% if opt_hash["id"].present? %>
                                                            <% child_part_option = Option.find opt_hash["id"] %>
                                                            <div class = "col-xs-2">
+                                                                <% if child_part_option.print_sections.include?(print_section) %>
                                                            <% if child_part_option.printable_photo.present? %>
 
-                                                            <%= image_tag child_part_option.printable_photo(:small) %>
+                                                            <%= image_tag child_part_option.printable_photo(:small) %>222222
+                                                           <% end %>
                                                            <% end %>
                                                            </div>
                                                          <% else %>
-                                                           <h5><%= opt_hash["value"] %></h5>
+                                                              
+                                                           <h5>
+                                                           <%if print_section.parts.include? child_part%>
+                                                            <%= opt_hash["value"] %></h5>
+                                                            <%end%>
+
                                                          <% end %>
                                                        <% end %>
                                                      <% end %>
