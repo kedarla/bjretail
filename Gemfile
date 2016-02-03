@@ -7,7 +7,7 @@ gem 'rails', '4.0.2'
 group :development, :test do
   gem 'sqlite3'
 end
-gem 'pg'
+gem 'pg','0.18.3'
 group :production, :staging do
   
   gem 'rails_12factor'
