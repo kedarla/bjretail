@@ -10,7 +10,17 @@
 		<div class="btn-group btn-group-justified">
 
 
-			<%= link_to garment.name, garment_path(garment.id), :class => "btn btn-default",:onclick=>"$('#show_loading_#{garment.id}').css('display','block')" %>
+			<%#= link_to garment.name, garment_path(garment.id), :class => "btn btn-default",:onclick=>"$('#show_loading_#{garment.id}').css('display','block')" %>
+
+			 
+			<%= form_tag(garment_path(garment.id),:method=>:get) do -%>
+			    
+               <div><%= submit_tag  garment.name ,:class=>'btn btn-default',:onclick=>"$('#show_loading_#{garment.id}').css('display','block')" %>
+
+               </div>
+            <% end -%>
+
+
 		</div>
 	</div>
 	 <div id="show_loading_<%=garment.id%>" style="display:none;">

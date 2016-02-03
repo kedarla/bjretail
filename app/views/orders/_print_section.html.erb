@@ -11,20 +11,23 @@
         <% v.each do |part_key, part_values| %>
 
           <% part = Part.find part_key %>
+           
      <%if !part_values["option"].blank? %>         
-           <% option = Option.find part_values["option"]  %>
-                 <%if option.class == Array%>
-                            <%option.each do |opt|%>
-                                       <%if !opt.printable_photo(:small).include? "missing"%>
-                                      <%=render :partial=>"p_section",:locals=>{:option=>opt,:print_section=>print_section,:part_values=>part_values}%>
-                                       <%end%>   
-                              <%end%>
-                 <%else%>
-                       <%if !option.printable_photo(:small).include? "missing"%>
-                                 <%=render :partial=>"p_section",:locals=>{:option=>option,:print_section=>print_section,:part_values=>part_values}%>
-                       <% end %>
+           <%# option = Option.find part_values["option"]  %>
+                 <%#if option.class == Array%>
+
+                            <%#option.each do |opt|%>
+                                       <%#if !opt.printable_photo(:small).include? "missing"%>
+                                      <%=render :partial=>"p_section",:locals=>{:print_section=>print_section,:part_values=>part_values}%>
+                                       <%#end%>   
+                              <%#end%>
+
+                 <%#else%>
+                       <%#if !option.printable_photo(:small).include? "missing"%>
+                                 <%#=render :partial=>"p_section",:locals=>{:print_section=>print_section,:part_values=>part_values}%>
+                       <%#end %>
          
-                 <% end %> 
+                 <%# end %> 
        <%else%>
              <% if part_values["children"].present? %>
                                                     <% part_values["children"].each do |subpart_hash| %>

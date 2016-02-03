@@ -1,64 +1,105 @@
-     <% if option.print_sections.include?(print_section) %>
-                                          <% option = Option.find part_values["option"] %>
-                                     <%if option.class == Array%>
-                                        <%option.each do |opt|%>
-                                            <div class = "col-xs-2">
-                                              <% if opt.printable_photo.present? %>
-                                                <%= image_tag opt.printable_photo(:small) %>
-                                              <% end  %>
-                                  </div> 
-                                                    <% if part_values["children"].present? %>
-                                                    <% part_values["children"].each do |subpart_hash| %>
-                                                   <% subpart_hash.each do |sub_k, sub_v| %>
-                                                     <% sub_v.each do |subpart_key, subpart_value| %>
-                                                       <% child_part = Part.find subpart_key %>
+       <%# if option.print_sections.include?(print_section) %>
 
-                                                       <% subpart_value["option"].each do |opt_hash| %>
-                                                         <% if opt_hash["id"].present? %>
-                                                           <% child_part_option = Option.find opt_hash["id"] %>
-                                                           <div class = "col-xs-2">
-                                                           <% if child_part_option.printable_photo.present? %>
+                                            <% option = Option.find part_values["option"] %>
 
-                                                            <%= image_tag child_part_option.printable_photo(:small) %>
+                                       <%if option.class == Array%>
+                                          <%option.each do |opt|%>
+                                        <% if opt.print_sections.include?(print_section) %>
+
+
+                                          <%if !opt.printable_photo(:small).include? "missing"%>
+                                              <div class = "col-xs-2">
+                                                <% if opt.printable_photo.present? %>
+                                                  <%= image_tag opt.printable_photo(:small) %>
+                                                <% end  %>
+                                    </div> 
+                                            <% end  %>
+                                                          
+           
+                                         <%end%>
+                                         <%end%>
+
+                                         <% if part_values["children"].present? %>
+                                                            <% part_values["children"].each do |subpart_hash| %>
+                                                             <% subpart_hash.each do |sub_k, sub_v| %>
+                                                                   <% sub_v.each do |subpart_key, subpart_value| %>
+                                                                     <% child_part = Part.find subpart_key %>
+
+                                                                         <% subpart_value["option"].each do |opt_hash| %>
+                                                                                       <% if opt_hash["id"].present? %>
+                                                                                         <% child_part_option = Option.find opt_hash["id"] %>
+
+                                                                       <%if !child_part_option.printable_photo(:small).include? "missing"%>
+                                                                      <div class = "col-xs-2">
+                                                                        <% if child_part_option.print_sections.include?(print_section) %>
+                                                                  
+                                                                  <% if child_part_option.printable_photo.present? %>
+
+                                                                    <%= image_tag child_part_option.printable_photo(:small) %>
+                                                                  <% end %>
+                                                                  <% end %>
+                                                                  </div>
+                                                                  <% end %>
+                                                                                       <% else %>
+                                                                                       <%if print_section.parts.include? child_part%>
+                                                                                         <h5><%= opt_hash["value"] %></h5>
+                                                                                       <% end %>  
+                                                                                       <% end %>
+                                                                         <% end %>
+                                                                   <% end %>
+                                                             <% end %>
                                                            <% end %>
-                                                           </div>
-                                                         <% else %>
-                                                           <h5><%= opt_hash["value"] %></h5>
+                                                      <% end %>
+
+                                        <%else%>
+                          <% if option.print_sections.include?(print_section) %>
+                              <%if !option.printable_photo(:small).include? "missing"%>
+                                     <div class = "col-xs-2">
+   
+                                       <%= image_tag option.printable_photo(:small) %> 
+                                    </div> 
+                                    <%end%>
+                            <%end%>         
+                                                
+                                                      <% if part_values["children"].present? %>
+                                                      <% part_values["children"].each do |subpart_hash| %>
+                                                     <% subpart_hash.each do |sub_k, sub_v| %>
+                                                       <% sub_v.each do |subpart_key, subpart_value| %>
+                                                      
+                                                      
+                                                        
+                                                         <% child_part = Part.find subpart_key %>
+
+                                                         <% subpart_value["option"].each do |opt_hash| %>
+                                                           <% if opt_hash["id"].present? %>
+                                                             <% child_part_option = Option.find opt_hash["id"] %>
+                                                             
+
+                                                             <%if !child_part_option.printable_photo(:small).include? "missing"%>
+                                                             <div class = "col-xs-2">
+                                                               <% if child_part_option.print_sections.include?(print_section) %>
+                                                             <% if child_part_option.printable_photo.present? %>
+                                                              <%= image_tag child_part_option.printable_photo(:small) %>
+                                                             <% end %>
+                                                             <% end %>
+
+                                                             </div>
+                                                             <% end %>
+
+
+                                                           <% else %>
+                                                             <%if print_section.parts.include? child_part%>
+                                                             <h5><%= opt_hash["value"] %></h5>
+                                                           <% end %>
+                                                           <% end %>
                                                          <% end %>
                                                        <% end %>
                                                      <% end %>
                                                    <% end %>
-                                                 <% end %>
-                                             <% end %> 
-         
-                                       <%end%>
-                                      <%else%>
-                                   <div class = "col-xs-2">
-                                     <%= image_tag option.printable_photo(:small) %>
-                                  </div> 
-                                                    <% if part_values["children"].present? %>
-                                                    <% part_values["children"].each do |subpart_hash| %>
-                                                   <% subpart_hash.each do |sub_k, sub_v| %>
-                                                     <% sub_v.each do |subpart_key, subpart_value| %>
-                                                       <% child_part = Part.find subpart_key %>
-
-                                                       <% subpart_value["option"].each do |opt_hash| %>
-                                                         <% if opt_hash["id"].present? %>
-                                                           <% child_part_option = Option.find opt_hash["id"] %>
-                                                           <div class = "col-xs-2">
-                                                           <% if child_part_option.printable_photo.present? %>
-                                                            <%= image_tag child_part_option.printable_photo(:small) %>
-                                                           <% end %>
-                                                           </div>
-                                                         <% else %>
-                                                           <h5><%= opt_hash["value"] %></h5>
-                                                         <% end %>
-                                                       <% end %>
-                                                     <% end %>
-                                                   <% end %>
-                                                 <% end %>
-                                             <% end %>              
-                                             <% end %>
+                                               <% end %>              
+                                               <% end %>
+                                               
 
 
-     <% end %>
+       <%#end %>
+

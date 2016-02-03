@@ -11,7 +11,9 @@ class GarmentsController < ApplicationController
   # GET /garments/1
   # GET /garments/1.json
   def show
-    
+    if params[:commit].blank?
+        redirect_to garments_path
+    end
   end
 
   # GET /garments/new

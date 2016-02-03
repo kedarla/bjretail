@@ -35,8 +35,6 @@ class OrdersController < ApplicationController
 
     @order = Order.new
     @order_data = params[:order]
-    p @order_data
-    
     @garment = Garment.find(params[:garment_id])
     @order.garment_id = params[:garment_id]
    

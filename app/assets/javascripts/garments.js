@@ -59,9 +59,51 @@ $(function() {
         //so now i hav to run a loop on enables.
         run_enabler_for($switchers);
          
-        
-        
+        //there will be one more function which will disable a dropdown if that drop down all the 
+        //options are disabled.
+        run_select_disable($switchers);
     });
+
+    function run_select_disable($elements)
+    {
+
+        $('#proceed_to_order_form select').each(
+    function(index){  
+        var input = $(this);
+        //console.log(input);
+       // alert('Type: ' + input.attr('type') + 'Name: ' + input.attr('name') + 'Value: ' + input.val());
+        var alloption=true;
+        $(this).find('option').each(function(index,element){
+      //   console.log(index);
+      //   console.log(element.value);
+      //   console.log(element.text);
+      //   console.log($(element).hasClass('c_disabled'));
+         if($(element).hasClass('c_disabled'))
+         {
+        
+         }
+         else
+         {
+            alloption=false
+         }
+         
+
+
+ });
+          if(alloption)
+          {
+            input.attr("disabled","true");
+            console.log("trueeeeeeeeeee");
+          }
+          else
+          {
+input.removeAttr("disabled");
+console.log("falseeeeeeeee");
+          }
+
+    }
+);
+    }
 
     function run_title_update_for($elements)
     {   //console.log("running title updateee")
