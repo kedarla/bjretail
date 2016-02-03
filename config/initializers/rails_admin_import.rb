@@ -18,3 +18,5 @@ RailsAdmin.config do |config|
   # See https://github.com/sferik/rails_admin/wiki/Railsadmin-DSL
   
 end
+
+
