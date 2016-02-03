@@ -61,7 +61,7 @@ $(function() {
          
         //there will be one more function which will disable a dropdown if that drop down all the 
         //options are disabled.
-        run_select_disable($switchers);
+        run_select_disable($switchers); 
     });
 
     function run_select_disable($elements)
