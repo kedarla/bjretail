@@ -147,6 +147,12 @@ GEM
       remotipart (~> 1.0)
       safe_yaml (~> 1.0)
       sass-rails (>= 4.0, < 6)
+    rails_admin_import (1.2.0)
+      haml (~> 4.0)
+      rails (>= 3.2)
+      rails_admin (>= 0.6.6)
+      rchardet (~> 1.6)
+      simple_xlsx_reader (~> 1.0)
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.4)
     railties (4.0.2)
@@ -155,12 +161,14 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
+    rchardet (1.6.1)
     rdoc (4.2.1)
       json (~> 1.4)
     ref (2.0.0)
     remotipart (1.2.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -171,6 +179,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_xlsx_reader (1.0.2)
+      nokogiri
+      rubyzip
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -212,10 +223,11 @@ DEPENDENCIES
   jquery-turbolinks
   less-rails
   paperclip (~> 4.2.0)
-  pg
+  pg (= 0.18.3)
   rails (= 4.0.2)
   rails_12factor
-  rails_admin (~> 0.6.2)
+  rails_admin (~> 0.6.8)
+  rails_admin_import (= 1.2.0)
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

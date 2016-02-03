@@ -9,7 +9,7 @@ group :development, :test do
 end
 
 group :production, :staging do
-  gem 'pg'
+  gem 'pg','0.18.3'
   gem 'rails_12factor'
 end
 
@@ -45,13 +45,13 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'devise'
 gem 'aws-sdk'
 gem 'ancestry'
-
+gem "rails_admin_import", "1.2.0"
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-gem 'rails_admin', '~> 0.6.2'
+gem 'rails_admin', '~> 0.6.8'
 gem 'paperclip', '~> 4.2.0'
 
 
