@@ -212,7 +212,7 @@ DEPENDENCIES
   jquery-turbolinks
   less-rails
   paperclip (~> 4.2.0)
-  pg (= 0.18.3)
+  pg
   rails (= 4.0.2)
   rails_12factor
   rails_admin (~> 0.6.2)
